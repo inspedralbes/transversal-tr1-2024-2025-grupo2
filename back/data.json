@@ -1,0 +1,184 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "title": "Camiseta Básica",
+            "description": "Camiseta de algodón 100% en varios colores.",
+            "image": "https://example.com/images/camiseta-basica.jpg",
+            "price": 12.99,
+            "category": "camisetas",
+            "size": "M"
+        },
+        {
+            "id": 2,
+            "title": "Sudadera con Capucha",
+            "description": "Sudadera unisex con capucha y bolsillo delantero.",
+            "image": "https://example.com/images/sudadera-capucha.jpg",
+            "price": 29.99,
+            "category": "sudaderas",
+            "size": "L"
+        },
+        {
+            "id": 3,
+            "title": "Pantalón Jogger",
+            "description": "Pantalón cómodo de estilo jogger, ideal para el día a día.",
+            "image": "https://example.com/images/pantalon-jogger.jpg",
+            "price": 24.99,
+            "category": "pantalones",
+            "size": "XL"
+        },
+        {
+            "id": 4,
+            "title": "Vestido Casual",
+            "description": "Vestido de corte sencillo, perfecto para el verano.",
+            "image": "https://example.com/images/vestido-casual.jpg",
+            "price": 19.99,
+            "category": "vestidos",
+            "size": "S"
+        },
+        {
+            "id": 5,
+            "title": "Chaqueta Vaquera",
+            "description": "Chaqueta de mezclilla clásica, ideal para cualquier look.",
+            "image": "https://example.com/images/chaqueta-vaquera.jpg",
+            "price": 39.99,
+            "category": "chaquetas",
+            "size": "M"
+        },
+        {
+            "id": 6,
+            "title": "Camiseta Gráfica",
+            "description": "Camiseta de algodón con diseño gráfico estampado.",
+            "image": "https://example.com/images/camiseta-grafica.jpg",
+            "price": 14.99,
+            "category": "camisetas",
+            "size": "L"
+        },
+        {
+            "id": 7,
+            "title": "Falda Midi",
+            "description": "Falda de longitud midi con pliegues, disponible en varios colores.",
+            "image": "https://example.com/images/falda-midi.jpg",
+            "price": 22.99,
+            "category": "faldas",
+            "size": "M"
+        },
+        {
+            "id": 8,
+            "title": "Polo Deportivo",
+            "description": "Polo ligero y transpirable, ideal para actividades al aire libre.",
+            "image": "https://example.com/images/polo-deportivo.jpg",
+            "price": 17.99,
+            "category": "polos",
+            "size": "XL"
+        },
+        {
+            "id": 9,
+            "title": "Chaqueta Rompevientos",
+            "description": "Chaqueta ligera y resistente al viento, perfecta para entretiempo.",
+            "image": "https://example.com/images/chaqueta-rompevientos.jpg",
+            "price": 34.99,
+            "category": "chaquetas",
+            "size": "S"
+        },
+        {
+            "id": 10,
+            "title": "Pantalones Cortos",
+            "description": "Pantalones cortos de algodón para días de calor.",
+            "image": "https://example.com/images/pantalones-cortos.jpg",
+            "price": 15.99,
+            "category": "pantalones",
+            "size": "M"
+        },
+        {
+            "id": 11,
+            "title": "Camisa de Lino",
+            "description": "Camisa de lino transpirable, perfecta para climas cálidos.",
+            "image": "https://example.com/images/camisa-lino.jpg",
+            "price": 25.99,
+            "category": "camisas",
+            "size": "L"
+        },
+        {
+            "id": 12,
+            "title": "Camiseta de Tirantes",
+            "description": "Camiseta sin mangas, ideal para el gimnasio.",
+            "image": "https://example.com/images/camiseta-tirantes.jpg",
+            "price": 10.99,
+            "category": "camisetas",
+            "size": "M"
+        },
+        {
+            "id": 13,
+            "title": "Jersey de Punto",
+            "description": "Jersey de punto suave, ideal para el invierno.",
+            "image": "https://example.com/images/jersey-punto.jpg",
+            "price": 32.99,
+            "category": "jerséis",
+            "size": "XL"
+        },
+        {
+            "id": 14,
+            "title": "Pantalones de Vestir",
+            "description": "Pantalones elegantes para ocasiones formales.",
+            "image": "https://example.com/images/pantalones-vestir.jpg",
+            "price": 35.99,
+            "category": "pantalones",
+            "size": "M"
+        },
+        {
+            "id": 15,
+            "title": "Blusa de Seda",
+            "description": "Blusa elegante de seda, disponible en varios colores.",
+            "image": "https://example.com/images/blusa-seda.jpg",
+            "price": 29.99,
+            "category": "blusas",
+            "size": "S"
+        },
+        {
+            "id": 16,
+            "title": "Chaqueta de Cuero",
+            "description": "Chaqueta de cuero genuino, un clásico atemporal.",
+            "image": "https://example.com/images/chaqueta-cuero.jpg",
+            "price": 79.99,
+            "category": "chaquetas",
+            "size": "L"
+        },
+        {
+            "id": 17,
+            "title": "Falda Plisada",
+            "description": "Falda plisada de estilo moderno, perfecta para el trabajo.",
+            "image": "https://example.com/images/falda-plisada.jpg",
+            "price": 27.99,
+            "category": "faldas",
+            "size": "M"
+        },
+        {
+            "id": 18,
+            "title": "Camiseta Oversize",
+            "description": "Camiseta de estilo oversize para un look relajado.",
+            "image": "https://example.com/images/camiseta-oversize.jpg",
+            "price": 15.99,
+            "category": "camisetas",
+            "size": "XL"
+        },
+        {
+            "id": 19,
+            "title": "Shorts de Deporte",
+            "description": "Shorts de material elástico para actividades deportivas.",
+            "image": "https://example.com/images/shorts-deporte.jpg",
+            "price": 13.99,
+            "category": "pantalones",
+            "size": "L"
+        },
+        {
+            "id": 20,
+            "title": "Chaleco Acolchado",
+            "description": "Chaleco acolchado para mantener el calor sin perder estilo.",
+            "image": "https://example.com/images/chaleco-acolchado.jpg",
+            "price": 42.99,
+            "category": "chaquetas",
+            "size": "M"
+        }
+    ]
+}

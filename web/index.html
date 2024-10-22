@@ -1,20 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="./css/estils.css">
-    <title>TakeOutFit</title>
+    <title>TakeOutFit - Landing Page</title>
 </head>
-<body>
 
+<body>
     <div id="app">
-        <div class="portada">
+
+        <div class="page-cover" v-if="currentDiv == 'page-cover'">
+            <header class="landing-page">
+                <div class="overlay">
+                    <marquee behavior="" direction="right">Aqui podriamos mostrar ofertas de X prendas de ropa</marquee>
+                </div>
+                <div class="content">
+                    <h1>Benvinguts a TakeOutFits</h1>
+                    <p>La moda que va amb tu, ¡directe a la teva porta!</p>
+                    <button class="btn" @click="showSection('store')">Explorar Coleccións</button>
+                </div>
+            </header>
+        
+            <main>
+                <!-- Podriamos colocar una serie de productos X destacados -->
+                <section id="productos" class="productos-destacados">
+                    <h2>Nuestra Colección</h2>
+                    <p>Descubre nuestra amplia variedad de prendas de moda.</p>
+                    <!-- Productos irían aquí -->
+                </section>
+            </main>
+        
+            <footer>
+                <p>&copy; 2024 TakeOutFit. Tots els drets reservats.</p>
+            </footer>
 
         </div>
+        <div class="store" v-if="currentDiv == 'store'">
+    
+        </div>
+
     </div>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script type="module" src="./js/utils.js"></script>
 </body>
+
 </html>

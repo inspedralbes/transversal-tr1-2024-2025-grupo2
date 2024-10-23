@@ -96,3 +96,4 @@ foreach ($productsArray['products'] as $product) {
 
 $stmt->close();
 $conn->close();
+

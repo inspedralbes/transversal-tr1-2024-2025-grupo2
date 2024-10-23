@@ -4,7 +4,7 @@
             "id": 1,
             "title": "Camiseta Básica",
             "description": "Camiseta de algodón 100% en varios colores.",
-            "image": "https://example.com/images/camiseta-basica.jpg",
+            "image" : "https://static.zara.net/assets/public/9c0f/c52e/c5514df1b362/a38645fcff10/00693420401-p/00693420401-p.jpg?ts=1715763833059&w=563&f=auto",
             "price": 12.99,
             "category": "camisetas",
             "size": "M"
@@ -13,7 +13,7 @@
             "id": 2,
             "title": "Sudadera con Capucha",
             "description": "Sudadera unisex con capucha y bolsillo delantero.",
-            "image": "https://example.com/images/sudadera-capucha.jpg",
+            "image" : "https://static.zara.net/assets/public/4a4d/85ad/dc4047d69671/6789945165ea/03199633605-p/03199633605-p.jpg?ts=1729248722937&w=563&f=auto",
             "price": 29.99,
             "category": "sudaderas",
             "size": "L"
@@ -22,7 +22,7 @@
             "id": 3,
             "title": "Pantalón Jogger",
             "description": "Pantalón cómodo de estilo jogger, ideal para el día a día.",
-            "image": "https://example.com/images/pantalon-jogger.jpg",
+            "image" : "https://static.zara.net/assets/public/c3df/197a/0b744a55a0c7/660792377355/03854804802-p/03854804802-p.jpg?ts=1727088767679&w=563&f=auto",
             "price": 24.99,
             "category": "pantalones",
             "size": "XL"
@@ -31,7 +31,7 @@
             "id": 4,
             "title": "Vestido Casual",
             "description": "Vestido de corte sencillo, perfecto para el verano.",
-            "image": "https://example.com/images/vestido-casual.jpg",
+            "image" : "https://static.zara.net/assets/public/0076/51a1/02ba4eaa87c8/b094e9b940b6/05536171716-p/05536171716-p.jpg?ts=1728636385333&w=563&f=auto",
             "price": 19.99,
             "category": "vestidos",
             "size": "S"
@@ -40,7 +40,7 @@
             "id": 5,
             "title": "Chaqueta Vaquera",
             "description": "Chaqueta de mezclilla clásica, ideal para cualquier look.",
-            "image": "https://example.com/images/chaqueta-vaquera.jpg",
+            "image" : "https://static.zara.net/assets/public/9be8/791a/9154428580d9/40885a68b852/01538234800-p/01538234800-p.jpg?ts=1729237000332&w=563&f=auto",
             "price": 39.99,
             "category": "chaquetas",
             "size": "M"
@@ -49,7 +49,7 @@
             "id": 6,
             "title": "Camiseta Gráfica",
             "description": "Camiseta de algodón con diseño gráfico estampado.",
-            "image": "https://example.com/images/camiseta-grafica.jpg",
+            "image" : "https://static.zara.net/assets/public/4d64/779b/3c9141f2bf0f/267914ed909b/00962352500-p/00962352500-p.jpg?ts=1723127445084&w=563&f=auto",
             "price": 14.99,
             "category": "camisetas",
             "size": "L"
@@ -58,7 +58,7 @@
             "id": 7,
             "title": "Falda Midi",
             "description": "Falda de longitud midi con pliegues, disponible en varios colores.",
-            "image": "https://example.com/images/falda-midi.jpg",
+            "image" : "https://static.zara.net/assets/public/0daf/0acd/643f44f18003/f6c36882881f/02157252732-015-p/02157252732-015-p.jpg?ts=1728996131400&w=563&f=auto",
             "price": 22.99,
             "category": "faldas",
             "size": "M"
@@ -67,7 +67,7 @@
             "id": 8,
             "title": "Polo Deportivo",
             "description": "Polo ligero y transpirable, ideal para actividades al aire libre.",
-            "image": "https://example.com/images/polo-deportivo.jpg",
+            "image" : "https://static.zara.net/assets/public/3955/e8e4/7a5740988f0f/068f020ef9b6/03284315251-p/03284315251-p.jpg?ts=1723202770940&w=563&f=auto",
             "price": 17.99,
             "category": "polos",
             "size": "XL"
@@ -76,7 +76,7 @@
             "id": 9,
             "title": "Chaqueta Rompevientos",
             "description": "Chaqueta ligera y resistente al viento, perfecta para entretiempo.",
-            "image": "https://example.com/images/chaqueta-rompevientos.jpg",
+            "image" : "https://static.zara.net/assets/public/961c/2000/85c046de9b59/e6615370c1e9/06096306990-p/06096306990-p.jpg?ts=1723201584926&w=563&f=auto",
             "price": 34.99,
             "category": "chaquetas",
             "size": "S"
@@ -85,7 +85,7 @@
             "id": 10,
             "title": "Pantalones Cortos",
             "description": "Pantalones cortos de algodón para días de calor.",
-            "image": "https://example.com/images/pantalones-cortos.jpg",
+            "image" : "https://static.zara.net/assets/public/bda7/c475/c3cb49ccaabd/a8fc840598dc/06147152427-p/06147152427-p.jpg?ts=1721384771058&w=563&f=auto",
             "price": 15.99,
             "category": "pantalones",
             "size": "M"
@@ -94,7 +94,7 @@
             "id": 11,
             "title": "Camisa de Lino",
             "description": "Camisa de lino transpirable, perfecta para climas cálidos.",
-            "image": "https://example.com/images/camisa-lino.jpg",
+            "image" : "https://static.zara.net/assets/public/958e/5a18/463349c2a27f/8071ee28e6fc/04378010519-p/04378010519-p.jpg?ts=1725882479116&w=563&f=auto",
             "price": 25.99,
             "category": "camisas",
             "size": "L"
@@ -103,7 +103,7 @@
             "id": 12,
             "title": "Camiseta de Tirantes",
             "description": "Camiseta sin mangas, ideal para el gimnasio.",
-            "image": "https://example.com/images/camiseta-tirantes.jpg",
+            "image" : "https://static.zara.net/assets/public/c5aa/0fa4/185549e6acf7/53763177f2aa/00679310250-p/00679310250-p.jpg?ts=1722438200637&w=563&f=auto",
             "price": 10.99,
             "category": "camisetas",
             "size": "M"
@@ -112,16 +112,16 @@
             "id": 13,
             "title": "Jersey de Punto",
             "description": "Jersey de punto suave, ideal para el invierno.",
-            "image": "https://example.com/images/jersey-punto.jpg",
+            "image" : "https://static.zara.net/assets/public/26df/8a2d/20d442b695bc/4ab1f44cb5c3/02142168603-p/02142168603-p.jpg?ts=1726667130989&w=563&f=auto",
             "price": 32.99,
             "category": "jerséis",
             "size": "XL"
         },
         {
             "id": 14,
-            "title": "Pantalones de Vestir",
+            "title": "Pantalón Chino",
             "description": "Pantalones elegantes para ocasiones formales.",
-            "image": "https://example.com/images/pantalones-vestir.jpg",
+            "image": "https://static.zara.net/assets/public/53fe/9021/f9d041de88f2/feff351d577e/06861609401-a1/06861609401-a1.jpg?ts=1725617758949&w=824&f=auto",
             "price": 35.99,
             "category": "pantalones",
             "size": "M"
@@ -130,7 +130,7 @@
             "id": 15,
             "title": "Blusa de Seda",
             "description": "Blusa elegante de seda, disponible en varios colores.",
-            "image": "https://example.com/images/blusa-seda.jpg",
+            "image": "https://static.zara.net/assets/public/03c1/8a16/a41c44da97da/42a965fc91cc/06929416712-a1/06929416712-a1.jpg?ts=1717009639469&w=824&f=auto",
             "price": 29.99,
             "category": "blusas",
             "size": "S"
@@ -139,16 +139,16 @@
             "id": 16,
             "title": "Chaqueta de Cuero",
             "description": "Chaqueta de cuero genuino, un clásico atemporal.",
-            "image": "https://example.com/images/chaqueta-cuero.jpg",
+            "image": "https://static.zara.net/assets/public/f989/914c/b0cc4d14a8a6/06b9daca57e4/03918327800-a1/03918327800-a1.jpg?ts=1721392170067&w=824&f=auto",
             "price": 79.99,
             "category": "chaquetas",
             "size": "L"
         },
         {
             "id": 17,
-            "title": "Falda Plisada",
-            "description": "Falda plisada de estilo moderno, perfecta para el trabajo.",
-            "image": "https://example.com/images/falda-plisada.jpg",
+            "title": "Camiseta Basica",
+            "description": "Camiseta Basica de estilo moderno, perfecta para el trabajo.",
+            "image": "https://static.zara.net/assets/public/b084/1272/8970497d8053/cd1b45adbb7c/05584362800-a1/05584362800-a1.jpg?ts=1705504405939&w=824&f=auto",
             "price": 27.99,
             "category": "faldas",
             "size": "M"
@@ -157,7 +157,7 @@
             "id": 18,
             "title": "Camiseta Oversize",
             "description": "Camiseta de estilo oversize para un look relajado.",
-            "image": "https://example.com/images/camiseta-oversize.jpg",
+            "image": "https://static.zara.net/assets/public/85fd/909d/8ae24329aee2/1f0c0f09dbd2/01887450250-a1/01887450250-a1.jpg?ts=1705564337541&w=364&f=auto",
             "price": 15.99,
             "category": "camisetas",
             "size": "XL"
@@ -166,7 +166,7 @@
             "id": 19,
             "title": "Shorts de Deporte",
             "description": "Shorts de material elástico para actividades deportivas.",
-            "image": "https://example.com/images/shorts-deporte.jpg",
+            "image": "https://static.zara.net/assets/public/16c6/5093/cdfe49eba9df/834f7e937e06/01943320406-p/01943320406-p.jpg?ts=1722324523164&w=824&f=auto",
             "price": 13.99,
             "category": "pantalones",
             "size": "L"
@@ -175,7 +175,7 @@
             "id": 20,
             "title": "Chaleco Acolchado",
             "description": "Chaleco acolchado para mantener el calor sin perder estilo.",
-            "image": "https://example.com/images/chaleco-acolchado.jpg",
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgKk3Q_76ipqUvNaTtLwETe_zlpHCn-4Nisw&s",
             "price": 42.99,
             "category": "chaquetas",
             "size": "M"

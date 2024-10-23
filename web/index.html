@@ -41,85 +41,87 @@
             </footer>
 
         </div>
-        <div class="store" v-if="visible == 'store'">
-            
+
+
+
+        <!------------------ STOOOOOOOREEEEE ------------>
+        <div v-if="visibleButtons === 'buttons-menu'">
+            <div>
+                <button @click="changeDiv('store')">Store</button>
+                <button @click="changeDiv('cart')">cart ({{objectsInCart}})</button>
+            </div>
+        </div>
             <!-- PRINCIPAL -->
-        <div>
-            <button @click="changeDiv('store')">Store</button>
-            <button @click="changeDiv('cart')">cart ({{objectsInCart}})</button>
-        </div>
+            
 
-        <div v-if="visible === 'store'" v-for="(product, index) in templateData.data" id="container-products" class="">
-            <img @click="showSelectedProduct(product)" :src="product.image" alt="" width="200px">
-            <label for="">{{ product.title }}</label>
-        </div>
+            <div v-if="visible === 'store'" v-for="(product, index) in templateData.data" id="container-products"
+                class="">
+                <img @click="showSelectedProduct(product)" :src="product.image" alt="" width="200px">
+                <label for="">{{ product.title }}</label>
+            </div>
 
 
-        <!-- Only selected product -->
+            <!-- Only selected product -->
 
 
-        <div v-if="visible === 'productSelec'" id="only-product-selected">
-            <h3 class="name-product">{{selectedProduct.name}}</h3>
-            <img :src="selectedProduct.image" alt="" width="400px">
-            <p class="price">${{selectedProduct.price}}</p>
+            <div v-if="visible === 'productSelec'" id="only-product-selected">
+                <h3 class="name-product">{{selectedProduct.name}}</h3>
+                <img :src="selectedProduct.image" alt="" width="400px">
+                <p class="price">${{selectedProduct.price}}</p>
 
-            <select name="size" id="">
-                <option disabled value="">Size</option>
-                <option v-for="(size, index) in selectedProduct.size" value="">
-                    {{ size }}
-                </option>
-            </select>
-            <select name="colors" id="">
-                <option v-for="(color, index) in selectedProduct.colors" value="">
-                    {{ color }}
-                </option>
-            </select>
-            <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae vel deserunt nam
-                aspernatur? Animi quidem dignissimos beatae facere tempore non.</p>
+                <select name="size" id="">
+                    <option disabled value="">Size</option>
+                    <option v-for="(size, index) in selectedProduct.size" value="">
+                        {{ size }}
+                    </option>
+                </select>
+                <select name="colors" id="">
+                    <option v-for="(color, index) in selectedProduct.colors" value="">
+                        {{ color }}
+                    </option>
+                </select>
+                <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae vel deserunt
+                    nam
+                    aspernatur? Animi quidem dignissimos beatae facere tempore non.</p>
 
-            <input @click="changeDiv('onlyOneBuy')" type="button" value="Buy">
-            <input @click="addToCart(selectedProduct)" type="button" value="Add to cart">
+                <input @click="changeDiv('onlyOneBuy')" type="button" value="Buy">
+                <input @click="addToCart(selectedProduct)" type="button" value="Add to cart">
 
-        </div>
+            </div>
 
-        <!------- CAAAAAAAAAART  ----------->
-        <div v-if="visible ==='cart' " id="contaires-cart" class="">
-            <div v-if="objectsInCart > 0" v-for="(prodCart,index) in cart">
-                <div :id="prodCart.id">
+            <!------- CAAAAAAAAAART  ----------->
+            <div v-if="visible ==='cart' " id="contaires-cart" class="">
+                <div v-if="objectsInCart > 0" v-for="(prodCart,index) in cart">
+                    <div :id="prodCart.id">
+                        <img :src="prodCart.image" id="index" alt="" width="200px">
+                        <h3> {{ prodCart.title}}</h3>
+                        <!--- <p v-if="sameSelectedProduct()">Contador: {{  incrementCounterSameProducts() }}</p>-->
+                        <button @click="deleteById(index)">Delete by id</button>
+                    </div>
+
+                </div>
+                <button @click="cleanCart()">Delete All</button>
+                <button @click="changeDiv('buyingAll')">Buy</button>
+            </div>
+
+
+            <!-- BUUUUUUUYYY -->
+            <div v-if="visible === 'buyingAll' " id="container-buy">
+                <div v-if="objectsInCart > 0 " v-for="(prodCart,index) in cart">
                     <img :src="prodCart.image" id="index" alt="" width="200px">
                     <h3> {{ prodCart.title}}</h3>
-                    <!--- <p v-if="sameSelectedProduct()">Contador: {{  incrementCounterSameProducts() }}</p>-->
-                    <button @click="deleteById(index)">Delete by id</button>
                 </div>
-
+                <button>Continue</button>
+                <button @click="cancelPurchase()">Cancel</button>
             </div>
-            <button @click="cleanCart()">Delete All</button>
-            <button @click="changeDiv('buyingAll')">Buy</button>
-        </div>
 
-
-        <!-- BUUUUUUUYYY -->
-        <div v-if="visible === 'buyingAll' " id="container-buy">
-            <div v-if="objectsInCart > 0 " v-for="(prodCart,index) in cart">
-                <img :src="prodCart.image" id="index" alt="" width="200px">
-                <h3> {{ prodCart.title}}</h3>
+            <div v-if="visible === 'onlyOneBuy' && selectedProduct">
+                <img :src="selectedProduct.image" alt="" width="200px">
+                <h3> {{ selectedProduct.title }}</h3>
+                <button>Continue</button>
+                <button @click="cancelPurchase()">Cancel</button>
             </div>
-            <button>Continue</button>
-            <button @click="cancelPurchase()">Cancel</button>
-        </div>
-
-        <div v-if="visible === 'onlyOneBuy' && selectedProduct">
-            <img :src="selectedProduct.image" alt="" width="200px">
-            <h3> {{ selectedProduct.title }}</h3>
-            <button>Continue</button>
-            <button>Cancel</button>
-        </div>
-        </div>
-
-
-        
-    </div>
-
+  
     </div>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>

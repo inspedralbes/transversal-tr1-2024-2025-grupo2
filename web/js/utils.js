@@ -9,12 +9,8 @@ createApp({
         let cart = [];
         let objectsInCart = ref(0);
         let visible = ref('page-cover'); // Iniciamos mostrando la 'portada'
+        const visibleButtons = ref('')
 
-        function showSection(divName) { // Función para cambiar el div mostrado
-            currentDiv.value = divName
-            console.log(currentDiv);
-            
-        }
         function cancelPurchase() {
             this.cleanCart();
             this.changeDiv('store');
@@ -42,6 +38,7 @@ createApp({
 
           function changeDiv(show) {
             this.visible = show;
+            this.visibleButtons = 'buttons-menu';
           };
 
         onBeforeMount(async () => {
@@ -54,7 +51,7 @@ createApp({
         });
 
         return {
-            templateData,changeDiv,visible,selectedProduct,showSelectedProduct, cart,addToCart,objectsInCart,cleanCart,deleteById,cancelPurchase
+            templateData,changeDiv,visible,selectedProduct,showSelectedProduct, cart,addToCart,objectsInCart,cleanCart,deleteById,cancelPurchase,visibleButtons
         };
     }
 }).mount('#app');

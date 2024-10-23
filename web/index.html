@@ -14,8 +14,6 @@
 
         <div class="page-cover" v-if="currentDiv == 'page-cover'">
             <header class="landing-page">
-                <div class="overlay">
-                </div>
                 <div class="content">
                     <h1>Benvinguts a TakeOutFits</h1>
                     <p>La moda que va amb tu, ¡directe a la teva porta!</p>
@@ -25,15 +23,17 @@
         
             <main>
                 <!-- Podriamos colocar una serie de productos X destacados -->
-                <section id="productos" class="productos-destacados">
-                    <h2>Nuestra Colección</h2>
-                    <p>Descubre nuestra amplia variedad de prendas de moda.</p>
+                <section class="featured-products">
+                    <h2>Nostres coleccions</h2>
+                    <p>Descobreix la nova àmplia varietat de peces de moda.</p>
                     <!-- Productos irían aquí -->
                 </section>
             </main>
         
             <footer>
-                <p>&copy; 2024 TakeOutFit. Tots els drets reservats.</p>
+                <div class="footer-landing-page">
+                    <p class="footer-text-bottom">&copy; 2024 TakeOutFit. Tots els drets reservats.</p>
+                </div>
             </footer>
 
         </div>

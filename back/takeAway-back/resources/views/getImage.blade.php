@@ -21,8 +21,8 @@
             <p>Descripció: {{ $product['description'] }}</p>
             <img src="{{ $product['image'] }}">
             <p>Preu: {{ $product['price'] }} €</p>
-            <p>Categoria: {{ $product['category'] }}</p>
-            <p>Talla: {{ $product['size'] }}</p>
+            <p>Categoria: {{ $product['category_id'] }}</p>
+            <p>Talla: {{ $product['size_id'] }}</p>
         </div>
         <br>
     @endforeach

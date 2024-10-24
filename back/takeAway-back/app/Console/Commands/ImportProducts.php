@@ -105,10 +105,6 @@ class ImportProducts extends Command
         $this->info('Productes importats correctament');
     }
 
-
-
-
-
     private function getCategoryId($category)
     {
         return DB::table('categories')->where('category_id', $category)->value('id');

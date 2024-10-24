@@ -4,25 +4,25 @@
             "id": 1,
             "title": "Samarreta Bàsica",
             "description": "Samarreta de cotó 100% en diversos colors.",
-            "image": "https://example.com/images/camiseta-basica.jpg",
+            "image": "https://static.zara.net/assets/public/9c0f/c52e/c5514df1b362/a38645fcff10/00693420401-p/00693420401-p.jpg?ts=1715763833059&w=563&f=auto",
             "price": 12.99,
             "category_id": "samarretes",
             "size_id": "M"
         },
         {
             "id": 2,
-            "title": "Dessuatadora amb Caputxa",
-            "description": "Dessuatadora unisex amb caputxa i butxaca davantera.",
-            "image": "https://example.com/images/sudadera-capucha.jpg",
+            "title": "Dessuatge amb Caputxa",
+            "description": "Dessuatge unisex amb caputxa i butxaca davantera.",
+            "image": "https://static.zara.net/assets/public/4a4d/85ad/dc4047d69671/6789945165ea/03199633605-p/03199633605-p.jpg?ts=1729248722937&w=563&f=auto",
             "price": 29.99,
             "category_id": "dessuadores",
-            "size_id": "S"
+            "size_id": "L"
         },
         {
             "id": 3,
-            "title": "Pantaló Jogger",
-            "description": "Pantaló còmode d'estil jogger, ideal per al dia a dia.",
-            "image": "https://example.com/images/pantalon-jogger.jpg",
+            "title": "Pantalons Jogger",
+            "description": "Pantalons còmodes d'estil jogger, ideals per al dia a dia.",
+            "image": "https://static.zara.net/assets/public/c3df/197a/0b744a55a0c7/660792377355/03854804802-p/03854804802-p.jpg?ts=1727088767679&w=563&f=auto",
             "price": 24.99,
             "category_id": "pantalons",
             "size_id": "XL"
@@ -31,43 +31,43 @@
             "id": 4,
             "title": "Vestit Casual",
             "description": "Vestit de tall senzill, perfecte per a l'estiu.",
-            "image": "https://example.com/images/vestido-casual.jpg",
+            "image": "https://static.zara.net/assets/public/0076/51a1/02ba4eaa87c8/b094e9b940b6/05536171716-p/05536171716-p.jpg?ts=1728636385333&w=563&f=auto",
             "price": 19.99,
             "category_id": "vestits",
-            "size_id": "L"
+            "size_id": "S"
         },
         {
             "id": 5,
             "title": "Jaqueta Texana",
             "description": "Jaqueta de mezclilla clàssica, ideal per a qualsevol look.",
-            "image": "https://example.com/images/chaqueta-vaquera.jpg",
+            "image": "https://static.zara.net/assets/public/9be8/791a/9154428580d9/40885a68b852/01538234800-p/01538234800-p.jpg?ts=1729237000332&w=563&f=auto",
             "price": 39.99,
             "category_id": "jaquetes",
-            "size_id": "S"
+            "size_id": "M"
         },
         {
             "id": 6,
             "title": "Samarreta Gràfica",
             "description": "Samarreta de cotó amb disseny gràfic estampat.",
-            "image": "https://example.com/images/camiseta-grafica.jpg",
+            "image": "https://static.zara.net/assets/public/4d64/779b/3c9141f2bf0f/267914ed909b/00962352500-p/00962352500-p.jpg?ts=1723127445084&w=563&f=auto",
             "price": 14.99,
             "category_id": "samarretes",
-            "size_id": "M"
+            "size_id": "L"
         },
         {
             "id": 7,
             "title": "Faldilla Midi",
-            "description": "Faldilla de longitud midi amb plecs, disponible en diversos colors.",
-            "image": "https://example.com/images/falda-midi.jpg",
+            "description": "Faldilla de llargada midi amb plecs, disponible en diversos colors.",
+            "image": "https://static.zara.net/assets/public/0daf/0acd/643f44f18003/f6c36882881f/02157252732-015-p/02157252732-015-p.jpg?ts=1728996131400&w=563&f=auto",
             "price": 22.99,
             "category_id": "faldilles",
-            "size_id": "L"
+            "size_id": "M"
         },
         {
             "id": 8,
             "title": "Polo Esportiu",
             "description": "Polo lleuger i transpirable, ideal per a activitats a l'aire lliure.",
-            "image": "https://example.com/images/polo-deportivo.jpg",
+            "image": "https://static.zara.net/assets/public/3955/e8e4/7a5740988f0f/068f020ef9b6/03284315251-p/03284315251-p.jpg?ts=1723202770940&w=563&f=auto",
             "price": 17.99,
             "category_id": "polos",
             "size_id": "XL"
@@ -75,17 +75,17 @@
         {
             "id": 9,
             "title": "Jaqueta Tallavent",
-            "description": "Jaqueta lleugera i resistent al vent, perfecta per a l'entretemps.",
-            "image": "https://example.com/images/chaqueta-rompevientos.jpg",
+            "description": "Jaqueta lleugera i resistent al vent, perfecta per a mitja temporada.",
+            "image": "https://static.zara.net/assets/public/961c/2000/85c046de9b59/e6615370c1e9/06096306990-p/06096306990-p.jpg?ts=1723201584926&w=563&f=auto",
             "price": 34.99,
             "category_id": "jaquetes",
-            "size_id": "L"
+            "size_id": "S"
         },
         {
             "id": 10,
             "title": "Pantalons Curts",
             "description": "Pantalons curts de cotó per a dies de calor.",
-            "image": "https://example.com/images/pantalones-cortos.jpg",
+            "image": "https://static.zara.net/assets/public/bda7/c475/c3cb49ccaabd/a8fc840598dc/06147152427-p/06147152427-p.jpg?ts=1721384771058&w=563&f=auto",
             "price": 15.99,
             "category_id": "pantalons",
             "size_id": "M"
@@ -94,16 +94,16 @@
             "id": 11,
             "title": "Camisa de Lli",
             "description": "Camisa de lli transpirable, perfecta per a climes càlids.",
-            "image": "https://example.com/images/camisa-lino.jpg",
+            "image": "https://static.zara.net/assets/public/958e/5a18/463349c2a27f/8071ee28e6fc/04378010519-p/04378010519-p.jpg?ts=1725882479116&w=563&f=auto",
             "price": 25.99,
             "category_id": "camises",
-            "size_id": "S"
+            "size_id": "L"
         },
         {
             "id": 12,
             "title": "Samarreta de Tirants",
             "description": "Samarreta sense mànigues, ideal per al gimnàs.",
-            "image": "https://example.com/images/camiseta-tirantes.jpg",
+            "image": "https://static.zara.net/assets/public/c5aa/0fa4/185549e6acf7/53763177f2aa/00679310250-p/00679310250-p.jpg?ts=1722438200637&w=563&f=auto",
             "price": 10.99,
             "category_id": "samarretes",
             "size_id": "M"
@@ -112,16 +112,16 @@
             "id": 13,
             "title": "Jersei de Punt",
             "description": "Jersei de punt suau, ideal per a l'hivern.",
-            "image": "https://example.com/images/jersey-punto.jpg",
+            "image": "https://static.zara.net/assets/public/26df/8a2d/20d442b695bc/4ab1f44cb5c3/02142168603-p/02142168603-p.jpg?ts=1726667130989&w=563&f=auto",
             "price": 32.99,
             "category_id": "jerseis",
-            "size_id": "L"
+            "size_id": "XL"
         },
         {
             "id": 14,
-            "title": "Pantalons de Vestir",
+            "title": "Pantalons Xinesos",
             "description": "Pantalons elegants per a ocasions formals.",
-            "image": "https://example.com/images/pantalones-vestir.jpg",
+            "image": "https://static.zara.net/assets/public/53fe/9021/f9d041de88f2/feff351d577e/06861609401-a1/06861609401-a1.jpg?ts=1725617758949&w=824&f=auto",
             "price": 35.99,
             "category_id": "pantalons",
             "size_id": "M"
@@ -130,7 +130,7 @@
             "id": 15,
             "title": "Brusa de Seda",
             "description": "Brusa elegant de seda, disponible en diversos colors.",
-            "image": "https://example.com/images/blusa-seda.jpg",
+            "image": "https://static.zara.net/assets/public/03c1/8a16/a41c44da97da/42a965fc91cc/06929416712-a1/06929416712-a1.jpg?ts=1717009639469&w=824&f=auto",
             "price": 29.99,
             "category_id": "bruses",
             "size_id": "S"
@@ -139,46 +139,46 @@
             "id": 16,
             "title": "Jaqueta de Pell",
             "description": "Jaqueta de pell genuïna, un clàssic atemporal.",
-            "image": "https://example.com/images/chaqueta-cuero.jpg",
+            "image": "https://static.zara.net/assets/public/f989/914c/b0cc4d14a8a6/06b9daca57e4/03918327800-a1/03918327800-a1.jpg?ts=1721392170067&w=824&f=auto",
             "price": 79.99,
             "category_id": "jaquetes",
-            "size_id": "S"
+            "size_id": "L"
         },
         {
             "id": 17,
-            "title": "Faldilla Plisada",
-            "description": "Faldilla plisada d'estil modern, perfecta per a la feina.",
-            "image": "https://example.com/images/falda-plisada.jpg",
+            "title": "Samarreta Bàsica",
+            "description": "Samarreta bàsica d'estil modern, perfecta per a la feina.",
+            "image": "https://static.zara.net/assets/public/b084/1272/8970497d8053/cd1b45adbb7c/05584362800-a1/05584362800-a1.jpg?ts=1705504405939&w=824&f=auto",
             "price": 27.99,
             "category_id": "faldilles",
-            "size_id": "L"
+            "size_id": "M"
         },
         {
             "id": 18,
             "title": "Samarreta Oversize",
             "description": "Samarreta d'estil oversize per a un look relaxat.",
-            "image": "https://example.com/images/camiseta-oversize.jpg",
+            "image": "https://static.zara.net/assets/public/85fd/909d/8ae24329aee2/1f0c0f09dbd2/01887450250-a1/01887450250-a1.jpg?ts=1705564337541&w=364&f=auto",
             "price": 15.99,
             "category_id": "samarretes",
-            "size_id": "L"
+            "size_id": "XL"
         },
         {
             "id": 19,
             "title": "Shorts Esportius",
             "description": "Shorts de material elàstic per a activitats esportives.",
-            "image": "https://example.com/images/shorts-deporte.jpg",
+            "image": "https://static.zara.net/assets/public/16c6/5093/cdfe49eba9df/834f7e937e06/01943320406-p/01943320406-p.jpg?ts=1722324523164&w=824&f=auto",
             "price": 13.99,
             "category_id": "pantalons",
-            "size_id": "XL"
+            "size_id": "L"
         },
         {
             "id": 20,
             "title": "Armilla Encoixinada",
             "description": "Armilla encoixinada per mantenir la calor sense perdre estil.",
-            "image": "https://example.com/images/chaleco-acolchado.jpg",
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgKk3Q_76ipqUvNaTtLwETe_zlpHCn-4Nisw&s",
             "price": 42.99,
-            "category_id": "jerseis",
-            "size_id": "S"
+            "category_id": "jaquetes",
+            "size_id": "M"
         }
     ]
 }

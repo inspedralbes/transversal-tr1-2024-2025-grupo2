@@ -25,7 +25,7 @@ class ProductController extends Controller
 
     public function index()
     {
-        $products = Product::all(); // Asegúrate de importar el modelo
+        $products = Product::all(); 
         return view('products.index', compact('products'));
     }
 
@@ -33,45 +33,45 @@ class ProductController extends Controller
     // Mostra el formulari para crear un nou producte
     public function create()
     {
-        $categories = Category::all(); // Asegúrate de importar el modelo
-        $sizes = Size::all(); // Asegúrate de importar el modelo
+        $categories = Category::all(); 
+        $sizes = Size::all(); 
 
         return view('products.create', compact('categories', 'sizes'));
     }
 
 
-    // Guardar un nuevo producto
+    // Guardar un nou producte
     public function store(Request $request)
     {
-        // Validar los datos
+        // Validar les dades
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'price' => 'required|numeric',
-            'image' => 'required|string|max:255', // O usa una regla para subir archivos
+            'image' => 'required|string|max:255', 
             'category_id' => 'required|exists:categories,id',
             'size_id' => 'required|exists:sizes,id',
         ]);
 
-        // Crear el producto
-        Product::create($request->all()); // Asegúrate de que 'fillable' esté configurado en el modelo
+        // Crear el producte
+        Product::create($request->all()); 
 
         return redirect()->route('products.index')->with('success', 'Producto creado exitosamente.');
     }
 
 
-    // Mostrar un producto específico
+    // Mostrar un producto específic
     public function show($id)
     {
-        $product = Product::findOrFail($id); // Encuentra el producto o devuelve 404
-        return view('products.show', ['product' => $product]); // Vista para mostrar el producto
+        $product = Product::findOrFail($id); 
+        return view('products.show', ['product' => $product]); // Vista per mostrar el producte
     }
 
 
-    // Mostrar el formulario para editar un producto
+    // Mostrar el formulari per editar un producte
     public function edit($id)
     {
-        $product = Product::findOrFail($id); // Asegúrate de importar el modelo
+        $product = Product::findOrFail($id); 
         $categories = Category::all();
         $sizes = Size::all();
 
@@ -79,10 +79,10 @@ class ProductController extends Controller
     }
 
 
-    // Actualizar un producto específico
+    // Actualizar un producte específic
     public function update(Request $request, $id)
     {
-        // Validar los datos
+        // Validar les dades
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
@@ -93,17 +93,17 @@ class ProductController extends Controller
         ]);
 
         $product = Product::findOrFail($id);
-        $product->update($request->all()); // Actualiza el producto
+        $product->update($request->all()); // Actualiza el producte
 
         return redirect()->route('products.index')->with('success', 'Producto actualizado exitosamente.');
     }
 
 
-    // Eliminar un producto
+    // Eliminar un producte
     public function destroy($id)
     {
         $product = Product::findOrFail($id);
-        $product->delete(); // Elimina el producto
+        $product->delete(); 
 
         return redirect()->route('products.index')->with('success', 'Producto eliminado exitosamente.');
     }

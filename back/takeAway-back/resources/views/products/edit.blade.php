@@ -39,5 +39,7 @@
         </select>
 
         <button type="submit">Update</button>
+        <p></p>
+        <a href="{{ route('products.index') }}">Tornar a la llista de productes</a>
     </form>
 @endsection

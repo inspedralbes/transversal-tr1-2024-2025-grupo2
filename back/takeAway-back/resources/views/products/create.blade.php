@@ -34,5 +34,7 @@
         </select>
 
         <button type="submit">Create</button>
+        <p></p>
+        <a href="{{ route('products.index') }}">Tornar a la llista de productes</a>
     </form>
 @endsection

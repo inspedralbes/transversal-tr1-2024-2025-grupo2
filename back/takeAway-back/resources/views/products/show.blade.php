@@ -12,5 +12,5 @@
         <img src="{{ asset($product->image) }}" alt="{{ $product->title }}" width="200">
     </div>
 
-    <a href="{{ route('products.index') }}">Back to Product List</a>
+    <a href="{{ route('products.index') }}">Tornar a la llista de productes</a>
 @endsection

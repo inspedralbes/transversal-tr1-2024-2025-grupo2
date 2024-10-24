@@ -5,21 +5,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Laravel App')</title>
-    <!-- Aquí puedes incluir CSS o cualquier otro recurso -->
+    <title>@yield('title', 'ADMIN-takeoutfit')</title>
 </head>
 <body>
     <header>
-        <h1>Mi Aplicación Laravel</h1>
-        <!-- Aquí puedes incluir un menú de navegación -->
+        <h1>TakeOutFit</h1>
+        <!-- hauriem d'afegir el menú de navegació -->
     </header>
 
     <main>
         @yield('content')
     </main>
 
-    <footer>
-        <p>© 2024 Mi Aplicación</p>
-    </footer>
 </body>
 </html>

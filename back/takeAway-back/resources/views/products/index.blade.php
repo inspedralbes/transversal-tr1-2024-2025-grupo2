@@ -2,7 +2,7 @@
 
 @section('content')
     <h1>Product List</h1>
-    <a href="{{ route('products.create') }}">Create New Product</a>
+    <a href="{{ route('products.create') }}">Crear un nou producte</a>
 
     <table>
         <thead>
@@ -28,11 +28,11 @@
                     <td>{{ $product->category_id }}</td>
                     <td>{{ $product->size_id }}</td>
                     <td>
-                        <a href="{{ route('products.edit', $product->id) }}">Edit</a>
+                        <a href="{{ route('products.edit', $product->id) }}">Editar</a>
                         <form action="{{ route('products.destroy', $product->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" onclick="return confirm('Are you sure?')">Delete</button>
+                            <button type="submit" onclick="return confirm('Estàs segur d\'eliminar el producte?')">Eliminar</button>
                         </form>
                     </td>
                 </tr>

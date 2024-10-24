@@ -9,10 +9,12 @@ return new class extends Migration {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('description');
             $table->decimal('price', 8, 2);
+            $table->string('image');
 
             // Clau forana cap a categories
-            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('category_id')->nullable();
             $table->foreign('category_id')
                 ->references('id')
                 ->on('categories')
@@ -20,7 +22,7 @@ return new class extends Migration {
                 ->onUpdate('cascade');
 
             // Clau forana cap a sizes
-            $table->unsignedBigInteger('size_id');
+            $table->unsignedBigInteger('size_id')->nullable();
             $table->foreign('size_id')
                 ->references('id')
                 ->on('sizes')

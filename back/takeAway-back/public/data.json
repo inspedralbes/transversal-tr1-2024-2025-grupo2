@@ -6,8 +6,8 @@
             "description": "Samarreta de cotó 100% en diversos colors.",
             "image": "https://example.com/images/camiseta-basica.jpg",
             "price": 12.99,
-            "category": "samarretes",
-            "size": "M"
+            "category_id": "samarretes",
+            "size_id": "M"
         },
         {
             "id": 2,
@@ -15,8 +15,8 @@
             "description": "Dessuatadora unisex amb caputxa i butxaca davantera.",
             "image": "https://example.com/images/sudadera-capucha.jpg",
             "price": 29.99,
-            "category": "dessuadores",
-            "size": "L"
+            "category_id": "dessuadores",
+            "size_id": "S"
         },
         {
             "id": 3,
@@ -24,8 +24,8 @@
             "description": "Pantaló còmode d'estil jogger, ideal per al dia a dia.",
             "image": "https://example.com/images/pantalon-jogger.jpg",
             "price": 24.99,
-            "category": "pantalons",
-            "size": "XL"
+            "category_id": "pantalons",
+            "size_id": "XL"
         },
         {
             "id": 4,
@@ -33,8 +33,8 @@
             "description": "Vestit de tall senzill, perfecte per a l'estiu.",
             "image": "https://example.com/images/vestido-casual.jpg",
             "price": 19.99,
-            "category": "vestits",
-            "size": "S"
+            "category_id": "vestits",
+            "size_id": "L"
         },
         {
             "id": 5,
@@ -42,8 +42,8 @@
             "description": "Jaqueta de mezclilla clàssica, ideal per a qualsevol look.",
             "image": "https://example.com/images/chaqueta-vaquera.jpg",
             "price": 39.99,
-            "category": "jaquetes",
-            "size": "M"
+            "category_id": "jaquetes",
+            "size_id": "S"
         },
         {
             "id": 6,
@@ -51,8 +51,8 @@
             "description": "Samarreta de cotó amb disseny gràfic estampat.",
             "image": "https://example.com/images/camiseta-grafica.jpg",
             "price": 14.99,
-            "category": "samarretes",
-            "size": "L"
+            "category_id": "samarretes",
+            "size_id": "M"
         },
         {
             "id": 7,
@@ -60,8 +60,8 @@
             "description": "Faldilla de longitud midi amb plecs, disponible en diversos colors.",
             "image": "https://example.com/images/falda-midi.jpg",
             "price": 22.99,
-            "category": "faldilles",
-            "size": "M"
+            "category_id": "faldilles",
+            "size_id": "L"
         },
         {
             "id": 8,
@@ -69,8 +69,8 @@
             "description": "Polo lleuger i transpirable, ideal per a activitats a l'aire lliure.",
             "image": "https://example.com/images/polo-deportivo.jpg",
             "price": 17.99,
-            "category": "polos",
-            "size": "XL"
+            "category_id": "polos",
+            "size_id": "XL"
         },
         {
             "id": 9,
@@ -78,8 +78,8 @@
             "description": "Jaqueta lleugera i resistent al vent, perfecta per a l'entretemps.",
             "image": "https://example.com/images/chaqueta-rompevientos.jpg",
             "price": 34.99,
-            "category": "jaquetes",
-            "size": "S"
+            "category_id": "jaquetes",
+            "size_id": "L"
         },
         {
             "id": 10,
@@ -87,8 +87,8 @@
             "description": "Pantalons curts de cotó per a dies de calor.",
             "image": "https://example.com/images/pantalones-cortos.jpg",
             "price": 15.99,
-            "category": "pantalons",
-            "size": "M"
+            "category_id": "pantalons",
+            "size_id": "M"
         },
         {
             "id": 11,
@@ -96,8 +96,8 @@
             "description": "Camisa de lli transpirable, perfecta per a climes càlids.",
             "image": "https://example.com/images/camisa-lino.jpg",
             "price": 25.99,
-            "category": "camises",
-            "size": "L"
+            "category_id": "camises",
+            "size_id": "S"
         },
         {
             "id": 12,
@@ -105,8 +105,8 @@
             "description": "Samarreta sense mànigues, ideal per al gimnàs.",
             "image": "https://example.com/images/camiseta-tirantes.jpg",
             "price": 10.99,
-            "category": "samarretes",
-            "size": "M"
+            "category_id": "samarretes",
+            "size_id": "M"
         },
         {
             "id": 13,
@@ -114,8 +114,8 @@
             "description": "Jersei de punt suau, ideal per a l'hivern.",
             "image": "https://example.com/images/jersey-punto.jpg",
             "price": 32.99,
-            "category": "jerseis",
-            "size": "XL"
+            "category_id": "jerseis",
+            "size_id": "L"
         },
         {
             "id": 14,
@@ -123,8 +123,8 @@
             "description": "Pantalons elegants per a ocasions formals.",
             "image": "https://example.com/images/pantalones-vestir.jpg",
             "price": 35.99,
-            "category": "pantalons",
-            "size": "M"
+            "category_id": "pantalons",
+            "size_id": "M"
         },
         {
             "id": 15,
@@ -132,8 +132,8 @@
             "description": "Brusa elegant de seda, disponible en diversos colors.",
             "image": "https://example.com/images/blusa-seda.jpg",
             "price": 29.99,
-            "category": "bruses",
-            "size": "S"
+            "category_id": "bruses",
+            "size_id": "S"
         },
         {
             "id": 16,
@@ -141,8 +141,8 @@
             "description": "Jaqueta de pell genuïna, un clàssic atemporal.",
             "image": "https://example.com/images/chaqueta-cuero.jpg",
             "price": 79.99,
-            "category": "jaquetes",
-            "size": "L"
+            "category_id": "jaquetes",
+            "size_id": "S"
         },
         {
             "id": 17,
@@ -150,8 +150,8 @@
             "description": "Faldilla plisada d'estil modern, perfecta per a la feina.",
             "image": "https://example.com/images/falda-plisada.jpg",
             "price": 27.99,
-            "category": "faldilles",
-            "size": "M"
+            "category_id": "faldilles",
+            "size_id": "L"
         },
         {
             "id": 18,
@@ -159,8 +159,8 @@
             "description": "Samarreta d'estil oversize per a un look relaxat.",
             "image": "https://example.com/images/camiseta-oversize.jpg",
             "price": 15.99,
-            "category": "samarretes",
-            "size": "XL"
+            "category_id": "samarretes",
+            "size_id": "L"
         },
         {
             "id": 19,
@@ -168,8 +168,8 @@
             "description": "Shorts de material elàstic per a activitats esportives.",
             "image": "https://example.com/images/shorts-deporte.jpg",
             "price": 13.99,
-            "category": "pantalons",
-            "size": "L"
+            "category_id": "pantalons",
+            "size_id": "XL"
         },
         {
             "id": 20,
@@ -177,8 +177,8 @@
             "description": "Armilla encoixinada per mantenir la calor sense perdre estil.",
             "image": "https://example.com/images/chaleco-acolchado.jpg",
             "price": 42.99,
-            "category": "jaquetes",
-            "size": "M"
+            "category_id": "jerseis",
+            "size_id": "S"
         }
     ]
 }

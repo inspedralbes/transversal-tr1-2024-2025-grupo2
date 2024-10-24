@@ -1,5 +1,5 @@
 export async function getData() {
-    const URL = '../back/data.json';
+    const URL = 'http://localhost:8000/api/getProducts'; 
     const response = await fetch(URL);    
     if(!response.ok) {
         throw new Error("Error en la solicitud");

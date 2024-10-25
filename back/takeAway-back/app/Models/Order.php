@@ -10,14 +10,13 @@ class Order extends Model
     use HasFactory;
 
     protected $fillable = [
-        'totalproducts',
         'finalprice',
-        // Si decides agregar 'user_id' más adelante, inclúyelo aquí
     ];
 
     public function products()
     {
-        return $this->belongsToMany(Product::class)
-                    ->withPivot('quantity', 'price'); // Cambia 'quantity' y 'price' según sea necesario
+        return $this->belongsToMany(Product::class, 'order_products')
+                    ->withPivot('quantity', 'price')
+                    ->withTimestamps();
     }
 }

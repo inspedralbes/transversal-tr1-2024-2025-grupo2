@@ -1,20 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Lista de Pedidos</h1>
+    <h1>Lista de Comandas</h1>
 
     @if (session('success'))
-        <div>
+        <div class="alert alert-success">
             {{ session('success') }}
         </div>
     @endif
 
-    <table>
+    <table class="table">
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Total de Productos</th>
                 <th>Precio Final</th>
+                <th>Productos</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -22,15 +22,21 @@
             @foreach ($orders as $order)
                 <tr>
                     <td>{{ $order->id }}</td>
-                    <td>{{ $order->totalproducts }}</td>
-                    <td>{{ $order->finalprice }}</td>
+                    <td>€{{ number_format($order->finalprice, 2) }}</td>
                     <td>
-                        <a href="{{ route('orders.show', $order->id) }}">Ver</a>
-                        <a href="{{ route('orders.edit', $order->id) }}">Editar</a>
+                        <ul>
+                            @foreach ($order->products as $product)
+                                <li>{{ $product->title }} - Cantidad: {{ $product->pivot->quantity }} - Precio: €{{ number_format($product->pivot->price, 2) }}</li>
+                            @endforeach
+                        </ul>
+                    </td>
+                    <td>
+                        <a href="{{ route('orders.show', $order->id) }}" class="btn btn-info">Ver</a>
+                        <a href="{{ route('orders.edit', $order->id) }}" class="btn btn-warning">Editar</a>
                         <form action="{{ route('orders.destroy', $order->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" onclick="return confirm('¿Estás seguro de que quieres eliminar este pedido?');">Eliminar</button>
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar esta comanda?');">Eliminar</button>
                         </form>
                     </td>
                 </tr>
@@ -38,5 +44,5 @@
         </tbody>
     </table>
 
-    <a href="{{ route('orders.create') }}">Crear Nuevo Pedido</a>
+    <a href="{{ route('orders.create') }}" class="btn btn-primary">Crear Nueva Comanda</a>
 @endsection

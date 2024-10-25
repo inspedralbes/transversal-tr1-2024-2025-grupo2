@@ -23,35 +23,49 @@ class OrderController extends Controller
     }
 
     // Guardar un nou comanda
+    // Supongamos que tienes un Request con productos a agregar al pedido
     public function store(Request $request)
-{
-    // Validar los datos
-    $request->validate([
-        'products' => 'required|array',
-        'products.*.id' => 'required|exists:products,id',
-        'products.*.quantity' => 'required|integer|min:1'
-    ]);
-
-    // Crear la orden
-    $order = Order::create([
-        'totalproducts' => count($request->products), // Suponiendo que se cuentan los productos
-        'finalprice' => array_reduce($request->products, function ($carry, $item) {
-            // Calcular el precio total
-            $product = Product::find($item['id']);
-            return $carry + ($product->price * $item['quantity']);
-        }, 0),
-    ]);
-
-    // Asociar productos a la orden
-    foreach ($request->products as $product) {
-        $order->products()->attach($product['id'], [
-            'quantity' => $product['quantity'],
-            'price' => Product::find($product['id'])->price // Obtener el precio del producto directamente
+    {
+        // Validar los productos
+        $request->validate([
+            'products' => 'required|array',
+            'products.*.id' => 'required|exists:products,id',
+            'products.*.quantity' => 'required|integer|min:1',
         ]);
+
+        // Crear el pedido
+        $order = Order::create([
+            // Aquí puedes agregar otros campos como el total, etc.
+        ]);
+
+        $totalPrice = 0; // Inicializa el precio total
+
+        // Adjuntar productos al pedido
+        foreach ($request->products as $product) {
+            // Obtén el producto de la base de datos
+            $dbProduct = Product::findOrFail($product['id']);
+
+            // Usa el precio de la base de datos
+            $price = $dbProduct->price;
+
+            // Calcula el precio total
+            $totalPrice += $price * $product['quantity'];
+
+            // Adjunta el producto al pedido
+            $order->products()->attach($product['id'], [
+                'quantity' => $product['quantity'],
+                'price' => $price,
+            ]);
+        }
+
+        // Actualiza el pedido con el precio total
+        $order->finalprice = $totalPrice; // Asegúrate de que tienes un campo total en la tabla de pedidos
+        $order->save();
+
+        return redirect()->route('orders.index')->with('success', 'Pedido creado exitosamente.');
     }
 
-    return redirect()->route('orders.index')->with('success', 'Orden creada exitosamente.');
-}
+
 
 
     // Mostrar un comanda específic
@@ -71,30 +85,44 @@ class OrderController extends Controller
 
     // Actualizar un comanda específic
     public function update(Request $request, $id)
-    {
-        // Validar les dades
-        $request->validate([
-            'totalproducts' => 'required|integer|min:1',
-            'finalprice' => 'required|numeric',
-            'products' => 'required|array',
-            'products.*.id' => 'exists:products,id',
-            'products.*.quantity' => 'required|integer|min:1',
+{
+    // Validar las demás entradas
+    $request->validate([
+        'products' => 'required|array',
+        'products.*.id' => 'exists:products,id',
+        'products.*.quantity' => 'required|integer|min:1',
+    ]);
+
+    $order = Order::findOrFail($id);
+
+    // Actualizar los productos asociados
+    $totalPrice = 0; // Inicializa el precio total
+    $order->products()->detach(); // Desvincular productos antiguos
+
+    foreach ($request->products as $product) {
+        // Obtén el producto de la base de datos
+        $dbProduct = Product::findOrFail($product['id']);
+
+        // Usa el precio de la base de datos
+        $price = $dbProduct->price;
+
+        // Calcula el precio total
+        $totalPrice += $price * $product['quantity'];
+
+        // Adjunta el producto al pedido
+        $order->products()->attach($product['id'], [
+            'quantity' => $product['quantity'],
+            'price' => $price,
         ]);
-
-        $order = Order::findOrFail($id);
-        $order->update([
-            'totalproducts' => $request->totalproducts,
-            'finalprice' => $request->finalprice,
-        ]);
-
-        // Actualizar los productos asociados
-        $order->products()->detach(); // Desvincular productos antiguos
-        foreach ($request->products as $product) {
-            $order->products()->attach($product['id'], ['quantity' => $product['quantity'], 'price' => $product['price']]);
-        }
-
-        return redirect()->route('orders.index')->with('success', 'Pedido actualizado exitosamente.');
     }
+
+    // Actualiza el pedido con el precio total
+    $order->finalprice = $totalPrice; // Asegúrate de que tienes un campo total en la tabla de pedidos
+    $order->save();
+
+    return redirect()->route('orders.index')->with('success', 'Pedido actualizado exitosamente.');
+}
+
 
     // Eliminar un comanda
     public function destroy($id)

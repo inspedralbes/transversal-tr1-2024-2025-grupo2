@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./css/estils.css">
     <title>TakeOutFit - Landing Page</title>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <title>Botiga</title>
 </head>
 
@@ -32,91 +33,95 @@
                 </section>
             </main>
 
-            <footer>
-                <div class="footer-landing-page">
-                    <p class="footer-text-bottom">&copy; 2024 TakeOutFit. Tots els drets reservats.</p>
-                </div>
-            </footer>
-
         </div>
 
-        <!------------------ STOOOOOOOREEEEE ------------>
-        <div v-if="visibleButtons === 'buttons-menu'">
-            <button @click="changeDiv('store')">Tornar a la botiga</button>
+        <!------------------ STORE ------------>
+
+        <!------------------ NAVBAR ------------>
+        <div id="navBar" v-if="visibleButtons === 'buttons-menu'" class="btn-backHome">
+
+            <ul>
+                <li><button @click="changeDiv('store')">Home</button></li>
+                <li><button>Categories</button></li>
+                <li><button @click="changeDiv('cart')">Cistella ({{ cartItems.length }})</button></li>
+            </ul>
             <!-- <button @click="changeDiv('cart')">Cart items: {{objectsInCart}}</button> -->
         </div>
 
-        <!-- PRINCIPAL -->
+        <!------------------ PRINCIPAL ------------>
 
         <div v-if="visible === 'store'" id="container-products">
-            <div class="bnrTop">
+            <!-- <div class="bnrTop">
                 <h1>Benvingut a TakeOutFit</h1>
-            </div>
+            </div> -->
 
-            <div class="menu">
-                <h1>Menu</h1>
-            </div>
 
+            <!------- LIST OF PRODUCTS  ------>
             <div class="articles">
                 <h1>Peces de roba de la nostra botiga</h1>
                 <div class="articlesGrid">
                     <div :id="'item' + product.id" class="item" v-for="(product, index) in templateData.products">
-                        <label :for="'item' + product.id">{{ product.title }}</label>
                         <img @click="showSelectedProduct(product)" :src="product.image" alt="">
-                        <div class="buttonStore">
-                            <button type="button" :id="index" @click="addToCart(product)">Afegir</button>
+                        <label :for="'item' + product.id">{{ product.title }}</label>
+                        <label :for="'item' + product.id"> {{ product.price}} EUR</label>
+                        <div class="buttonAddOneProduct">
+                            <button type="button" :id="index" @click="addToCart(product)">+</button>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!------------- CART FLOAT ----------->
+
             <div class="cart">
                 <h1>Cistella</h1>
-                <div>
-                    <div v-for="(itemCart,index) in cartItems">
-                        <div :id="itemCart.id">
-                            <p> {{ itemCart.title}} x {{itemCart.quantity}} <button
-                                    @click="deleteItemCart(itemCart)">Esborrar</button></p>
-                            <!-- <button @click="deleteById(index)">Delete by id</button> -->
-                        </div>
-
+                <p v-if="cartItems.length === 0">Cistella vuida</p>
+                <div v-for="(itemCart,index) in cartItems" class="container-item-cart">
+                    <div v-if="itemCartEmpty(itemCart)" :id="itemCart.id" class="item-cart">
+                        <img :src="itemCart.image" alt="image del product" width="50px">
+                        <p> {{ itemCart.title}} x <input v-if="itemCart.quantity > 0" @click="discountProduct(itemCart)"
+                                type="button" value="-"> {{itemCart.quantity}}
+                            <input @click="incrementProduct(itemCart)" type="button" value="+"><button
+                                @click="deleteItemCart(itemCart)">Esborrar</button>
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Only selected product -->
+        <!------------------ ONLY SELECTED PRODUCT ------------>
 
         <div v-if="visible === 'productSelec'" class="only-product-selected">
-
-            <h3 class="name-product">{{selectedProduct.title}}</h3>
-
             <div class="itemSelectedImage">
-                <img :src="selectedProduct.image" alt="" width="400px">
+                <img :src="selectedProduct.image" alt="">
             </div>
+            <div class="conten-info-options">
+                <div class="info-prod-selected">
+                    <h3 class="name-product">{{selectedProduct.title}}</h3>
 
-            <p class="description">{{selectedProduct.description}}</p>
-            <p class="price">Preu: {{selectedProduct.price}}€</p>
+                    <p class="description">{{selectedProduct.description}}</p>
+                    <p class="price">Preu: {{selectedProduct.price}}€</p>
 
-            <select name="size" id="">
-                <option disabled value="">Size</option>
-                <option v-for="(size, index) in selectedProduct.size" value="">
-                    {{ size }}
-                </option>
-            </select>
-
-            <div>
-                <button @click="changeDiv('onlyOneBuy'), addToCart(selectedProduct)">Comprar</button>
-                <button @click="addToCart(selectedProduct)"> Afegir a la cistella </button>
+                    <select name="size" id="">
+                        <option disabled value="">Size</option>
+                        <option v-for="(size, index) in selectedProduct.size" value="">
+                            {{ size }}
+                        </option>
+                    </select>
+                </div>
+                <div class="buttons-options-prodSelected">
+                    <button @click="changeDiv('onlyOneBuy'), addToCart(selectedProduct)">Comprar</button>
+                    <button @click="addToCart(selectedProduct)"> Afegir a la cistella </button>
+                </div>
             </div>
-
         </div>
 
-        <!------- CAAAAAAAAAART  ----------->
+        <!------------------ CART ------------>
         <div v-if="visible ==='cart' " id="contaires-cart" class="">
-            <div v-if="objectsInCart > 0" v-for="(prodCart,index) in cart">
+            <h1>Checkout</h1>
+            <p v-if="cartItems.length === 0"> No hi ha productes a la cistella </p>
+            <div v-for="(prodCart,index) in cartItems">
                 <div :id="prodCart.id">
-
-                    <h1>Checkout</h1>
                     <img :src="prodCart.image" id="index" alt="" width="200px">
                     <h3> {{ prodCart.title}}</h3>
                     <!--- <p v-if="sameSelectedProduct()">Contador: {{  incrementCounterSameProducts() }}</p>-->
@@ -124,18 +129,28 @@
                 </div>
 
             </div>
-            <button @click="cleanCart()">Delete All</button>
-            <button @click="changeDiv('buyingAll')">Buy</button>
+            <div v-if="cartItems.length > 0" class="btn-options-buying">
+                <button @click="cleanCart()">Delete All</button>
+                <button @click="changeDiv('buyingAll')">Buy</button>
+            </div>
+            
         </div>
 
-        <!-- BUUUUUUUYYY -->
+        <!------------------ BUY ONE PRODUCT ------------>
 
+        <div v-if="visible === 'onlyOneBuy'" class="container-buy-one-product">
 
-        <div v-if="visible === 'onlyOneBuy' && selectedProduct">
-            <img :src="selectedProduct.image" alt="" width="200px">
-            <h3> {{ selectedProduct.title }}</h3>
-            <button @click="changeDiv('purchase-completed'), cleanCart()">Continue</button>
-            <button @click="cancelPurchase()">Cancel</button>
+            <h3></h3>
+            <div>
+                <img class="img-prod-buying" :src="selectedProduct.image" alt="" width="200px">
+            </div>
+            <div class="info-buying-prod">
+                <h3> {{ selectedProduct.title }}</h3>
+                <p> {{ selectedProduct.size}}</p>
+                <p> {{ selectedProduct.price}} EUR</p>
+                <button @click="changeDiv('purchase-completed'),deleteItemCart(selectedProduct)">Continue</button>
+                <button @click="changeDiv('store'), deleteItemCart(selectedProduct)">Cancel</button>
+            </div>
         </div>
 
         <div v-if="visible == 'purchase-completed'">
@@ -143,6 +158,14 @@
         </div>
 
     </div>
+
+    <!------------------ FOOTER ------------>
+
+    <footer>
+        <div class="footer-landing-page">
+            <p class="footer-text-bottom">&copy; 2024 TakeOutFit. Tots els drets reservats.</p>
+        </div>
+    </footer>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script type="module" src="./js/utils.js"></script>

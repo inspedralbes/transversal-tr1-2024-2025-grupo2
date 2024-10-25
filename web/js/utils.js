@@ -7,9 +7,40 @@ createApp({
         //let visible = ref('store');
         let selectedProduct = ref(null);
         let cartItems = reactive([])
-        let objectsInCart = ref(0);
+        let objectsInCart = cartItems.length;
         let visible = ref('page-cover');
-        const visibleButtons = ref('')
+        const visibleButtons = ref('');
+
+
+        function itemCartEmpty(itemCart) {
+            if (itemCart.quantity > 0 ){
+                return true;
+            }else{
+                deleteItemCart(itemCart);
+            }
+        }
+
+
+        function incrementProduct(product){
+
+            const exsistProductCar = cartItems.find(item => item.id == product.id);
+
+            if(exsistProductCar){
+                exsistProductCar.quantity++;
+                console.log(cartItems)
+            }
+        }
+
+
+        function discountProduct(product){
+            
+            const exsistProductCar = cartItems.find(item => item.id == product.id);
+
+            if(exsistProductCar){
+                exsistProductCar.quantity--;
+                console.log(cartItems)
+            }
+        }
 
         function cancelPurchase() {
             console.log('Carrito compra rapida: ', cartItems);
@@ -54,6 +85,7 @@ createApp({
                     quantity: 1
                 })
             }
+
         }
 
         function showSelectedProduct(product) {
@@ -76,7 +108,7 @@ createApp({
         });
 
         return {
-            templateData, changeDiv, visible, selectedProduct, showSelectedProduct, cartItems, addToCart, objectsInCart, cleanCart, deleteItemCart, cancelPurchase, visibleButtons
+            templateData, changeDiv, visible, selectedProduct, showSelectedProduct, cartItems, addToCart, objectsInCart, cleanCart, deleteItemCart, cancelPurchase, visibleButtons, discountProduct, incrementProduct, itemCartEmpty
         };
     }
 }).mount('#app');

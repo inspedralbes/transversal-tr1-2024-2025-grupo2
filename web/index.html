@@ -74,8 +74,9 @@
                 <div>
                     <div v-for="(itemCart,index) in cartItems">
                         <div :id="itemCart.id">
-                            <p> {{ itemCart.title}} x {{itemCart.quantity}} <button
-                                    @click="deleteItemCart(itemCart)">Esborrar</button></p>
+                            <p> {{ itemCart.title}} x {{itemCart.quantity}}
+                                <button @click="deleteItemCart(itemCart)">Esborrar</button>
+                            </p>
                             <!-- <button @click="deleteById(index)">Delete by id</button> -->
                         </div>
 
@@ -99,8 +100,8 @@
 
             <select name="size" id="">
                 <option disabled value="">Size</option>
-                <option v-for="(size, index) in selectedProduct.size" value="">
-                    {{ size }}
+                <option v-for="(sizeActual, index) in selectedProduct.size" value="">
+                    {{ sizeActual }}
                 </option>
             </select>
 

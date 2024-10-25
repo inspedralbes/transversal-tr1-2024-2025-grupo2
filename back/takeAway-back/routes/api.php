@@ -10,3 +10,5 @@ Route::get('/user', function (Request $request) {
 
 
 Route::get('/products', [ProductController::class, 'index']);
+
+Route::get('/getProducts', [ProductController::class, 'getProducts']); // <- ruta de la API de que sirve los productos

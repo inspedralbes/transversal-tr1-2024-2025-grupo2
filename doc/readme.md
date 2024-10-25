@@ -6,7 +6,7 @@
 
 ## Tecnologies
 * VUE 3
-* Laravel
+* Laravel 11
 * JavaScript
 * CSS
 * PHP 8

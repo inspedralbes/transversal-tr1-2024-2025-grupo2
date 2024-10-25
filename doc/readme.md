@@ -25,4 +25,4 @@
     * `php artisan config:clear` 
     * `php artisan view:clear` 
     * `php artisan cache:clear`
-6. Iniciar el servidor de laravel `php artisan serve;`
+6. Iniciar el servidor de laravel `php artisan serve`

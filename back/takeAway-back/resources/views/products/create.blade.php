@@ -38,3 +38,6 @@
         <a href="{{ route('products.index') }}">Tornar a la llista de productes</a>
     </form>
 @endsection
+
+
+<!-- http://127.0.0.1:8000/products/create -->

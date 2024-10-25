@@ -14,3 +14,4 @@
 
     <a href="{{ route('products.index') }}">Tornar a la llista de productes</a>
 @endsection
+

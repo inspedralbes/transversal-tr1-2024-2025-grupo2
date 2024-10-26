@@ -10,6 +10,12 @@ createApp({
         let objectsInCart = cartItems.length;
         let visible = ref('page-cover');
         const visibleButtons = ref('');
+        let cartVisible = ref(false);
+
+
+        function showCartFloat(){
+            this.cartVisible = true;
+        }
 
 
         function itemCartEmpty(itemCart) {
@@ -85,7 +91,7 @@ createApp({
                     quantity: 1
                 })
             }
-
+            this.showCartFloat();
         }
 
         function showSelectedProduct(product) {
@@ -95,7 +101,11 @@ createApp({
 
         function changeDiv(show) {
             this.visible = show;
-            this.visibleButtons = 'buttons-menu';
+            if(this.visible !== 'page-cover'){
+                this.visibleButtons = 'buttons-menu';
+            }else{
+                this.visibleButtons = '';
+            }
         };
 
         onBeforeMount(async () => {
@@ -108,7 +118,7 @@ createApp({
         });
 
         return {
-            templateData, changeDiv, visible, selectedProduct, showSelectedProduct, cartItems, addToCart, objectsInCart, cleanCart, deleteItemCart, cancelPurchase, visibleButtons, discountProduct, incrementProduct, itemCartEmpty
+            templateData, changeDiv, visible, selectedProduct, showSelectedProduct, cartItems, addToCart, objectsInCart, cleanCart, deleteItemCart, cancelPurchase, visibleButtons, discountProduct, incrementProduct, itemCartEmpty,cartVisible,showCartFloat
         };
     }
 }).mount('#app');

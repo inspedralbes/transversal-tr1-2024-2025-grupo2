@@ -30,13 +30,16 @@
             <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="https://phantom-telva.unidadeditorial.es/80e39ab33e1d80b1b5230bba26b428c1/crop/243x14/1881x936/resize/1280/f/webp/assets/multimedia/imagenes/2023/10/25/16982371529145.jpg" class="d-block w-100 img-fluid" alt="img1">
+                        <img src="https://phantom-telva.unidadeditorial.es/80e39ab33e1d80b1b5230bba26b428c1/crop/243x14/1881x936/resize/1280/f/webp/assets/multimedia/imagenes/2023/10/25/16982371529145.jpg"
+                            class="d-block w-100 img-fluid" alt="img1">
                     </div>
                     <div class="carousel-item">
-                        <img src="https://phantom-telva.unidadeditorial.es/8066ec7bbec0a61f346ef1d0d861bdb6/crop/0x0/2046x1151/resize/2046/assets/multimedia/imagenes/2023/01/18/16740347879974.jpg" class="d-block w-100" alt="img2">
+                        <img src="https://phantom-telva.unidadeditorial.es/8066ec7bbec0a61f346ef1d0d861bdb6/crop/0x0/2046x1151/resize/2046/assets/multimedia/imagenes/2023/01/18/16740347879974.jpg"
+                            class="d-block w-100" alt="img2">
                     </div>
                     <div class="carousel-item">
-                        <img src="https://phantom-telva.unidadeditorial.es/64112f8cef05f1608b14e04a9565a1a0/crop/390x131/1974x1022/resize/1280/f/webp/assets/multimedia/imagenes/2024/10/18/17292518838915.jpg" class="d-block w-100" alt="img3">
+                        <img src="https://phantom-telva.unidadeditorial.es/64112f8cef05f1608b14e04a9565a1a0/crop/390x131/1974x1022/resize/1280/f/webp/assets/multimedia/imagenes/2024/10/18/17292518838915.jpg"
+                            class="d-block w-100" alt="img3">
                     </div>
                 </div>
             </div>
@@ -53,43 +56,41 @@
 
         <!------------------ STORE ------------>
 
+
         <!------------------ NAVBAR ------------>
         <div id="navBar" v-if="visibleButtons === 'buttons-menu'" class="btn-backHome">
-
+            <h1 @click="changeDiv('page-cover')">LOGO</h1>
             <ul>
                 <li><button @click="changeDiv('store')">Home</button></li>
                 <li><button>Categories</button></li>
                 <li><button @click="changeDiv('cart')">Cistella ({{ cartItems.length }})</button></li>
             </ul>
-            <!-- <button @click="changeDiv('cart')">Cart items: {{objectsInCart}}</button> -->
+            
         </div>
+
 
         <!------------------ PRINCIPAL ------------>
 
         <div v-if="visible === 'store'" id="container-products">
-            <!-- <div class="bnrTop">
-                <h1>Benvingut a TakeOutFit</h1>
-            </div> -->
-
 
             <!------- LIST OF PRODUCTS  ------>
             <div class="articles">
+
                 <h1>Peces de roba de la nostra botiga</h1>
-                <div class="articlesGrid">
-                    <div :id="'item' + product.id" class="item" v-for="(product, index) in templateData.products">
-                        <img @click="showSelectedProduct(product)" :src="product.image" alt="">
-                        <label :for="'item' + product.id">{{ product.title }}</label>
-                        <label :for="'item' + product.id"> {{ product.price}} EUR</label>
-                        <div class="buttonAddOneProduct">
-                            <button type="button" :id="index" @click="addToCart(product)">+</button>
-                        </div>
-                    </div>
+
+                <div :id="'item' + product.id" class="item" v-for="(product, index) in templateData.products">
+                    <img @click="showSelectedProduct(product)" :src="product.image" alt="">
+                    <label :for="'item' + product.id">{{ product.title }}</label>
+                    <label :for="'item' + product.id"> {{ product.price}} EUR</label>
+                    <button type="button" :id="index" @click="addToCart(product), showCartFloat()">+</button>
                 </div>
+
             </div>
 
             <!------------- CART FLOAT ----------->
 
-            <div class="cart">
+            <div v-if="cartVisible === true" class="cart">
+                <button @click="cartVisible = false">x</button>
                 <h1>Cistella</h1>
                 <p v-if="cartItems.length === 0">Cistella vuida</p>
                 <div v-for="(itemCart,index) in cartItems" class="container-item-cart">
@@ -140,8 +141,6 @@
                 <div :id="prodCart.id">
                     <img :src="prodCart.image" id="index" alt="" width="200px">
                     <h3> {{ prodCart.title}}</h3>
-                    <!--- <p v-if="sameSelectedProduct()">Contador: {{  incrementCounterSameProducts() }}</p>-->
-                    <button @click="deleteById(index)">Delete by id</button>
                 </div>
 
             </div>
@@ -149,7 +148,7 @@
                 <button @click="cleanCart()">Delete All</button>
                 <button @click="changeDiv('buyingAll')">Buy</button>
             </div>
-            
+
         </div>
 
         <!------------------ BUY ONE PRODUCT ------------>

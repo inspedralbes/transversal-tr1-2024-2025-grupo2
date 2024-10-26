@@ -1,11 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 /*NUEVO CODIGO CSS*/
 
 body {
-    font-family: "Bebas Neue", sans-serif;
+    font-family:sans-serif;
     background-color: #fff;
-    color: #333;
     position: relative;
     box-sizing: border-box;
 }
@@ -16,9 +14,6 @@ body {
     margin-bottom: 10px ;
 }
 
-.title:hover {
-    transform: scale(1.15); 
-}
 
 .btn {
     background-color: rgba(255, 255, 255, 0.396);
@@ -83,13 +78,13 @@ body {
 
 /* --------  Estilos NAAAAAVV -----------*/
 
-#navBar {
+#navBar{
     margin-top: 0px;
     background-color: #ffff; 
     padding: 10px 20px; 
     display: flex; 
-    justify-content: center; 
-    align-items: center; 
+    justify-content: space-between;
+    align-items: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     width: 100%;
 }
@@ -118,89 +113,81 @@ body {
 /* ------------ ESTILOS DE TODA LA TIENDA --------------- */
 
 #container-products {
-    display: grid;
-    grid-template-columns: 3fr 1fr; /* Define dos columnas: menú y carrito en la primera, artículos en la segunda */
-    grid-template-areas:
-        "menu menu"
-        "articles cart";
-    gap: 20px;
-}
-
-.menu {
-    grid-area: menu;
-    align-items: center;
-}
-
-.cart {
-    grid-area: cart;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
+    flex-flow: row wrap;
 }
 
 /* ------------ ESTILOS DE PRODUCTOOS (CARDS) ------------*/
 .articles {
-    grid-area: articles;
-    text-align: center;
+    margin: 30px 50px 0 50px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    /* background-color: blue; */
+    width: 100%;
 }
 
-.articlesGrid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Ajusta el número de columnas para los productos */
-    gap:10px;
-
+.articles h1 {
+    text-align: center;
+    flex-basis: 100%;
+    margin: 50px 0 50px 0;
+    
 }
 
 .item {
-    width: 100%;
-    margin: 10px 10px;
-    position: relative;
-    display: inline-block;
-    overflow: hidden;
-    border: 1px solid black;
-}
-
-.item img {
-    width: 100%;
-    display: block;
-
-}
-
-
-.articlesGrid label {
+    width: 350px;
+    margin-bottom: 30px;
     display: flex;
     flex-direction: column;
-    text-align: center;
-    margin: 10px 0 10px 0;
-}
-
-.buttonAddOneProduct {
-    position: absolute; /* Posiciona el botón de manera absoluta dentro del contenedor */
-    top: 85%; /* Centra verticalmente */
-    left: 50%; /* Centra horizontalmente */
-    transform: translate(-50%, -50%); /* Ajusta el centro del botón */
-    opacity: 0; /* Inicialmente oculto */
-    transition: opacity 0.3s; /* Transición suave para la aparición */
+    align-items: center;
+    position: relative;
+    border: 0.1px solid black;
+    transition: box-shadow 0.5s ease;
 
 }
 
-.buttonAddOneProduct button {
-    border-radius: 50%;
+.item label {
+    font-size: 1em;
+    font-style: normal;
+    font-weight: lighter;
+    margin:10px 0 0 0;
+}
+
+.item > img {
+    width: 100%;
+    height: auto;
+}
+
+.item:hover {
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.item button {
+    position:absolute;
+    bottom: 80px; /* Espacio desde la parte inferior del contenedor */
+    left: 50%;
+    border-radius: 100%;
     border: none;
-    opacity: 0.5;
+    transform: translateX(-50%);
+    box-shadow: 0 30px 30px rgba(0, 0, 0, 0.3);
+
+}
+
+
+/* ESTILOS CARRIDO OCULTO*/
+
+.cart {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 35%;
+    height: 100%;
     background-color: white;
-    color: black;
-
-}
-
-.buttonAddOneProduct button:hover {
-    opacity: 1;
-    transition: 0.3s;
-}
-
-.item:hover .buttonAddOneProduct {
-    opacity: 1; /* Muestra el botón al pasar el cursor sobre el item */
+    box-shadow: 0px 0px 10px 0 rgba(0, 0, 0, 0.5); 
+    padding: 20px; 
+    transition: transform 0.3s ease, right 0.3s ease; 
+    z-index: 1000; 
+    overflow-y: auto;
 }
 
 /* ---------- ESTILOS PRODUCTO SELECCIONADOOOOOOO -----------*/

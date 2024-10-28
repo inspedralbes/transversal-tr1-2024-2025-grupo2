@@ -92,7 +92,7 @@
             <div :class="{'cart': true, 'cart-visible': cartVisible}" class="cart">
                 <button @click="cartVisible = false">x</button>
                 <h3>Subtotal</h3>
-                <p>{{ subTotalCart() }}</p>
+                <p></p>
                 <button @click="visible = 'cart',cartVisible = false ">Anar a la cistella</button>
                 <p v-if="cartItems.length === 0">Cistella vuida</p>
                 <div v-for="(itemCart,index) in cartItems" class="container-item-cart">
@@ -124,7 +124,7 @@
                     <select name="size" id="">
                         <option disabled value="">Size</option>
                         <option v-for="(size, index) in selectedProduct.size" value="">
-                            {{ size }}
+                            {{ size}}
                         </option>
                     </select>
                 </div>

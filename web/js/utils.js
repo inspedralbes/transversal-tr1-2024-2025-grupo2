@@ -5,7 +5,7 @@ createApp({
     setup() {
         let templateData = reactive({ products: [] });
         //let visible = ref('store');
-        let selectedProduct = ref(null);
+        let selectedProduct = reactive([]);
         let cartItems = reactive([])
         let objectsInCart = cartItems.length;
         let visible = ref('page-cover');
@@ -66,7 +66,7 @@ createApp({
 
         function cancelPurchase() {
             console.log('Carrito compra rapida: ', cartItems);
-            
+
             this.cleanCart();
             this.changeDiv('store');
         }
@@ -75,9 +75,9 @@ createApp({
             console.log('Id del producto: ', product.id); // Mostrar el id del producto
             console.log('Producto que se quiere eliminar', cartItems.find(item => item.id === product.id)); // Mostrar el producto que se quiere eliminar
             console.log('Productos totales que hay en el objeto', cartItems); // Mostrar todos los productos en el carrito
-        
+
             const productIndex = cartItems.findIndex(item => item.id === product.id);
-        
+
             if (productIndex !== -1) {
                 console.log('Producto encontrado en el índice:', productIndex);
                 cartItems.splice(productIndex, 1);
@@ -87,7 +87,7 @@ createApp({
             }
             console.log('Productos restantes en el carrito:', cartItems); // Mostrar productos restantes en el carrito
         }
-        
+
 
         function cleanCart() {
             cartItems.splice(0, cartItems.length)
@@ -111,7 +111,11 @@ createApp({
         }
 
         function showSelectedProduct(product) {
-            this.selectedProduct = product;
+            selectedProduct.push({ ...product });
+
+
+            console.log(selectedProduct);
+
             this.changeDiv('productSelec');
         }
 
@@ -127,7 +131,11 @@ createApp({
         onBeforeMount(async () => {
             try {
                 const result = await getData();
-                templateData.products = result.products;
+                console.log(result);
+
+                templateData.products = result;
+                console.log(templateData.products);
+
             } catch (error) {
                 console.error('Error fetching data:', error);
             }

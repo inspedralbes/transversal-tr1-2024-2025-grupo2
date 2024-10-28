@@ -10,6 +10,7 @@ use App\Models\Product;
 class Size extends Model
 {
     use HasFactory;
+    protected $fillable = ['size_id'];
 
     public function size()
     {

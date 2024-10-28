@@ -4,7 +4,6 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
-
 class ImportProducts extends Command
 {
     /**
@@ -30,7 +29,7 @@ class ImportProducts extends Command
         $jsonFilePath = public_path('data.json');
         if (!file_exists($jsonFilePath)) {
             $this->error('No s\'ha trobat el fitxer JSON');
-            return;
+            return; 
         }
 
         $json = file_get_contents($jsonFilePath);

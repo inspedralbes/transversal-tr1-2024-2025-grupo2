@@ -13,12 +13,24 @@ createApp({
         let cartVisible = ref(false);
 
 
+       /* function subTotalCart(){
+            let total = ref('0');
+
+            for (let i  = 0; i < cartItems.length; i++){
+                total =+ cartItems[i].price * cartItems[i].quantity;
+            }
+
+            return total;
+        }*/
+
+
         function showCartFloat(){
             this.cartVisible = true;
         }
 
 
         function itemCartEmpty(itemCart) {
+           
             if (itemCart.quantity > 0 ){
                 return true;
             }else{
@@ -28,6 +40,7 @@ createApp({
 
 
         function incrementProduct(product){
+            
 
             const exsistProductCar = cartItems.find(item => item.id == product.id);
 
@@ -39,12 +52,15 @@ createApp({
 
 
         function discountProduct(product){
+
+            console.log("El objeto que se quiere reducir es " + product.id)
             
             const exsistProductCar = cartItems.find(item => item.id == product.id);
 
             if(exsistProductCar){
                 exsistProductCar.quantity--;
                 console.log(cartItems)
+                itemCartEmpty(exsistProductCar);
             }
         }
 
@@ -118,7 +134,7 @@ createApp({
         });
 
         return {
-            templateData, changeDiv, visible, selectedProduct, showSelectedProduct, cartItems, addToCart, objectsInCart, cleanCart, deleteItemCart, cancelPurchase, visibleButtons, discountProduct, incrementProduct, itemCartEmpty,cartVisible,showCartFloat
+            templateData, changeDiv, visible, selectedProduct, showSelectedProduct, cartItems, addToCart, objectsInCart, cleanCart, deleteItemCart, cancelPurchase, visibleButtons, discountProduct, incrementProduct, itemCartEmpty,cartVisible,showCartFloat, subTotalCart
         };
     }
 }).mount('#app');

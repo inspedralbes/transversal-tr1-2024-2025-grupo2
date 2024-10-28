@@ -89,9 +89,11 @@
 
             <!------------- CART FLOAT ----------->
 
-            <div v-if="cartVisible === true" class="cart">
+            <div :class="{'cart': true, 'cart-visible': cartVisible}" class="cart">
                 <button @click="cartVisible = false">x</button>
-                <h1>Cistella</h1>
+                <h3>Subtotal</h3>
+                <p>{{ subTotalCart() }}</p>
+                <button @click="visible = 'cart',cartVisible = false ">Anar a la cistella</button>
                 <p v-if="cartItems.length === 0">Cistella vuida</p>
                 <div v-for="(itemCart,index) in cartItems" class="container-item-cart">
                     <div v-if="itemCartEmpty(itemCart)" :id="itemCart.id" class="item-cart">

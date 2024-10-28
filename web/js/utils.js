@@ -3,6 +3,7 @@ import { createApp, reactive, ref, onBeforeMount } from 'https://unpkg.com/vue@3
 
 createApp({
     setup() {
+        let laravel = reactive ({ URL: "http://localhost:8000"})
         let templateData = reactive({ products: [] });
         //let visible = ref('store');
         let selectedProduct = reactive([]);
@@ -142,7 +143,7 @@ createApp({
         });
 
         return {
-            templateData, changeDiv, visible, selectedProduct, showSelectedProduct, cartItems, addToCart, objectsInCart, cleanCart, deleteItemCart, cancelPurchase, visibleButtons, discountProduct, incrementProduct, itemCartEmpty, cartVisible, showCartFloat
+            templateData, changeDiv, visible, selectedProduct, showSelectedProduct, cartItems, addToCart, objectsInCart, cleanCart, laravel, deleteItemCart, cancelPurchase, visibleButtons, discountProduct, incrementProduct, itemCartEmpty, cartVisible, showCartFloat
         };
     }
 }).mount('#app');

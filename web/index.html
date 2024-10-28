@@ -52,8 +52,6 @@
                     <!-- Productos irían aquí -->
                 </section>
             </main>
-<<<<<<< HEAD
-=======
 
             <footer>
                 <div class="footer-landing-page">
@@ -61,7 +59,6 @@
                 </div>
             </footer>
             
->>>>>>> origin/CRUD-orders
         </div>
 
         <!------------------ STORE ------------>
@@ -86,10 +83,10 @@
             <!------- LIST OF PRODUCTS  ------>
             <div class="articles">
 
-                <h1>Peces de roba de la nostra botiga</h1>
+                <h1>Catàleg</h1>
 
                 <div :id="'item' + product.id" class="item" v-for="(product, index) in templateData.products">
-                    <img @click="showSelectedProduct(product)" :src="product.image" alt="">
+                    <img @click="showSelectedProduct(product)" :src="laravel.URL + '/img/' + product.image" alt="">
                     <label :for="'item' + product.id">{{ product.title }}</label>
                     <label :for="'item' + product.id"> {{ product.price}} EUR</label>
                     <button type="button" :id="index" @click="addToCart(product), showCartFloat()">+</button>
@@ -104,10 +101,10 @@
                 <h3>Subtotal</h3>
                 <p></p>
                 <button @click="visible = 'cart',cartVisible = false ">Anar a la cistella</button>
-                <p v-if="cartItems.length === 0">Cistella vuida</p>
+                <p v-if="cartItems.length === 0">Cistella buida</p>
                 <div v-for="(itemCart,index) in cartItems" class="container-item-cart">
                     <div v-if="itemCartEmpty(itemCart)" :id="itemCart.id" class="item-cart">
-                        <img :src="itemCart.image" alt="image del product" width="50px">
+                        <img :src="laravel.URL + '/img/' + itemCart.image" alt="image del product" width="50px">
                         <p> {{ itemCart.title}} x <input v-if="itemCart.quantity > 0" @click="discountProduct(itemCart)"
                                 type="button" value="-"> {{itemCart.quantity}}
                             <input @click="incrementProduct(itemCart)" type="button" value="+"><button
@@ -122,7 +119,7 @@
 
         <div v-if="visible === 'productSelec'" class="only-product-selected">
             <div class="itemSelectedImage">
-                <img :src="selectedProduct.image" alt="">
+                <img :src="laravel.URL + '/img/' + selectedProduct.image" alt="">
             </div>
             <div class="conten-info-options">
                 <div class="info-prod-selected">
@@ -151,7 +148,7 @@
             <p v-if="cartItems.length === 0"> No hi ha productes a la cistella </p>
             <div v-for="(prodCart,index) in cartItems">
                 <div :id="prodCart.id">
-                    <img :src="prodCart.image" id="index" alt="" width="200px">
+                    <img :src="laravel.URL + '/img/' +  prodCart.image" id="index" alt="" width="200px">
                     <h3> {{ prodCart.title}}</h3>
                 </div>
 
@@ -169,7 +166,7 @@
 
             <h3></h3>
             <div>
-                <img class="img-prod-buying" :src="selectedProduct.image" alt="" width="200px">
+                <img class="img-prod-buying" :src="laravel.URL + '/img/' + selectedProduct.image" alt="" width="200px">
             </div>
             <div class="info-buying-prod">
                 <h3> {{ selectedProduct.title }}</h3>

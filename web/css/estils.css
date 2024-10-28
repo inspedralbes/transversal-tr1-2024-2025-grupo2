@@ -166,14 +166,15 @@ body {
 }
 
 .item button {
+    width: 25px;
+    height: 25px;
     position:absolute;
     bottom: 80px; /* Espacio desde la parte inferior del contenedor */
     left: 50%;
-    border-radius: 100%;
+    border-radius: 50%;
     border: none;
     transform: translateX(-50%);
     box-shadow: 0 30px 30px rgba(0, 0, 0, 0.3);
-
 }
 
 

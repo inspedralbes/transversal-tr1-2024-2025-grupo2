@@ -111,8 +111,7 @@ createApp({
         }
 
         function showSelectedProduct(product) {
-            selectedProduct.push({ ...product });
-
+            this.selectedProduct = product;
 
             console.log(selectedProduct);
 
@@ -142,7 +141,7 @@ createApp({
         });
 
         return {
-            templateData, changeDiv, visible, selectedProduct, showSelectedProduct, cartItems, addToCart, objectsInCart, cleanCart, deleteItemCart, cancelPurchase, visibleButtons, discountProduct, incrementProduct, itemCartEmpty,cartVisible,showCartFloat, subTotalCart
+            templateData, changeDiv, visible, selectedProduct, showSelectedProduct, cartItems, addToCart, objectsInCart, cleanCart, deleteItemCart, cancelPurchase, visibleButtons, discountProduct, incrementProduct, itemCartEmpty,cartVisible,showCartFloat
         };
     }
 }).mount('#app');

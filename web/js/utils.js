@@ -13,51 +13,51 @@ createApp({
         let cartVisible = ref(false);
 
 
-       /* function subTotalCart(){
-            let total = ref('0');
+        /* function subTotalCart(){
+             let total = ref('0');
+ 
+             for (let i  = 0; i < cartItems.length; i++){
+                 total =+ cartItems[i].price * cartItems[i].quantity;
+             }
+ 
+             return total;
+         }*/
 
-            for (let i  = 0; i < cartItems.length; i++){
-                total =+ cartItems[i].price * cartItems[i].quantity;
-            }
 
-            return total;
-        }*/
-
-
-        function showCartFloat(){
+        function showCartFloat() {
             this.cartVisible = true;
         }
 
 
         function itemCartEmpty(itemCart) {
-           
-            if (itemCart.quantity > 0 ){
+
+            if (itemCart.quantity > 0) {
                 return true;
-            }else{
+            } else {
                 deleteItemCart(itemCart);
             }
         }
 
 
-        function incrementProduct(product){
-            
+        function incrementProduct(product) {
+
 
             const exsistProductCar = cartItems.find(item => item.id == product.id);
 
-            if(exsistProductCar){
+            if (exsistProductCar) {
                 exsistProductCar.quantity++;
                 console.log(cartItems)
             }
         }
 
 
-        function discountProduct(product){
+        function discountProduct(product) {
 
             console.log("El objeto que se quiere reducir es " + product.id)
-            
+
             const exsistProductCar = cartItems.find(item => item.id == product.id);
 
-            if(exsistProductCar){
+            if (exsistProductCar) {
                 exsistProductCar.quantity--;
                 console.log(cartItems)
                 itemCartEmpty(exsistProductCar);
@@ -111,7 +111,8 @@ createApp({
         }
 
         function showSelectedProduct(product) {
-            this.selectedProduct = product;
+            this.selectedProduct = product
+
 
             console.log(selectedProduct);
 
@@ -120,9 +121,9 @@ createApp({
 
         function changeDiv(show) {
             this.visible = show;
-            if(this.visible !== 'page-cover'){
+            if (this.visible !== 'page-cover') {
                 this.visibleButtons = 'buttons-menu';
-            }else{
+            } else {
                 this.visibleButtons = '';
             }
         };
@@ -141,7 +142,7 @@ createApp({
         });
 
         return {
-            templateData, changeDiv, visible, selectedProduct, showSelectedProduct, cartItems, addToCart, objectsInCart, cleanCart, deleteItemCart, cancelPurchase, visibleButtons, discountProduct, incrementProduct, itemCartEmpty,cartVisible,showCartFloat
+            templateData, changeDiv, visible, selectedProduct, showSelectedProduct, cartItems, addToCart, objectsInCart, cleanCart, deleteItemCart, cancelPurchase, visibleButtons, discountProduct, incrementProduct, itemCartEmpty, cartVisible, showCartFloat
         };
     }
 }).mount('#app');

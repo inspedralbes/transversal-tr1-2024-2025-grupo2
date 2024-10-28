@@ -123,8 +123,8 @@
 
                     <select name="size" id="">
                         <option disabled value="">Size</option>
-                        <option v-for="(size, index) in selectedProduct.size" value="">
-                            {{ size}}
+                        <option  value="">
+                            {{ selectedProduct.size.size_id}}
                         </option>
                     </select>
                 </div>
@@ -163,7 +163,7 @@
             </div>
             <div class="info-buying-prod">
                 <h3> {{ selectedProduct.title }}</h3>
-                <p> {{ selectedProduct.size}}</p>
+                <p> {{ selectedProduct.size.size_id}}</p>
                 <p> {{ selectedProduct.price}} EUR</p>
                 <button @click="changeDiv('purchase-completed'),deleteItemCart(selectedProduct)">Continue</button>
                 <button @click="changeDiv('store'), deleteItemCart(selectedProduct)">Cancel</button>

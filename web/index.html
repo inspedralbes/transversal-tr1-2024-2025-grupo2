@@ -16,6 +16,7 @@
 
 <body>
     <div id="app">
+        <div class="overlay" v-if="cartVisible"></div>
 
         <div class="page-cover" v-if="visible == 'page-cover'">
             <header class="landing-page">
@@ -58,7 +59,7 @@
                     <p class="footer-text-bottom">&copy; 2024 TakeOutFit. Tots els drets reservats.</p>
                 </div>
             </footer>
-            
+
         </div>
 
         <!------------------ STORE ------------>
@@ -72,7 +73,7 @@
                 <li><button>Categories</button></li>
                 <li><button @click="changeDiv('cart')">Cistella ({{ cartItems.length }})</button></li>
             </ul>
-            
+
         </div>
 
 
@@ -104,12 +105,21 @@
                 <p v-if="cartItems.length === 0">Cistella buida</p>
                 <div v-for="(itemCart,index) in cartItems" class="container-item-cart">
                     <div v-if="itemCartEmpty(itemCart)" :id="itemCart.id" class="item-cart">
-                        <img :src="laravel.URL + '/img/' + itemCart.image" alt="image del product" width="50px">
-                        <p> {{ itemCart.title}} x <input v-if="itemCart.quantity > 0" @click="discountProduct(itemCart)"
-                                type="button" value="-"> {{itemCart.quantity}}
-                            <input @click="incrementProduct(itemCart)" type="button" value="+"><button
-                                @click="deleteItemCart(itemCart)">Esborrar</button>
-                        </p>
+                        <div class="item-content">
+                            <img :src="laravel.URL + '/img/' + itemCart.image" alt="image del product" width="50px"
+                                class="item-image">
+                            <div class="item-info">
+                                <p> {{ itemCart.title}} </p>
+                                <p class="descrip"> {{ itemCart.size.size_id }}</p>
+                                <p class="descrip"> {{ itemCart.description }}</p>
+                                <div class="item-buttons">
+                                    <input v-if="itemCart.quantity > 0" @click="discountProduct(itemCart)" type="button"
+                                        value="-"> {{itemCart.quantity}}
+                                    <input @click="incrementProduct(itemCart)" type="button" value="+">
+                                    <button @click="deleteItemCart(itemCart)">Esborrar</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -130,7 +140,7 @@
 
                     <select name="size" id="">
                         <option disabled value="">Size</option>
-                        <option  value="">
+                        <option value="">
                             {{ selectedProduct.size.size_id}}
                         </option>
                     </select>

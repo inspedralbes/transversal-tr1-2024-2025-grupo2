@@ -40,8 +40,6 @@ body {
 }
 
 
-
-
 /* --------  Estilos CARRUSEL -----------*/
 .carousel {
     position: relative; 
@@ -329,7 +327,32 @@ body {
 
 }
 
+/* ------------ ESTILOS DE LA CISTELLA (CARDS) ------------*/
 
+.cart-item {
+    padding: 40px;
+}
+.cart-product {
+    display: flex;            /* Usar flexbox para alinear imagen y texto */
+    align-items: center;     /* Centrar verticalmente */
+    justify-content: space-between; /* Espacio entre los elementos */
+    margin-bottom: 20px;     /* Espacio entre productos */
+    padding: 10px;           /* Espacio interno */
+    border: 1px solid #ddd;  /* Borde de cada producto */
+    border-radius: 4px;      /* Bordes redondeados para los productos */
+    background-color: #fff; 
+}
+
+.cart-info {
+    flex: 1;                 /* Permitir que la información ocupe el espacio disponible */
+    margin-left: 20px;      /* Espacio entre la información y el icono */
+}
+
+.cart-icon {
+    display: flex;
+    align-items: center;
+    margin-left: 10px; /* Espacio a la izquierda del icono */
+}
 
 
 /*ESTILO FOOTEERR*/

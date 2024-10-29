@@ -3,9 +3,9 @@ import { createApp, reactive, ref, onBeforeMount } from 'https://unpkg.com/vue@3
 
 createApp({
     setup() {
-        let laravel = reactive ({ URL: "http://localhost:8000"})
+        let laravel = reactive({ URL: "http://localhost:8000" })
         let templateData = reactive({ products: [] });
-        //let visible = ref('store');
+        let visibleFilter = ref(false);
         let selectedProduct = reactive([]);
         let cartItems = reactive([])
         let objectsInCart = cartItems.length;
@@ -13,17 +13,9 @@ createApp({
         const visibleButtons = ref('');
         let cartVisible = ref(false);
 
-
-        /* function subTotalCart(){
-             let total = ref('0');
- 
-             for (let i  = 0; i < cartItems.length; i++){
-                 total =+ cartItems[i].price * cartItems[i].quantity;
-             }
- 
-             return total;
-         }*/
-
+        function toggleFilterCategory() {
+            visibleFilter.value = !visibleFilter.value
+        }
 
         function showCartFloat() {
             this.cartVisible = true;
@@ -143,7 +135,7 @@ createApp({
         });
 
         return {
-            templateData, changeDiv, visible, selectedProduct, showSelectedProduct, cartItems, addToCart, objectsInCart, cleanCart, laravel, deleteItemCart, cancelPurchase, visibleButtons, discountProduct, incrementProduct, itemCartEmpty, cartVisible, showCartFloat
+            templateData, changeDiv, visible, selectedProduct, showSelectedProduct, cartItems, addToCart, objectsInCart, cleanCart, laravel, deleteItemCart, cancelPurchase, visibleButtons, discountProduct, incrementProduct, itemCartEmpty, cartVisible, showCartFloat, visibleFilter, toggleFilterCategory
         };
     }
 }).mount('#app');

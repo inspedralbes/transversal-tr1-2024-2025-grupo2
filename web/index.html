@@ -58,7 +58,7 @@
                     <p class="footer-text-bottom">&copy; 2024 TakeOutFit. Tots els drets reservats.</p>
                 </div>
             </footer>
-            
+
         </div>
 
         <!------------------ STORE ------------>
@@ -69,10 +69,17 @@
             <h1 @click="changeDiv('page-cover')">LOGO</h1>
             <ul>
                 <li><button @click="changeDiv('store')">Home</button></li>
-                <li><button>Categories</button></li>
+                <li><button @click="toggleFilterCategory">Categories</button></li>
+                <li v-if="visibleFilter">
+                    <select name="" class="selectCategory">
+                        <option value="1">Categoria 1</option>
+                        <option value="1">Categoria 2</option>
+                        <option value="1">Categoria 3</option>
+                    </select>
+                </li>
                 <li><button @click="changeDiv('cart')">Cistella ({{ cartItems.length }})</button></li>
             </ul>
-            
+
         </div>
 
 
@@ -130,7 +137,7 @@
 
                     <select name="size" id="">
                         <option disabled value="">Size</option>
-                        <option  value="">
+                        <option value="">
                             {{ selectedProduct.size.size_id}}
                         </option>
                     </select>

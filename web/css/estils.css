@@ -104,7 +104,7 @@ body {
     display: inline; /* Alinear los elementos en línea */
 }
 
-#navBar button {
+#navBar button{
     background: none; /* Sin fondo */
     color: #4E5A6A; /* Color del texto de los botones */
     border: none; /* Sin borde */
@@ -112,6 +112,16 @@ body {
     cursor: pointer; /* Cambiar cursor al pasar por encima */
     transition: color 0.3s; /* Transición suave para el efecto de color */
 }
+
+.selectCategory {
+    background: none;
+    color: #4E5A6A;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
 
 /* ------------ ESTILOS DE TODA LA TIENDA --------------- */
 

@@ -1,8 +1,8 @@
 # Arquitectura Bàsica
 
-* **Back-end**: Utilitzem Laravel com a API per gestionar la comunicació amb una base de dades. Aquesta API és responsable de servir tota la informació que necessita el front-end, així com de gestionar operacions com la creació, lectura, actualització i eliminació de dades (CRUD).
-* **Front-end**: Utilitzem Vue 3 per gestionar la interfície d'usuari. Vue s'encarrega de la part interactiva i visual de l'aplicació, proporcionant una experiència d'usuari dinàmica i reactiva.
-* **Part d'Administració**: Laravel també s'utilitza per a la part d'administració, on es permet als usuaris gestionar el CRUD dels productes (afegir, editar, eliminar i visualitzar productes) a través d'una interfície.
+* **Back-end (servidor)**: Utilitzem Laravel com a API per gestionar la comunicació amb una base de dades. Aquesta API és responsable de servir tota la informació que necessita el front-end, així com de gestionar operacions com la creació, lectura, actualització i eliminació de dades (CRUD).
+* **Front-end (client)**: Utilitzem Vue 3 per gestionar la interfície d'usuari. Vue s'encarrega de la part interactiva i visual de l'aplicació, proporcionant una experiència d'usuari dinàmica i reactiva.
+* **Part d'Administració**: Laravel també s'utilitza per a la part d'administració, on es permet als usuaris gestionar el CRUD (afegir, editar, eliminar i visualitzar productes) a través d'una interfície.
 
 ## Tecnologies
 * **Vue 3**: Framework JavaScript per crear interfícies d'usuari reactives i components reutilitzables.
@@ -17,8 +17,8 @@
     * **Thunder Client**: Plugin de VS Code que permet realitzar peticions HTTP des de l'editor.
     * **Postman**: Eina per provar API's de manera fàcil i visual, permetent enviar peticions HTTP i veure les respostes.
 
-## Com Desplegar l'Aplicació a Producció
-Segueix aquests passos per configurar i executar l'aplicació en un entorn de producció:
+## Com Desplegar l'Aplicació a l'Entorn de Desenvolupament
+Segueix aquests passos per configurar i executar l'aplicació en un entorn de desenvolupament:
 
 1. **Instal·lació de Dependències**:
    * Accedeix al directori `takeAway-back` i executa `composer install` per instal·lar totes les dependències necessàries per a Laravel.
@@ -58,7 +58,45 @@ Segueix aquests passos per configurar i executar l'aplicació en un entorn de pr
      ```
    * Per producció, pot ser més adient configurar un servidor web com Nginx o Apache.
 
+## Com Desplegar l'Aplicació a Producció
+Segueix aquests passos per configurar i executar l'aplicació en un entorn de producció:
+
+1. **Preparar i Pujar el Projecte**:
+   * Comprimeix la carpeta del projecte.
+   * Puja el fitxer comprimit al servidor.
+
+2. **Estructuració de Fitxers**:
+   * Descomprimeix el projecte.
+   * Mou la carpeta `web` a `public_html`.
+   * Mou la carpeta `back` a una ubicació segura, com `private`.
+   * Mou la carpeta `public` (dins de `back/takeAway-back`) a `public_html`.
+
+3. **Configuració del Fitxer `.env`**:
+   * Copia el fitxer `.env.example` i renombra'l com `.env`.
+   * Configura les credencials de la base de dades i altres variables segons el teu entorn de producció.
+    ```env
+     DB_HOST=el_teu_host
+     DB_PORT=el_teu_port
+     DB_DATABASE=el_nom_de_la_teva_base_de_dades
+     DB_USERNAME=el_teu_usuari
+     DB_PASSWORD=la_teva_contrassenya
+     ```
+
+4. **Modificar el Fitxer `index.php`**:
+   * A l'arxiu `index.php` dins de `public_html`, modifica les rutes per apuntar correctament a la ubicació del back-end.
+   * Copia la ruta completa fins a `./../../private/back/takeAway-back/` i substitueix totes les referències que comencin amb `..` amb la nova ruta copiada.
+
+5. **Actualitzar `communicationManager` per a la Comunicació d'API**:
+   * Dins de `public_html/web/js`, obre `communicationManager` i assegura't que la URL apunti correctament a `/public/api/el_que_sigui`.
+
+6. **Configuració de la Base de Dades**:
+   * Crea una nova base de dades.
+   * Importa les dades des del fitxer `takeOutFit.sql` dins la base de dades creada.
+
+7. **Actualitzar `utils.js` per les Variables d'Entorn**:
+   * Obre `utils.js` i canvia la variable d'entorn `laravel` perquè apunti a la ruta `/public`.
+
 ## Consideracions Finals
 * **Verifica les Configuracions d'Entorn**: Assegura't que les configuracions de l'arxiu `.env` coincideixin amb l'entorn on es desplega l'aplicació (producció o desenvolupament).
 * **Seguretat**: Mai comparteixis l'arxiu `.env` públicament, ja que conté informació sensible com les credencials de la base de dades.
-* **Optimització**: Si estàs desplegant en un entorn de producció, pots utilitzar `php artisan config:cache` per millorar el rendiment un cop estigui tot configurat correctament, però fes-ho només quan no estiguis fent canvis freqüents a les configuracions.
+* **Optimització**: Si estàs desplegant en un entorn de preproducció o producció, pots utilitzar `php artisan config:cache` per millorar el rendiment un cop estigui tot configurat correctament, però fes-ho només quan no estiguis fent canvis freqüents a les configuracions.

@@ -25,7 +25,7 @@ createApp({
 
 
         function showCartFloat() {
-            if (this.visible === 'store'){
+            if (this.visible === 'store' || this.visible === 'productSelec'){
                 this.cartVisible = true;
             }else {
                 this.cartVisible = false;

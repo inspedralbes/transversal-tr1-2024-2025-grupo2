@@ -58,7 +58,7 @@
                     <p class="footer-text-bottom">&copy; 2024 TakeOutFit. Tots els drets reservats.</p>
                 </div>
             </footer>
-            
+
         </div>
 
         <!------------------ STORE ------------>
@@ -72,7 +72,7 @@
                 <li><button>Categories</button></li>
                 <li><button @click="changeDiv('cart')">Cistella ({{ cartItems.length }})</button></li>
             </ul>
-            
+
         </div>
 
 
@@ -99,17 +99,18 @@
             <div :class="{'cart': true, 'cart-visible': cartVisible}" class="cart">
                 <button @click="cartVisible = false">x</button>
                 <h3>Subtotal</h3>
-                <p></p>
+                <p> € {{ subTotalCart() }}</p>
                 <button @click="visible = 'cart',cartVisible = false ">Anar a la cistella</button>
                 <p v-if="cartItems.length === 0">Cistella buida</p>
                 <div v-for="(itemCart,index) in cartItems" class="container-item-cart">
                     <div v-if="itemCartEmpty(itemCart)" :id="itemCart.id" class="item-cart">
                         <img :src="laravel.URL + '/img/' + itemCart.image" alt="image del product" width="50px">
-                        <p> {{ itemCart.title}} x <input v-if="itemCart.quantity > 0" @click="discountProduct(itemCart)"
-                                type="button" value="-"> {{itemCart.quantity}}
-                            <input @click="incrementProduct(itemCart)" type="button" value="+"><button
-                                @click="deleteItemCart(itemCart)">Esborrar</button>
-                        </p>
+                        <p> {{ itemCart.title}}</p>
+                        <input v-if="itemCart.quantity > 0" @click="discountProduct(itemCart)" type="button" value="-">
+                        {{itemCart.quantity}}
+                        <input @click="incrementProduct(itemCart)" type="button" value="+">
+                        <button @click="deleteItemCart(itemCart)">Esborrar</button>
+
                     </div>
                 </div>
             </div>
@@ -130,7 +131,7 @@
 
                     <select name="size" id="">
                         <option disabled value="">Size</option>
-                        <option  value="">
+                        <option value="">
                             {{ selectedProduct.size.size_id}}
                         </option>
                     </select>
@@ -145,11 +146,25 @@
         <!------------------ CART ------------>
         <div v-if="visible ==='cart' " id="contaires-cart" class="">
             <h1>Checkout</h1>
+            <p> Total: € {{ subTotalCart() }}</p>
             <p v-if="cartItems.length === 0"> No hi ha productes a la cistella </p>
             <div v-for="(prodCart,index) in cartItems">
                 <div :id="prodCart.id">
                     <img :src="laravel.URL + '/img/' +  prodCart.image" id="index" alt="" width="200px">
                     <h3> {{ prodCart.title}}</h3>
+                    <p>Preu: {{ prodCart.price}}</p>
+                    <label for="size">Mida </label>
+                    <select name="size" id="">
+                        <option name="size" value="">
+                            {{ prodCart.size.size_id}}
+                        </option>
+                    </select>
+                    <label for="amount">Quantitat</label>
+                    <input v-if="prodCart.quantity > 0" @click="discountProduct(prodCart)" type="button" value="-">
+                        {{prodCart.quantity}}
+                        <input @click="incrementProduct(prodCart)" type="button" value="+">
+
+                    <box-icon @click="deleteItemCart(prodCart)" name='trash-alt'></box-icon>
                 </div>
 
             </div>

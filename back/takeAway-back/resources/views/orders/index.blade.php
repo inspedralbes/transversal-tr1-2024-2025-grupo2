@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Lista de Comandas</h1>
+<div class="container">
+    <h1 class="my-4 text-center">Lista de Comandas</h1>
 
     @if (session('success'))
         <div class="alert alert-success">
@@ -9,7 +10,7 @@
         </div>
     @endif
 
-    <table class="table">
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>ID</th>
@@ -44,5 +45,8 @@
         </tbody>
     </table>
 
-    <a href="{{ route('orders.create') }}" class="btn btn-primary">Crear Nueva Comanda</a>
+    <div class="text-center">
+        <a href="{{ route('orders.create') }}" class="btn btn-primary">Crear Nueva Comanda</a>
+    </div>
+</div>
 @endsection

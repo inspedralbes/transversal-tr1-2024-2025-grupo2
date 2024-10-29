@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Editar Comanda #{{ $order->id }}</h1>
+<div class="container">
+    <h1 class="my-4 text-center">Editar Comanda #{{ $order->id }}</h1>
 
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -17,26 +18,26 @@
         @csrf
         @method('PUT')
 
-        <h2>Selecciona Productos</h2>
-        <div id="products-container">
+        <h2 class="my-3">Selecciona Productos</h2>
+        <div id="products-container" class="mb-4">
             @foreach ($order->products as $index => $product)
-                <div class="product-item">
-                    <label for="product_{{ $index }}">Producto:</label>
-                    <select name="products[{{ $index }}][id]" required onchange="updatePrice(this)">
+                <div class="product-item mb-3">
+                    <label for="product_{{ $index }}" class="form-label">Producto:</label>
+                    <select name="products[{{ $index }}][id]" class="form-select" required onchange="updatePrice(this)">
                         <option value="">Selecciona un producto</option>
                         @foreach ($products as $p)
                             <option value="{{ $p->id }}" data-price="{{ $p->price }}" {{ $p->id == $product->id ? 'selected' : '' }}>{{ $p->title }}</option>
                         @endforeach
                     </select>
-                    <label for="quantity_{{ $index }}">Cantidad:</label>
-                    <input type="number" name="products[{{ $index }}][quantity]" min="1" required value="{{ $product->pivot->quantity }}" onchange="updatePrice(this)">
+                    <label for="quantity_{{ $index }}" class="form-label">Cantidad:</label>
+                    <input type="number" name="products[{{ $index }}][quantity]" min="1" class="form-control" required value="{{ $product->pivot->quantity }}" onchange="updatePrice(this)">
                     <span class="product-price" id="price_{{ $index }}">Precio: €<span class="price-value">{{ number_format($product->pivot->price * $product->pivot->quantity, 2) }}</span></span>
                 </div>
             @endforeach
         </div>
 
-        <button type="button" id="add-product">Agregar Otro Producto</button>
-        <button type="submit">Actualizar Comanda</button>
+        <button type="button" id="add-product" class="btn btn-secondary mb-4">Agregar Otro Producto</button>
+        <button type="submit" class="btn btn-primary">Actualizar Comanda</button>
     </form>
 
     <script>
@@ -45,16 +46,16 @@
         document.getElementById('add-product').addEventListener('click', function() {
             const container = document.getElementById('products-container');
             const newProductItem = `
-                <div class="product-item">
-                    <label for="product_${productIndex}">Producto:</label>
-                    <select name="products[${productIndex}][id]" required onchange="updatePrice(this)">
+                <div class="product-item mb-3">
+                    <label for="product_${productIndex}" class="form-label">Producto:</label>
+                    <select name="products[${productIndex}][id]" class="form-select" required onchange="updatePrice(this)">
                         <option value="">Selecciona un producto</option>
                         @foreach ($products as $product)
                             <option value="{{ $product->id }}" data-price="{{ $product->price }}">{{ $product->title }}</option>
                         @endforeach
                     </select>
-                    <label for="quantity_${productIndex}">Cantidad:</label>
-                    <input type="number" name="products[${productIndex}][quantity]" min="1" required onchange="updatePrice(this)">
+                    <label for="quantity_${productIndex}" class="form-label">Cantidad:</label>
+                    <input type="number" name="products[${productIndex}][quantity]" min="1" class="form-control" required onchange="updatePrice(this)">
                     <span class="product-price" id="price_${productIndex}">Precio: €<span class="price-value">0.00</span></span>
                 </div>
             `;
@@ -82,4 +83,5 @@
         // Actualizar precios al cargar la página
         document.querySelectorAll('.product-item').forEach(item => updatePrice(item.querySelector('select')));
     </script>
+</div>
 @endsection

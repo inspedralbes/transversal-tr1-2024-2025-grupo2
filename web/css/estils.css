@@ -113,6 +113,15 @@ body {
     transition: color 0.3s; /* Transición suave para el efecto de color */
 }
 
+.selectCategory{
+    background: none; /* Sin fondo */
+    color: #4E5A6A; /* Color del texto de los botones */
+    border: none; /* Sin borde */
+    padding: 10px 15px; /* Espaciado interno de los botones */
+    cursor: pointer; /* Cambiar cursor al pasar por encima */
+    transition: color 0.3s; /* Transición suave para el efecto de color */
+}
+
 /* ------------ ESTILOS DE TODA LA TIENDA --------------- */
 
 #container-products {

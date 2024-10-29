@@ -39,15 +39,7 @@ body {
     z-index: 10; 
 }
 
-.overlay {
-    position: fixed; /* Fijo para cubrir toda la pantalla */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Color negro con transparencia */
-    z-index: 999; /* Asegúrate de que esté encima de otros elementos */
-}
+
 
 
 /* --------  Estilos CARRUSEL -----------*/
@@ -207,9 +199,21 @@ body {
     overflow-y: auto;
 }
 
+.overlay{
+    position: fixed; /* Fijo para cubrir toda la pantalla */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Color negro con transparencia */
+    z-index: 999; /* Asegúrate de que esté encima de otros elementos */
+}
+
 .cart-visible {
     transform: translateX(0); /* Trae la cesta de nuevo */
 }
+
+
 
 .item-cart {
     border: 1px solid black; /* Borde de la "tabla" */

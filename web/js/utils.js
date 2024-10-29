@@ -25,7 +25,11 @@ createApp({
 
 
         function showCartFloat() {
-            this.cartVisible = true;
+            if (this.visible === 'store'){
+                this.cartVisible = true;
+            }else {
+                this.cartVisible = false;
+            }
         }
 
 
@@ -105,8 +109,6 @@ createApp({
                 exsistProductCar.quantity++
             } else {
                 cartItems.push({
-                    "id" : product.id,
-
                     ...product,
                     quantity: 1
                 })

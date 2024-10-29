@@ -16,7 +16,7 @@
 
 <body>
     <div id="app">
-        <div class="overlay" v-if="cartVisible"></div>
+        <div :class="{'overlay': cartVisible}"></div>
 
         <div class="page-cover" v-if="visible == 'page-cover'">
             <header class="landing-page">

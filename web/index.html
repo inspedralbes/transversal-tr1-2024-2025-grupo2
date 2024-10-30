@@ -115,7 +115,9 @@
                                 <input v-if="itemCart.quantity > 0" @click="discountProduct(itemCart)" type="button"
                                     value="-"> {{itemCart.quantity}}
                                 <input @click="incrementProduct(itemCart)" type="button" value="+">
-                                <button @click="deleteItemCart(itemCart)">Esborrar</button>
+                                <div class="cart-icon">
+                                    <box-icon @click="deleteItemCart(itemCart)" name='trash-alt'></box-icon>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -137,9 +139,9 @@
                     <p class="price">Preu: {{selectedProduct.price}}€</p>
 
                     <select name="size" id="">
-                        <option disabled value="">Size</option>
+                        <option disabled selected value="">Size</option>
                         <option value="">
-                        <option value="">
+                            <!-- <option value=""> -->
                             {{ selectedProduct.size.size_id}}
                         </option>
                     </select>
@@ -182,14 +184,14 @@
                 </div>
             </div>
             <div v-if="cartItems.length > 0" class="btn-options-buying">
-                <button @click="cleanCart()">Delete All</button>
-                <button @click="changeDiv('buyAllProducts')">Buy</button>
+                <button @click="cleanCart()">Esborrar-ho tot</button>
+                <button @click="changeDiv('buyAllProducts')">Comprar</button>
             </div>
 
         </div>
 
         <div v-if="visible === 'buyAllProducts'">
-            
+
             <div v-for="(productsBuying, index) in cartItems" class="container-buy-all-product">
                 <div class="container-product-buy">
                     <div>
@@ -205,8 +207,8 @@
             </div>
 
             <div class="buttons-buy-all-products">
-                <button @click="changeDiv('purchase-completed'),cleanCart()">Continue</button>
-                <button @click="changeDiv('store'), cancelPurchase()">Cancel</button>
+                <button @click="changeDiv('purchase-completed'),cleanCart()">Continuar</button>
+                <button @click="changeDiv('store'), cancelPurchase()">Cancel·lar</button>
             </div>
 
 
@@ -224,8 +226,10 @@
                 <h3> {{ selectedProduct.title }}</h3>
                 <p> {{ selectedProduct.size.size_id}}</p>
                 <p> {{ selectedProduct.price}} EUR</p>
-                <button @click="changeDiv('purchase-completed'),deleteItemCart(selectedProduct)">Continue</button>
-                <button @click="changeDiv('store'), deleteItemCart(selectedProduct)">Cancel</button>
+                <div class="info-buying-prod-btn">
+                    <button @click="changeDiv('purchase-completed'),deleteItemCart(selectedProduct)">Continue</button>
+                    <button @click="changeDiv('store'), deleteItemCart(selectedProduct)">Cancel</button>
+                </div>
             </div>
         </div>
 

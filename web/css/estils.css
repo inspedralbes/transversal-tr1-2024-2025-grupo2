@@ -356,10 +356,19 @@ body {
     margin-left: 20px;      /* Espacio entre la información y el icono */
 }
 
+.cart-info select{
+    margin: 0 5px 0 5px;
+}
+
 .cart-icon {
     display: flex;
     align-items: center;
     margin-left: 10px; /* Espacio a la izquierda del icono */
+    cursor: pointer;
+}
+
+.btn-options-buying button{
+    margin: 5px;
 }
 
 
@@ -378,6 +387,13 @@ body {
     margin: 20px 0 20px 0;
 }
 
+.buttons-buy-all-products button{
+    margin: 5px;
+}
+
+.info-buying-prod-btn button{
+    margin-right: 5px;
+}
 
 /*ESTILO FOOTEERR*/
 

@@ -1,17 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Product Details</h1>
+<div class="container">
+    <h1 class="my-4 text-center">Detalles del Producto</h1>
 
-    <div>
-        <h2>{{ $product->title }}</h2>
-        <p><strong>Description:</strong> {{ $product->description }}</p>
-        <p><strong>Price:</strong> ${{ number_format($product->price, 2) }}</p>
-        <p><strong>Category ID:</strong> {{ $product->category_id }}</p>
-        <p><strong>Size ID:</strong> {{ $product->size_id }}</p>
-        <img src="{{ asset($product->image) }}" alt="{{ $product->title }}" width="200">
+    <div class="card mb-4">
+        <div class="card-body">
+            <h2 class="card-title">{{ $product->title }}</h2>
+            <p class="card-text"><strong>Descripción:</strong> {{ $product->description }}</p>
+            <p class="card-text"><strong>Precio:</strong> ${{ number_format($product->price, 2) }}</p>
+            <p class="card-text"><strong>ID de Categoría:</strong> {{ $product->category_id }}</p>
+            <p class="card-text"><strong>ID de Tamaño:</strong> {{ $product->size_id }}</p>
+            <img src="{{ asset($product->image) }}" alt="{{ $product->title }}" class="img-fluid" width="200">
+        </div>
     </div>
 
-    <a href="{{ route('products.index') }}">Tornar a la llista de productes</a>
+    <a href="{{ route('products.index') }}" class="btn btn-secondary">Volver a la lista de productos</a>
+</div>
 @endsection
-

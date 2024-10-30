@@ -25,7 +25,8 @@ class Product extends Model
         return $this->belongsTo(Size::class); // <- establece una relacion de muchos a uno
     }
 
-    public function category(){
-        return $this->belongsTo(Category::class); // <- establece una relacion de muchos a uno
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id', 'id'); // <- establece una relacion de muchos a uno
     }
 }

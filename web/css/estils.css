@@ -314,17 +314,25 @@ body {
 
 .container-buy-one-product{
     display: flex;
-    flex-direction: row;
+    flex-flow: row;
     justify-content: center;
     align-items: center;
     margin: 10px;
 }
-.info-buying-prod {
-    margin-left: 50px;    
+
+.container-product-buy{
+    width: 600px;
+    display: flex;
+    flex-flow: row wrap;
+    margin:20px;
+    padding: 10px;
+    border: 1px solid gray;
 }
 
-.img-prod-buying {
-
+.info-buying-prod {
+    display: flex;
+    flex-flow: column wrap;
+    margin-left: 20px;
 }
 
 /* ------------ ESTILOS DE LA CISTELLA (CARDS) ------------*/
@@ -352,6 +360,22 @@ body {
     display: flex;
     align-items: center;
     margin-left: 10px; /* Espacio a la izquierda del icono */
+}
+
+
+/*ESTILOS DE PANTALLA DE COMPRA ALL PRODUCTS */
+
+.container-buy-all-product{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons-buy-all-products {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0 20px 0;
 }
 
 

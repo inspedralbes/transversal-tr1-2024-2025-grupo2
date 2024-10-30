@@ -2,7 +2,7 @@
 
 * **Back-end (servidor)**: Utilitzem Laravel com a API per gestionar la comunicació amb una base de dades. Aquesta API és responsable de servir tota la informació que necessita el front-end, així com de gestionar operacions com la creació, lectura, actualització i eliminació de dades (CRUD).
 * **Front-end (client)**: Utilitzem Vue 3 per gestionar la interfície d'usuari. Vue s'encarrega de la part interactiva i visual de l'aplicació, proporcionant una experiència d'usuari dinàmica i reactiva.
-* **Part d'Administració**: Laravel també s'utilitza per a la part d'administració, on es permet als usuaris gestionar el CRUD (afegir, editar, eliminar i visualitzar productes) a través d'una interfície.
+* **Part d'Administració**: Laravel també s'utilitza per a la part d'administració, on es permet als usuaris gestionar el CRUD dels productes (afegir, editar, eliminar i visualitzar productes) a través d'una interfície.
 
 ## Tecnologies
 * **Vue 3**: Framework JavaScript per crear interfícies d'usuari reactives i components reutilitzables.
@@ -38,8 +38,9 @@ Segueix aquests passos per configurar i executar l'aplicació en un entorn de de
 3. **Iniciar el Servei del Servidor de Base de Dades**:
    * Assegura't que el servei de la base de dades (per exemple, MySQL o MariaDB) estigui en funcionament i crea la base de dades especificada al fitxer `.env`.
 
-4. **Migracions i Inserció de Dades**:
-   * Per configurar les taules a la base de dades, executa:
+4. **Migracions, Generació de Clau i Inserció de Dades**:
+   * Per configurar les taules a la base de dades, genera la clau de l'aplicació i insereix dades de mostra:
+     * `php artisan key:generate`: Genera una clau única per a l'aplicació en l'arxiu `.env`, necessària per a la seguretat.
      * `php artisan migrate:rollback`: Esborrarà totes les taules existents si n'hi ha, preparant la base de dades per començar de nou.
      * `php artisan migrate:reset`: Alternativa a `rollback` que elimina les migracions aplicades i deixa la base de dades com si fos nova.
      * `php artisan migrate`: Crea les taules a la base de dades segons les migracions definides.
@@ -74,17 +75,10 @@ Segueix aquests passos per configurar i executar l'aplicació en un entorn de pr
 3. **Configuració del Fitxer `.env`**:
    * Copia el fitxer `.env.example` i renombra'l com `.env`.
    * Configura les credencials de la base de dades i altres variables segons el teu entorn de producció.
-    ```env
-     DB_HOST=el_teu_host
-     DB_PORT=el_teu_port
-     DB_DATABASE=el_nom_de_la_teva_base_de_dades
-     DB_USERNAME=el_teu_usuari
-     DB_PASSWORD=la_teva_contrassenya
-     ```
 
 4. **Modificar el Fitxer `index.php`**:
    * A l'arxiu `index.php` dins de `public_html`, modifica les rutes per apuntar correctament a la ubicació del back-end.
-   * Copia la ruta completa fins a `./../../private/back/takeAway-back/` i substitueix totes les referències que comencin amb `..` amb la nova ruta copiada.
+   * Copia la ruta completa fins a `private/back/takeAway-back/` i substitueix totes les referències que comencin amb `..` amb la nova ruta copiada.
 
 5. **Actualitzar `communicationManager` per a la Comunicació d'API**:
    * Dins de `public_html/web/js`, obre `communicationManager` i assegura't que la URL apunti correctament a `/public/api/el_que_sigui`.
@@ -99,4 +93,4 @@ Segueix aquests passos per configurar i executar l'aplicació en un entorn de pr
 ## Consideracions Finals
 * **Verifica les Configuracions d'Entorn**: Assegura't que les configuracions de l'arxiu `.env` coincideixin amb l'entorn on es desplega l'aplicació (producció o desenvolupament).
 * **Seguretat**: Mai comparteixis l'arxiu `.env` públicament, ja que conté informació sensible com les credencials de la base de dades.
-* **Optimització**: Si estàs desplegant en un entorn de preproducció o producció, pots utilitzar `php artisan config:cache` per millorar el rendiment un cop estigui tot configurat correctament, però fes-ho només quan no estiguis fent canvis freqüents a les configuracions.
+* **Optimització**: Si estàs desplegant en un entorn de producció, pots utilitzar `php artisan config:cache` per millorar el rendiment un cop estigui tot configurat correctament, però fes-ho només quan no estiguis fent canvis freqüents a les configuracions.

@@ -54,11 +54,7 @@
                 </section>
             </main>
 
-            <footer>
-                <div class="footer-landing-page">
-                    <p class="footer-text-bottom">&copy; 2024 TakeOutFit. Tots els drets reservats.</p>
-                </div>
-            </footer>
+
 
 
         </div>
@@ -187,20 +183,40 @@
             </div>
             <div v-if="cartItems.length > 0" class="btn-options-buying">
                 <button @click="cleanCart()">Delete All</button>
-                <button @click="changeDiv('buyingAll')">Buy</button>
+                <button @click="changeDiv('buyAllProducts')">Buy</button>
             </div>
 
         </div>
 
-        <div v-if="visible === 'buyAllProducts" class="container-buy-all-products">
+        <div v-if="visible === 'buyAllProducts'">
             
+            <div v-for="(productsBuying, index) in cartItems" class="container-buy-all-product">
+                <div class="container-product-buy">
+                    <div>
+                        <img class="img-prod-buying" :src="laravel.URL + '/img/' + productsBuying.image" alt=""
+                            width="200px">
+                    </div>
+                    <div class="info-buying-prod">
+                        <h3> {{ productsBuying.title }}</h3>
+                        <p> {{ productsBuying.size.size_id}}</p>
+                        <p> {{ productsBuying.price}} EUR</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="buttons-buy-all-products">
+                <button @click="changeDiv('purchase-completed'),cleanCart()">Continue</button>
+                <button @click="changeDiv('store'), cancelPurchase()">Cancel</button>
+            </div>
+
+
+
         </div>
 
         <!------------------ BUY ONE PRODUCT ------------>
 
         <div v-if="visible === 'onlyOneBuy'" class="container-buy-one-product">
 
-            <h3></h3>
             <div>
                 <img class="img-prod-buying" :src="laravel.URL + '/img/' + selectedProduct.image" alt="" width="200px">
             </div>
@@ -213,7 +229,7 @@
             </div>
         </div>
 
-        <div v-if="visible == 'purchase-completed'">
+        <div v-if="visible === 'purchase-completed'">
             <h1>Compra realitzada</h1>
         </div>
 

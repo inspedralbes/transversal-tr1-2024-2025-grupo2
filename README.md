@@ -20,7 +20,7 @@
 
 ## Nom del Projecte
 * ### TakeOutFit
-* ![logo](https://github.com/user-attachments/assets/02dd6c0b-60b2-4d71-a170-1e15237cc424)
+* ### Logo ![logo](https://github.com/user-attachments/assets/02dd6c0b-60b2-4d71-a170-1e15237cc424)
 
 
 ## Enllaços de Prototipatge

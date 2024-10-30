@@ -60,13 +60,13 @@
             <h1 @click="changeDiv('page-cover')">LOGO</h1>
             <ul>
                 <li><button @click="changeDiv('store')">Home</button></li>
-                <li> <button for="category" @click="toggleFilterCategory">Categories</button></li>
+                <li><button for="category" @click="toggleFilterCategory">Categories</button></li>
                 <!-- Filtro para las categorias de ropa -->
                 <li v-if="visibleFilter">
                     <select v-model="selectedCategory" class="selectCategory">
                         <option :value="null">Totes les categories</option>
                         <option v-for="category in templateData.categories" :key="category.id" :value="category.id">
-                            {{ category.category_id }} <!-- Aquí se muestra el nombre de la categoría -->
+                            {{ category.category_id }} <!-- Aquí se muestra el nombre de las categorias -->
                         </option>
                     </select>
                 </li>
@@ -76,15 +76,14 @@
                     <select v-model="selectedSize" class="selectCategory">
                         <option :value="null">Totes les talles</option>
                         <option v-for="size in templateData.sizes" :key="size.id" :value="size.id">
-                            {{ size.size_id }} <!-- Aquí se muestra el nombre de la categoría -->
+                            {{ size.size_id }} <!-- Aquí se muestra el nombre de las tallas -->
                         </option>
                     </select>
                 </li>
-                <!-- Reiniciar todos los filtros -->
-                
-                <button v-if="visibleFilter" @click="resetFilters()" :value="null">Reiniciar filtres</button>
 
-                <li><button @click="changeDiv('cart')">Cistella ({{ cartItems.length }})</button></li>
+                <!-- Reiniciar todos los filtros -->
+                <button v-if="visibleFilter" @click="resetFilters()" :value="null">Reiniciar filtres</button>
+                <li><button @click="changeDiv('cart'), resetFilters(), toggleFilterCategory()">Cistella ({{ cartItems.length }})</button></li>
             </ul>
 
         </div>

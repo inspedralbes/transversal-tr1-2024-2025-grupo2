@@ -18,6 +18,7 @@ createApp({
         let cartItems = reactive([]);
         let objectsInCart = cartItems.length;
         let visible = ref("page-cover");
+        let disableCategory = ref(false) // esto es para deshabilitar el boton de categoria
         const visibleButtons = ref("");
         let cartVisible = ref(false);
 

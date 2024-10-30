@@ -81,8 +81,8 @@
                     </select>
                 </li>
                 <!-- Reiniciar todos los filtros -->
-                <!-- decirle al colega como solucionar este problema -->
-                <!-- <button v-if="visibleFilter" v-model="selectedSize, selectedCategory" :value="null">Reiniciar filtres</button> -->
+                
+                <button v-if="visibleFilter" @click="resetFilters()" :value="null">Reiniciar filtres</button>
 
                 <li><button @click="changeDiv('cart')">Cistella ({{ cartItems.length }})</button></li>
             </ul>

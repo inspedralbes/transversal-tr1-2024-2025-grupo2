@@ -179,6 +179,186 @@
             "price": 42.99,
             "category_id": "Jaquetes",
             "size_id": "M"
+        },
+        {
+            "id": 21,
+            "title": "Samarreta de Ratlles",
+            "description": "Samarreta de cotó amb disseny de ratlles clàssiques.",
+            "image": "samarretaRatlles.jpg",
+            "price": 18.99,
+            "category_id": "Samarretes",
+            "size_id": "M"
+        },
+        {
+            "id": 22,
+            "title": "Dessuadora Femenina",
+            "description": "Dessuadora femenina de tall ajustat amb disseny modern.",
+            "image": "dessuadoraFemenina.jpg",
+            "price": 34.99,
+            "category_id": "Dessuadores",
+            "size_id": "S"
+        },
+        {
+            "id": 23,
+            "title": "Pantalons Cargo",
+            "description": "Pantalons resistents i còmodes, ideals per a la feina.",
+            "image": "pantalonsCargo.jpg",
+            "price": 45.99,
+            "category_id": "Pantalons",
+            "size_id": "L"
+        },
+        {
+            "id": 24,
+            "title": "Vestit Floral",
+            "description": "Vestit de disseny floral, ideal per a esdeveniments informals.",
+            "image": "vestitFloral.jpg",
+            "price": 39.99,
+            "category_id": "Vestits",
+            "size_id": "M"
+        },
+        {
+            "id": 25,
+            "title": "Jaqueta d'Esquí",
+            "description": "Jaqueta d'esquí impermeable, perfecta per a l'hivern.",
+            "image": "jaquetaEsqui.jpg",
+            "price": 129.99,
+            "category_id": "Jaquetes",
+            "size_id": "XL"
+        },
+        {
+            "id": 26,
+            "title": "Samarreta de Cotó Orgànic",
+            "description": "Samarreta de cotó orgànic, respectuosa amb el medi ambient.",
+            "image": "samarretaCotoOrganica.jpg",
+            "price": 22.99,
+            "category_id": "Samarretes",
+            "size_id": "S"
+        },
+        {
+            "id": 27,
+            "title": "Faldilla de Denim",
+            "description": "Faldilla de denim clàssica, ideal per a combinar amb qualsevol look.",
+            "image": "faldillaDenim.jpg",
+            "price": 24.99,
+            "category_id": "Faldilles",
+            "size_id": "L"
+        },
+        {
+            "id": 28,
+            "title": "Polo de Cotó",
+            "description": "Polo de cotó suau, perfecte per a l'estiu.",
+            "image": "poloCoto.jpg",
+            "price": 20.99,
+            "category_id": "Polos",
+            "size_id": "M"
+        },
+        {
+            "id": 29,
+            "title": "Pantalons de Xandall",
+            "description": "Pantalons de xandall còmodes per a fer esport.",
+            "image": "pantalonsXandall.jpg",
+            "price": 29.99,
+            "category_id": "Pantalons",
+            "size_id": "L"
+        },
+        {
+            "id": 30,
+            "title": "Camisa de Cotó",
+            "description": "Camisa de cotó de màniga llarga, ideal per a l'hivern.",
+            "image": "camisaCoto.jpg",
+            "price": 29.99,
+            "category_id": "Camises",
+            "size_id": "XL"
+        },
+        {
+            "id": 31,
+            "title": "Brusa de Cotó",
+            "description": "Brusa de cotó lleugera, ideal per a l'estiu.",
+            "image": "brusaCoto.jpg",
+            "price": 25.99,
+            "category_id": "Bruses",
+            "size_id": "M"
+        },
+        {
+            "id": 32,
+            "title": "Samarreta Tècnica",
+            "description": "Samarreta tècnica per a esports, molt transpirable.",
+            "image": "samarretaTecnica.jpg",
+            "price": 30.99,
+            "category_id": "Samarretes",
+            "size_id": "L"
+        },
+        {
+            "id": 33,
+            "title": "Jaqueta de Pluja",
+            "description": "Jaqueta lleugera resistent a la pluja, perfecta per a dies humits.",
+            "image": "jaquetaPluja.jpg",
+            "price": 49.99,
+            "category_id": "Jaquetes",
+            "size_id": "S"
+        },
+        {
+            "id": 34,
+            "title": "Faldilla de Cuir",
+            "description": "Faldilla de cuir, ideal per a un look atrevit.",
+            "image": "faldillaCuir.jpg",
+            "price": 69.99,
+            "category_id": "Faldilles",
+            "size_id": "L"
+        },
+        {
+            "id": 35,
+            "title": "Pantalons de Jogging",
+            "description": "Pantalons de jogging còmodes, ideals per a casa.",
+            "image": "pantalonsJogging.jpg",
+            "price": 34.99,
+            "category_id": "Pantalons",
+            "size_id": "M"
+        },
+        {
+            "id": 36,
+            "title": "Dessuadora de Coll Alt",
+            "description": "Dessuadora de coll alt, perfecta per a l'hivern.",
+            "image": "dessuadoraCollAlt.jpg",
+            "price": 44.99,
+            "category_id": "Dessuadores",
+            "size_id": "M"
+        },
+        {
+            "id": 37,
+            "title": "Pantalons de Culotte",
+            "description": "Pantalons de culotte amb disseny modern, ideals per a la primavera.",
+            "image": "pantalonsCulotte.jpg",
+            "price": 39.99,
+            "category_id": "Pantalons",
+            "size_id": "S"
+        },
+        {
+            "id": 38,
+            "title": "Camisa de Quadres",
+            "description": "Camisa de quadres clàssica, perfecta per a un look casual.",
+            "image": "camisaQuadres.jpg",
+            "price": 27.99,
+            "category_id": "Camises",
+            "size_id": "L"
+        },
+        {
+            "id": 39,
+            "title": "Samarreta d'Esports",
+            "description": "Samarreta d'esports lleugera i transpirable.",
+            "image": "samarretaEsports.jpg",
+            "price": 28.99,
+            "category_id": "Samarretes",
+            "size_id": "XL"
+        },
+        {
+            "id": 40,
+            "title": "Brusa de Llanera",
+            "description": "Brusa de llana càlida, perfecta per a climes freds.",
+            "image": "brusaLlanera.jpg",
+            "price": 54.99,
+            "category_id": "Bruses",
+            "size_id": "M"
         }
     ]
 }

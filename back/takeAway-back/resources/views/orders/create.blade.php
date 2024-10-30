@@ -1,10 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="mt-4 mb-4">Crear Nueva Comanda</h1>
+<div class="container">
+    <h1 class="mt-4 mb-4 text-center">Crear Nueva Comanda</h1>
 
     @if ($errors->any())
-        <div>
+        <div class="alert alert-danger">
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -16,24 +17,24 @@
     <form action="{{ route('orders.store') }}" method="POST">
         @csrf
 
-        <h2>Selecciona Productos</h2>
-        <div id="products-container">
-            <div class="product-item">
-                <label for="product_0">Producto:</label>
-                <select name="products[0][id]" required onchange="updatePrice(this)">
+        <h2 class="my-3">Selecciona Productos</h2>
+        <div id="products-container" class="mb-4">
+            <div class="product-item mb-3">
+                <label for="product_0" class="form-label">Producto:</label>
+                <select name="products[0][id]" class="form-select" required onchange="updatePrice(this)">
                     <option value="">Selecciona un producto</option>
                     @foreach ($products as $product)
                         <option value="{{ $product->id }}" data-price="{{ $product->price }}">{{ $product->title }}</option>
                     @endforeach
                 </select>
-                <label for="quantity_0">Cantidad:</label>
-                <input type="number" name="products[0][quantity]" min="1" required onchange="updatePrice(this)">
+                <label for="quantity_0" class="form-label">Cantidad:</label>
+                <input type="number" name="products[0][quantity]" class="form-control" min="1" required onchange="updatePrice(this)">
                 <span class="product-price" id="price_0">Precio: €<span class="price-value">0.00</span></span>
             </div>
         </div>
 
-        <button type="button" id="add-product">Agregar Otro Producto</button>
-        <button type="submit">Crear Comanda</button>
+        <button type="button" id="add-product" class="btn btn-secondary mb-4">Agregar Otro Producto</button>
+        <button type="submit" class="btn btn-primary">Crear Comanda</button>
     </form>
 
     <script>
@@ -42,17 +43,17 @@
         document.getElementById('add-product').addEventListener('click', function() {
             const container = document.getElementById('products-container');
             const newProductItem = `
-                <div class="product-item">
-                    <label for="product_${productIndex}">Producto:</label>
-                    <select name="products[${productIndex}][id]" required onchange="updatePrice(this)">
+                <div class="product-item mb-3">
+                    <label for="product_${productIndex}" class="form-label">Producto:</label>
+                    <select name="products[${productIndex}][id]" class="form-select" required onchange="updatePrice(this)">
                         <option value="">Selecciona un producto</option>
                         @foreach ($products as $product)
                             <option value="{{ $product->id }}" data-price="{{ $product->price }}">{{ $product->title }}</option>
                         @endforeach
                     </select>
-                    <label for="quantity_${productIndex}">Cantidad:</label>
-                    <input type="number" name="products[${productIndex}][quantity]" min="1" required onchange="updatePrice(this)">
-                    <span class="product-price" id="price_${productIndex}">Precio: $<span class="price-value">0.00</span></span>
+                    <label for="quantity_${productIndex}" class="form-label">Cantidad:</label>
+                    <input type="number" name="products[${productIndex}][quantity]" class="form-control" min="1" required onchange="updatePrice(this)">
+                    <span class="product-price" id="price_${productIndex}">Precio: €<span class="price-value">0.00</span></span>
                 </div>
             `;
             container.insertAdjacentHTML('beforeend', newProductItem);
@@ -76,4 +77,5 @@
             }
         }
     </script>
+</div>
 @endsection

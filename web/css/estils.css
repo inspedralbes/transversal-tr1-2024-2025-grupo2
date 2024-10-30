@@ -104,7 +104,7 @@ body {
     display: inline; /* Alinear los elementos en línea */
 }
 
-#navBar button{
+#navBar button {
     background: none; /* Sin fondo */
     color: #4E5A6A; /* Color del texto de los botones */
     border: none; /* Sin borde */
@@ -113,15 +113,14 @@ body {
     transition: color 0.3s; /* Transición suave para el efecto de color */
 }
 
-.selectCategory {
-    background: none;
-    color: #4E5A6A;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    transition: color 0.3s;
+.selectCategory{
+    background: none; /* Sin fondo */
+    color: #4E5A6A; /* Color del texto de los botones */
+    border: none; /* Sin borde */
+    padding: 10px 15px; /* Espaciado interno de los botones */
+    cursor: pointer; /* Cambiar cursor al pasar por encima */
+    transition: color 0.3s; /* Transición suave para el efecto de color */
 }
-
 
 /* ------------ ESTILOS DE TODA LA TIENDA --------------- */
 
@@ -297,4 +296,3 @@ body {
 footer {
     text-align: center;
 }
-

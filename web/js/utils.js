@@ -14,19 +14,22 @@ createApp({
         let cartVisible = ref(false);
 
 
-        /* function subTotalCart(){
-             let total = ref('0');
- 
-             for (let i  = 0; i < cartItems.length; i++){
-                 total =+ cartItems[i].price * cartItems[i].quantity;
-             }
- 
-             return total;
-         }*/
+        function subTotalCart() {
+            let total = 0;
+            for (let i = 0; i < this.cartItems.length; i++) {
+                total += this.cartItems[i].price * this.cartItems[i].quantity;
+            }
+            
+            return total.toFixed(2);
+        }
 
 
         function showCartFloat() {
-            this.cartVisible = true;
+            if (this.visible === 'store' || this.visible === 'productSelec'){
+                this.cartVisible = true;
+            }else {
+                this.cartVisible = false;
+            }
         }
 
 
@@ -94,6 +97,8 @@ createApp({
             cartItems.splice(0, cartItems.length)
         }
 
+        
+
         function addToCart(product) {
 
             console.log('Carro actual: ', cartItems);
@@ -143,7 +148,7 @@ createApp({
         });
 
         return {
-            templateData, changeDiv, visible, selectedProduct, showSelectedProduct, cartItems, addToCart, objectsInCart, cleanCart, laravel, deleteItemCart, cancelPurchase, visibleButtons, discountProduct, incrementProduct, itemCartEmpty, cartVisible, showCartFloat
+            templateData, changeDiv, visible, selectedProduct, showSelectedProduct, cartItems, addToCart, objectsInCart, cleanCart, laravel, deleteItemCart, cancelPurchase, visibleButtons, discountProduct, incrementProduct, itemCartEmpty, cartVisible, showCartFloat,subTotalCart
         };
     }
 }).mount('#app');

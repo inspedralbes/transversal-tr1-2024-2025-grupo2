@@ -1,8 +1,9 @@
 
 /*NUEVO CODIGO CSS*/
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
 
 body {
-    font-family:sans-serif;
+    font-family: "Rajdhani", sans-serif;
     background-color: #fff;
     position: relative;
     box-sizing: border-box;
@@ -37,6 +38,7 @@ body {
     color: #fff; 
     z-index: 10; 
 }
+
 
 /* --------  Estilos CARRUSEL -----------*/
 .carousel {
@@ -195,8 +197,54 @@ body {
     overflow-y: auto;
 }
 
+.overlay{
+    position: fixed; /* Fijo para cubrir toda la pantalla */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Color negro con transparencia */
+    z-index: 999; /* Asegúrate de que esté encima de otros elementos */
+}
+
 .cart-visible {
     transform: translateX(0); /* Trae la cesta de nuevo */
+}
+
+
+
+.item-cart {
+    border: 1px solid black; /* Borde de la "tabla" */
+    margin: 10px 0; /* Espacio entre productos */
+}
+
+.item-content {
+    display: flex; /* Usar Flexbox */ 
+}
+
+.item-image {
+    width: 30%; /* Asigna 40% del ancho al contenedor de la imagen */
+    margin-right: 10px; /* Espacio entre imagen y info */
+    border-right: 1px solid black;
+}
+
+.item-info {
+    width: 70%; /* Asigna 60% del ancho al contenedor de la información */
+    display: flex;
+    flex-direction: column; /* Alinear verticalmente */
+    padding-top: 20px;
+}
+
+.descrip {
+    margin: 5px 0; /* Espacio entre descripciones */
+}
+
+.item-buttons {
+    margin-top: 10px; /* Espacio entre la descripción y los botones */
+    display: flex; /* Usar flex para los botones */
+    gap: 5px; /* Espacio entre los botones */
+    flex-direction: row; /* Asegura que estén en fila */
+    align-items: center; /* Alinear verticalmente los botones, si es necesario */
 }
 
 /* ---------- ESTILOS PRODUCTO SELECCIONADOOOOOOO -----------*/
@@ -279,7 +327,32 @@ body {
 
 }
 
+/* ------------ ESTILOS DE LA CISTELLA (CARDS) ------------*/
 
+.cart-item {
+    padding: 40px;
+}
+.cart-product {
+    display: flex;            /* Usar flexbox para alinear imagen y texto */
+    align-items: center;     /* Centrar verticalmente */
+    justify-content: space-between; /* Espacio entre los elementos */
+    margin-bottom: 20px;     /* Espacio entre productos */
+    padding: 10px;           /* Espacio interno */
+    border: 1px solid #ddd;  /* Borde de cada producto */
+    border-radius: 4px;      /* Bordes redondeados para los productos */
+    background-color: #fff; 
+}
+
+.cart-info {
+    flex: 1;                 /* Permitir que la información ocupe el espacio disponible */
+    margin-left: 20px;      /* Espacio entre la información y el icono */
+}
+
+.cart-icon {
+    display: flex;
+    align-items: center;
+    margin-left: 10px; /* Espacio a la izquierda del icono */
+}
 
 
 /*ESTILO FOOTEERR*/
@@ -287,4 +360,3 @@ body {
 footer {
     text-align: center;
 }
-

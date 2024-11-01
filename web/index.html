@@ -101,8 +101,8 @@
             <div class="articles">
                 <h1>Catàleg</h1>
 
-                <p v-if="filteredProducts.length == 0">No hi ha stock</p>
-                <div :id="'item' + product.id" class="item" v-for="(product, index) in filteredProducts"
+                <p v-if="getFilterProducts().length == 0">No hi ha stock</p>
+                <div :id="'item' + product.id" class="item" v-for="(product, index) in getFilterProducts()"
                     :key="product.id">
                     <img @click="showSelectedProduct(product), resetFilters(), hiddenFilter()"
                         :src="laravel.URL + '/img/' + product.image" alt="">

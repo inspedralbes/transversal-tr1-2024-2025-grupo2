@@ -4,7 +4,6 @@ import {
     reactive,
     ref,
     onBeforeMount,
-    computed,
 } from "https://unpkg.com/vue@3/dist/vue.esm-browser.js";
 
 createApp({
@@ -34,7 +33,7 @@ createApp({
             visibleFilter.value = !visibleFilter.value;
         }
 
-        function hiddenFilter(){
+        function hiddenFilter() {
             visibleFilter.value = false
         }
 
@@ -126,25 +125,22 @@ createApp({
 
         //filtrar productes segons la categoria
 
-        const filteredProducts = computed(() => {
-
-            const result = templateData.products.filter((product) => { // Múltiples filtros sobre la lista de productos
+        function getFilterProducts() {
+            const result = templateData.products.filter((product) => {
                 // Condición para la categoría (solo si hay una categoría seleccionada)
                 const categoryMatch = !selectedCategory.value || product.category_id === selectedCategory.value;
                 // Condición para la talla (solo si hay una talla seleccionada)
                 const sizeMatch = !selectedSize.value || product.size_id === selectedSize.value;
-                // Devolver el producto solo si cumplen cada condicion por separado
                 return categoryMatch && sizeMatch;
             });
-            console.log("Filtado de productos",result);
+            console.log("Filtado de productos", result);
             return result
-        });
+        }
 
         function resetFilters() {
             selectedCategory.value = null;
             selectedSize.value = null;
         }
-        
 
         function showSelectedProduct(product) {
             console.log("Log del producto seleccionado: ", product);
@@ -174,15 +170,14 @@ createApp({
                 templateData.categories = categoriesResult;
                 templateData.sizes = sizeResult;
 
-                console.log("Categorías:", templateData.categories);
-                console.log("Categorías:", templateData.sizes);
+                console.log("Template data:", templateData);
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
         });
 
         return {
-            templateData, changeDiv, visible, selectedProduct, showSelectedProduct, cartItems, addToCart, objectsInCart, cleanCart, laravel, deleteItemCart, cancelPurchase, visibleButtons, discountProduct, incrementProduct, itemCartEmpty, cartVisible, showCartFloat, subTotalCart, selectedCategory, visibleFilter, toggleFilterCategory, selectedSize, filteredProducts, resetFilters, hiddenFilter
+            templateData, changeDiv, visible, selectedProduct, showSelectedProduct, cartItems, addToCart, objectsInCart, cleanCart, laravel, deleteItemCart, cancelPurchase, visibleButtons, discountProduct, incrementProduct, itemCartEmpty, cartVisible, showCartFloat, subTotalCart, selectedCategory, visibleFilter, toggleFilterCategory, selectedSize, resetFilters, hiddenFilter, getFilterProducts
         };
     }
 }).mount('#app');

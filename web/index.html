@@ -83,7 +83,7 @@
 
                 <!-- Reiniciar todos los filtros -->
                 <button v-if="visibleFilter" @click="resetFilters()" :value="null">Reiniciar filtres</button>
-                <li><button @click="changeDiv('cart'), resetFilters(), toggleFilterCategory()">Cistella ({{ cartItems.length }})</button></li>
+                <li><button @click="changeDiv('cart'), resetFilters(), hiddenFilter()">Cistella ({{ cartItems.length }})</button></li>
             </ul>
 
         </div>
@@ -101,7 +101,7 @@
                 <p v-if="filteredProducts.length == 0">No hi ha stock</p>
                 <div :id="'item' + product.id" class="item" v-for="(product, index) in filteredProducts"
                     :key="product.id">
-                    <img @click="showSelectedProduct(product)" :src="laravel.URL + '/img/' + product.image" alt="">
+                    <img @click="showSelectedProduct(product), resetFilters(), hiddenFilter()" :src="laravel.URL + '/img/' + product.image" alt="">
                     <label :for="'item' + product.id">{{ product.title }}</label>
                     <label :for="'item' + product.id"> {{ product.price}} EUR</label>
                     <button type="button" :id="index" @click="addToCart(product), showCartFloat()">+</button>

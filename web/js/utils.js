@@ -18,7 +18,6 @@ createApp({
         let cartItems = reactive([]);
         let objectsInCart = cartItems.length;
         let visible = ref("page-cover");
-        let disableCategory = ref(false) // esto es para deshabilitar el boton de categoria
         const visibleButtons = ref("");
         let cartVisible = ref(false);
 
@@ -33,6 +32,10 @@ createApp({
 
         function toggleFilterCategory() {
             visibleFilter.value = !visibleFilter.value;
+        }
+
+        function hiddenFilter(){
+            visibleFilter.value = false
         }
 
         function showCartFloat() {
@@ -179,7 +182,7 @@ createApp({
         });
 
         return {
-            templateData, changeDiv, visible, selectedProduct, showSelectedProduct, cartItems, addToCart, objectsInCart, cleanCart, laravel, deleteItemCart, cancelPurchase, visibleButtons, discountProduct, incrementProduct, itemCartEmpty, cartVisible, showCartFloat, subTotalCart, selectedCategory, visibleFilter, toggleFilterCategory, selectedSize, filteredProducts, resetFilters
+            templateData, changeDiv, visible, selectedProduct, showSelectedProduct, cartItems, addToCart, objectsInCart, cleanCart, laravel, deleteItemCart, cancelPurchase, visibleButtons, discountProduct, incrementProduct, itemCartEmpty, cartVisible, showCartFloat, subTotalCart, selectedCategory, visibleFilter, toggleFilterCategory, selectedSize, filteredProducts, resetFilters, hiddenFilter
         };
     }
 }).mount('#app');

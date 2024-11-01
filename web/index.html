@@ -60,7 +60,9 @@
             <h1 @click="changeDiv('page-cover')">LOGO</h1>
             <ul>
                 <li><button @click="changeDiv('store')">Home</button></li>
-                <li><button for="category" @click="toggleFilterCategory">Categories</button></li>
+                <li><button
+                        :disabled="visible == 'cart' || visible == 'productSelec' || visible == 'buyAllProducts' || visible == 'purchase-completed' || visible == 'onlyOneBuy'"
+                        for="category" @click="toggleFilterCategory">Categories</button></li>
                 <!-- Filtro para las categorias de ropa -->
                 <li v-if="visibleFilter">
                     <select v-model="selectedCategory" class="selectCategory">
@@ -83,7 +85,8 @@
 
                 <!-- Reiniciar todos los filtros -->
                 <button v-if="visibleFilter" @click="resetFilters()" :value="null">Reiniciar filtres</button>
-                <li><button @click="changeDiv('cart'), resetFilters(), hiddenFilter()">Cistella ({{ cartItems.length }})</button></li>
+                <li><button @click="changeDiv('cart'), resetFilters(), hiddenFilter()">Cistella ({{ cartItems.length
+                        }})</button></li>
             </ul>
 
         </div>
@@ -101,7 +104,8 @@
                 <p v-if="filteredProducts.length == 0">No hi ha stock</p>
                 <div :id="'item' + product.id" class="item" v-for="(product, index) in filteredProducts"
                     :key="product.id">
-                    <img @click="showSelectedProduct(product), resetFilters(), hiddenFilter()" :src="laravel.URL + '/img/' + product.image" alt="">
+                    <img @click="showSelectedProduct(product), resetFilters(), hiddenFilter()"
+                        :src="laravel.URL + '/img/' + product.image" alt="">
                     <label :for="'item' + product.id">{{ product.title }}</label>
                     <label :for="'item' + product.id"> {{ product.price}} EUR</label>
                     <button type="button" :id="index" @click="addToCart(product), showCartFloat()">+</button>
@@ -117,7 +121,8 @@
             <button @click="cartVisible = false">x</button>
             <h3>Subtotal</h3>
             <p> € {{ subTotalCart() }}</p>
-            <button @click="visible = 'cart',cartVisible = false ">Anar a la cistella</button>
+            <button @click="visible = 'cart',cartVisible = false, resetFilters(), hiddenFilter()">Anar a la
+                cistella</button>
             <p v-if="cartItems.length === 0">Cistella buida</p>
             <div v-for="(itemCart,index) in cartItems" class="container-item-cart">
                 <div v-if="itemCartEmpty(itemCart)" :id="itemCart.id" class="item-cart">
@@ -201,7 +206,7 @@
                 </div>
             </div>
             <div v-if="cartItems.length > 0" class="btn-options-buying">
-                <button @click="cleanCart()">Esborrar-ho tot</button>
+                <button @click="cleanCart()">Esborrar cistella</button>
                 <button @click="changeDiv('buyAllProducts')">Comprar</button>
             </div>
 

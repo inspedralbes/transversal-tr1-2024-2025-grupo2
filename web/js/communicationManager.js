@@ -15,8 +15,7 @@ export async function getCategories() {
     throw new Error("Error en la solicutd de categorías");
   }
   const json = await response.json();
-  console.log(json);
-  
+
   return json;
 }
 
@@ -26,8 +25,6 @@ export async function getSizes(){
     if (!response.ok) {
       throw new Error("Error en la solicutd de categorías");
     }
-    const json = await response.json();
-    console.log(json);
-    
+    const json = await response.json();    
     return json;
 }

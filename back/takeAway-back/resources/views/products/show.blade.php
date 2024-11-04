@@ -11,7 +11,7 @@
             <p class="card-text"><strong>Precio:</strong> ${{ number_format($product->price, 2) }}</p>
             <p class="card-text"><strong>ID de Categoría:</strong> {{ $product->category_id }}</p>
             <p class="card-text"><strong>ID de Tamaño:</strong> {{ $product->size_id }}</p>
-            <img src="{{ asset($product->image) }}" alt="{{ $product->title }}" class="img-fluid" width="200">
+            <img src="{{ asset('/img/' . $product->image) }}" alt="{{ $product->title }}" class="img-fluid" width="200">
         </div>
     </div>
 

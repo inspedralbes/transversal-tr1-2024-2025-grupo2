@@ -11,9 +11,14 @@ class Category extends Model
     
     protected $fillable = ['category_id'];
 
+    public function size()
+    {
+        return $this->belongsTo(Size::class); // <- establece una relacion de muchos a uno
+    }
+
     public function category()
     {
-        return $this->hasMany(Product::class); // <- el metodo hasMany establece una relacion de uno a muchos con el modelo Products
-
+        return $this->belongsTo(Category::class, 'category_id', 'id'); // <- establece una relacion de muchos a uno
     }
+
 }

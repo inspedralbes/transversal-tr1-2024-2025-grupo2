@@ -92,14 +92,15 @@
                 </div>
             </div>
 
-            <main>
+
+            <!-- <main> -->
                 <!-- Podriamos colocar una serie de productos X destacados -->
-                <section class="featured-products">
+                <!-- <section class="featured-products">
                     <h2>Nostres col·leccions</h2>
                     <p>Descobreix la nova àmplia varietat de peces de moda</p>
-                    <!-- Productos irían aquí -->
-                </section>
-            </main>
+                    <!- Productos irían aquí -->
+                <!-- </section> -->
+            <!-- </main> --> 
 
 
         </div>
@@ -108,14 +109,23 @@
 
 
         <!------------------ NAVBAR ------------>
-        <div id="navBar" v-if="visibleButtons === 'buttons-menu'" class="btn-backHome">
-            <h1 @click="changeDiv('page-cover')">LOGO</h1>
-            <ul>
-                <li><button @click="changeDiv('store')">Home</button></li>
-                <li><button>Categories</button></li>
-                <li><button @click="changeDiv('cart')">Cistella ({{ cartItems.length }})</button></li>
-            </ul>
+        <div id="container-navBar" v-if="visibleButtons === 'buttons-menu'" class="btn-backHome">
+            <nav class="navBar">
+                <h1 @click="changeDiv('page-cover')">LOGO</h1>
+    
+                <label for="hamburger_menu">
+                    <box-icon class="hamburger_icon" name='menu'></box-icon>
+                </label>
+            
+                <input class="menu_hamburger" type="checkbox" id="hamburger_menu">
+    
+                <ul class="ul_links">
+                    <li><button @click="changeDiv('store')">Home</button></li>
+                    <li><button>Categories</button></li>
+                    <li><button @click="changeDiv('cart')">Cistella ({{ cartItems.length }})</button></li>
+                </ul>
 
+            </nav>
 
         </div>
 
@@ -131,8 +141,8 @@
 
                 <div :id="'item' + product.id" class="item" v-for="(product, index) in templateData.products">
                     <img @click="showSelectedProduct(product)" :src="laravel.URL + '/img/' + product.image" alt="">
-                    <label :for="'item' + product.id">{{ product.title }}</label>
-                    <label :for="'item' + product.id"> {{ product.price}} EUR</label>
+                    <label class="title-product" :for="'item' + product.id">{{ product.title }}</label>
+                    <label class="price-product" :for="'item' + product.id"> {{ product.price}} EUR</label>
                     <button type="button" :id="index" @click="addToCart(product), showCartFloat()">+</button>
                 </div>
 
@@ -142,11 +152,11 @@
         <!------------- CART FLOAT ----------->
 
         <div :class="{'cart': true, 'cart-visible': cartVisible}" class="cart">
-            <button @click="cartVisible = false">x</button>
+            <input @click="cartVisible = false" class="close-cart-float" type="button" value="X"></input>
             <h3>Subtotal</h3>
             <p> € {{ subTotalCart() }}</p>
-            <button @click="visible = 'cart',cartVisible = false ">Anar a la cistella</button>
-            <p v-if="cartItems.length === 0">Cistella buida</p>
+            <button @click="visible = 'cart',cartVisible = false">Anar a la cistella</button>
+            <p v-if="cartItems.length === 0" class="cart-empty">Cistella buida!</p>
             <div v-for="(itemCart,index) in cartItems" class="container-item-cart">
                 <div v-if="itemCartEmpty(itemCart)" :id="itemCart.id" class="item-cart">
                     <div class="item-content">
@@ -154,7 +164,7 @@
                             class="item-image">
                         <div class="item-info">
                             <p> {{ itemCart.title}} </p>
-                            <p class="descrip"> {{ itemCart.size.size_id }}</p>
+                            <p class="descrip"> Size: {{ itemCart.size.size_id }}</p>
                             <p class="descrip"> {{ itemCart.description }}</p>
                             <div class="item-buttons">
                                 <input v-if="itemCart.quantity > 0" @click="discountProduct(itemCart)" type="button"
@@ -182,7 +192,7 @@
                     <p class="price">Preu: {{selectedProduct.price}}€</p>
 
                     <select name="size" id="">
-                        <option disabled value="">Size</option>
+                        <option disabled selected value="">Size</option>
                         <option value="">
                         <option value="">
                             {{ selectedProduct.size.size_id}}

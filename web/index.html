@@ -18,6 +18,7 @@
     <div id="app">
         <div :class="{'overlay': cartVisible}"></div>
 
+        <!------------------------ PORTADA -------------------------->
         <div class="page-cover" v-if="visible == 'page-cover'">
             <header class="landing-page">
                 <div class="content">
@@ -27,7 +28,53 @@
                 </div>
             </header>
 
-            <!-- Carrusel -->
+            <!------------------------ INFORMACION -------------------------->
+
+            <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasHorario"
+                aria-controls="offcanvasHorario">HORARI</button>
+
+            <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasHorario" aria-labelledby="offcanvasHorarioLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasHorarioLabel">Horari d'Atencion</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <p>De dilluns a divendres obert</p>
+                    <p>de 10:00 a 21:00</p>
+                    <p>Excepte dies festius</p>
+                </div>
+            </div>
+
+            <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasUbicacion"
+                aria-controls="offcanvasUbicacion">UBICACIÓ</button>
+
+            <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasUbicacion" aria-labelledby="offcanvasUbicacionLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasUbicacionLabel">Direcció</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <p>Av. d'Espligues,40,Les Corts</p>
+                    <p>08034 - Barcelona</p>
+                </div>
+            </div>
+
+            <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasContacto"
+                aria-controls="offcanvasContacto">CONTACTE</button>
+
+            <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasContacto" aria-labelledby="offcanvasContactoLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasContactoLabel">Truca</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <p>+34 123 456 789</p>
+                </div>
+            </div>
+
+
+
+            <!-------------------- CARRUSEL ----------------->
             <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
@@ -53,8 +100,6 @@
                     <!-- Productos irían aquí -->
                 </section>
             </main>
-
-
 
 
         </div>
@@ -143,6 +188,16 @@
                             {{ selectedProduct.size.size_id}}
                         </option>
                     </select>
+
+                    <!-- PARA TENER BOTONES DE TODAS LAS TALLAS DEL PRODUCTO
+                    <div class="size-buttons">
+                        <button @click="selectSize('S')">S</button>
+                        <button @click="selectSize('M')">M</button>
+                        <button @click="selectSize('L')">L</button>
+                        <button @click="selectSize('XL')">XL</button>
+                    </div>
+                    -->
+
                 </div>
                 <div class="buttons-options-prodSelected">
                     <button @click="changeDiv('onlyOneBuy'), addToCart(selectedProduct)">Comprar</button>
@@ -169,9 +224,10 @@
                                 {{ prodCart.size.size_id}}
                             </option>
                         </select>
-                        <label for="amount">Quantitat</label>
+
                     </div>
                     <div class="cart-controls">
+                        <label for="amount">Quantitat</label>
                         <input v-if="prodCart.quantity > 0" @click="discountProduct(prodCart)" type="button" value="-">
                         {{prodCart.quantity}}
                         <input @click="incrementProduct(prodCart)" type="button" value="+">
@@ -189,7 +245,6 @@
         </div>
 
         <div v-if="visible === 'buyAllProducts'">
-            
             <div v-for="(productsBuying, index) in cartItems" class="container-buy-all-product">
                 <div class="container-product-buy">
                     <div>
@@ -205,18 +260,88 @@
             </div>
 
             <div class="buttons-buy-all-products">
-                <button @click="changeDiv('purchase-completed'),cleanCart()">Continue</button>
+                <button @click="continuePurchase()">Continue</button>
                 <button @click="changeDiv('store'), cancelPurchase()">Cancel</button>
             </div>
+        </div>
 
+        <!------------------ FORMULARIO INVITADO -------------->
+        <div v-if="visible === 'purchase-form'" class="purchase-form">
+            <h2>CONTINUAR COMO INVITADO</h2>
+            <form @submit.prevent="submitForm">
+                <div class="form-grup">
+                    <label for="name">Nom:</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-grup">
+                    <label for="address">Telefono: +34</label>
+                    <input type="text" id="address" required>
+                </div>
+                <button type="submit">ENVIAR</button>
+                <h2 class="separator">O</h2>
+                <button type="button" @click="showLogin">INICIAR SESIÓN</button>
+                <button type="button" @click="showRegister">REGISTRARSE</button>
+            </form>
+        </div>
 
+        <!------------------ FORMULARIO LOGIN -------------->
+        <div v-if="visible === 'login-form'" class="login-form">
+            <h2>DADES PERSONALS</h2>
+            <form @submit.prevent="login">
+                <div class="form-login">
+                    <label for="login-email">Email:</label>
+                    <input type="email" id="login-email" required>
+                </div>
+                <div class="form-login">
+                    <label for="login-password">Contraseña:</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <button type="submit">INICIAR SESION</button>
+                <button type="button" @click="backToPurchaseForm">VOLVER</button>
+            </form>
+        </div>
 
+        <!------------------ FORMULARIO REGISTER -------------->
+        <div v-if="visible === 'register-form'" class="register-form">
+            <h2>REGISTRARSE</h2>
+            <form @submit.prevent="register">
+                <div class="form-register">
+                    <label for="reg-email">Email:</label>
+                    <input type="email" id="reg-email" required>
+                </div>
+                <div class="form-grup">
+                    <label for="reg-password">Contraseña:</label>
+                    <input type="password" id="reg-password" required>
+                </div>
+                <div class="form-grup">
+                    <label for="reg-name">Nombre:</label>
+                    <input type="text" id="reg-name" required>
+                </div>
+                <div class="form-grup">
+                    <label for="reg-surname">Apellido:</label>
+                    <input type="text" id="reg-surname" required>
+                </div>
+                <div class="form-grup">
+                    <label for="reg-phon">Telefono:+34</label>
+                    <input type="text" id="reg-phone" required>
+                </div>
+                <div class="check-form">
+                    <input type="checkbox" id="conditions" name="conditions" value="Conditions1">
+                    <label for="conditions">Quiero recibir novedades y comunicaciones comerciales personalizadas
+                        de <b>TAKEOUTFIT</b> a traves de email y otros medios. </label>
+                    <input type="checkbox" id="cookies" name="cookies" value="Cookies1">
+                    <label for="cookies">He leido y acepto las <b>Condiciones de uso y compra</b> y entiendo la
+                        informacion acerca del uso de mis datos personales explicada en la <b>Politica de Privacidad y
+                            Cookies</b></label>
+                </div>
+                <button type="submit">CREAR CUENTA</button>
+                <button type="button" @click="backToPurchaseForm">VOLVER</button>
+            </form>
         </div>
 
         <!------------------ BUY ONE PRODUCT ------------>
 
         <div v-if="visible === 'onlyOneBuy'" class="container-buy-one-product">
-
             <div>
                 <img class="img-prod-buying" :src="laravel.URL + '/img/' + selectedProduct.image" alt="" width="200px">
             </div>
@@ -224,12 +349,12 @@
                 <h3> {{ selectedProduct.title }}</h3>
                 <p> {{ selectedProduct.size.size_id}}</p>
                 <p> {{ selectedProduct.price}} EUR</p>
-                <button @click="changeDiv('purchase-completed'),deleteItemCart(selectedProduct)">Continue</button>
+                <button @click="continuePurchase()">Continue</button>
                 <button @click="changeDiv('store'), deleteItemCart(selectedProduct)">Cancel</button>
             </div>
         </div>
 
-        <div v-if="visible === 'purchase-completed'">
+        <div v-if="visible === 'purchase-completed'" class="mitssage-final">
             <h1>Compra realitzada</h1>
         </div>
 

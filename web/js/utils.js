@@ -7,6 +7,7 @@ import {
   computed,
 } from "https://unpkg.com/vue@3/dist/vue.esm-browser.js";
 
+
 createApp({
   setup() {
     let laravel = reactive({ URL: "http://localhost:8000" });
@@ -118,6 +119,50 @@ createApp({
       this.showCartFloat();
     }
 
+
+    //Stripe
+
+    async function handlePayment() {
+      // Crear una sesión de pago en el servidor (necesitarás implementar esto en tu backend)
+
+      const itemsToSend = cartItems.map(item => ({
+        name: item.title,
+        price: Math.round(parseFloat(item.price) * 100), // Asegúrate de convertir a céntimos
+        quantity: item.quantity || 1,
+      }));
+
+      console.log("Cart items being sent:", cartItems);
+
+      const response = await fetch(`${laravel.URL}/api/create-payment`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            items: cartItems.map(item => ({ 
+                name: item.title, // Cambiar `title` a `name`
+                price: parseFloat(item.price),
+                quantity: item.quantity || 1, // Asegurarse de tener una cantidad
+            })),
+        }),
+      });
+    
+      if (!response.ok) {
+        console.error('Error al crear la sesión de pago:', response.statusText);
+        return;
+      }
+    
+      const { id: sessionId } = await response.json(); // Asegúrate de que la respuesta tenga un id
+      const stripe = Stripe('pk_test_51QHYFvFLWcZi7m5YpsCaNI5INLqB7m6dnhpWfuOTYNL4VUJZi4KPu9aMJBnlCt2dJsBTlgm2TrDWam0jbGQQmxjh00QEwVpkLq'); // Cambia la clave por la tuya
+      const { error } = await stripe.redirectToCheckout({ sessionId });
+    
+      if (error) {
+        console.error('Error al redirigir a Checkout:', error);
+      } else {
+        window.location.href = `${laravel.URL}/succes`;
+      }
+    }
+
     //filtrar productes segons la categoria
 
     const filteredProducts = computed(() => {
@@ -188,7 +233,8 @@ createApp({
       visibleFilter,
       toggleFilterCategory,
       selectedSize,
-      filteredProducts
+      filteredProducts,
+      handlePayment
     };
   },
 }).mount("#app");

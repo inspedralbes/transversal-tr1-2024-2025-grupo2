@@ -11,6 +11,7 @@
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
     <title>Botiga</title>
 </head>
 
@@ -176,6 +177,10 @@
             <div v-if="cartItems.length > 0" class="btn-options-buying">
                 <button @click="cleanCart()">Delete All</button>
                 <button @click="changeDiv('buyingAll')">Buy</button>
+                <!--Stripe-->
+                <button @click="handlePayment">Pagar</button>
+
+
             </div>
 
         </div>
@@ -210,8 +215,7 @@
             <p class="footer-text-bottom">&copy; 2024 TakeOutFit. Tots els drets reservats.</p>
         </div>
     </footer>
-
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    
     <script type="module" src="./js/utils.js"></script>
 </body>
 

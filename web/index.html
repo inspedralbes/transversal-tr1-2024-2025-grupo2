@@ -11,12 +11,14 @@
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Botiga</title>
 </head>
 
 <body>
     <div id="app">
         <div :class="{'overlay': cartVisible}"></div>
 
+        <!------------------------ PORTADA -------------------------->
         <div class="page-cover" v-if="visible == 'page-cover'">
             <header class="landing-page">
                 <div class="content">
@@ -31,7 +33,8 @@
             <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasHorario"
                 aria-controls="offcanvasHorario">HORARI</button>
 
-            <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasHorario" aria-labelledby="offcanvasHorarioLabel">
+            <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasHorario"
+                aria-labelledby="offcanvasHorarioLabel">
                 <div class="offcanvas-header">
                     <h5 class="offcanvas-title" id="offcanvasHorarioLabel">Horari d'Atencion</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -46,7 +49,8 @@
             <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasUbicacion" aria-controls="offcanvasUbicacion">UBICACIÓ</button>
 
-            <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasUbicacion" aria-labelledby="offcanvasUbicacionLabel">
+            <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasUbicacion"
+                aria-labelledby="offcanvasUbicacionLabel">
                 <div class="offcanvas-header">
                     <h5 class="offcanvas-title" id="offcanvasUbicacionLabel">Direcció</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -60,7 +64,8 @@
             <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasContacto"
                 aria-controls="offcanvasContacto">CONTACTE</button>
 
-            <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasContacto" aria-labelledby="offcanvasContactoLabel">
+            <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasContacto"
+                aria-labelledby="offcanvasContactoLabel">
                 <div class="offcanvas-header">
                     <h5 class="offcanvas-title" id="offcanvasContactoLabel">Truca</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -72,6 +77,8 @@
 
             <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasContacto"
                 aria-controls="offcanvasContacto">CRUD</button>
+
+
 
             <!-------------------- CARRUSEL ----------------->
             <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
@@ -91,9 +98,20 @@
                 </div>
             </div>
 
+            <main>
+                <!-- Podriamos colocar una serie de productos X destacados -->
+                <section class="featured-products">
+                    <h2>Nostres col·leccions</h2>
+                    <p>Descobreix la nova àmplia varietat de peces de moda</p>
+                    <!-- Productos irían aquí -->
+                </section>
+            </main>
+
+
         </div>
 
         <!------------------ STORE ------------>
+
 
         <!------------------ NAVBAR ------------>
         <div id="container-navBar" v-if="visibleButtons === 'buttons-menu'" class="btn-backHome">
@@ -110,10 +128,12 @@
                 <ul class="ul_links">
                     <li><button @click="changeDiv('store'), isMenuOpen = false">Home</button></li>
                     <li><button>Categories</button></li>
-                    <li><button @click="changeDiv('cart'), isMenuOpen = false">Cistella ({{ cartItems.length }})</button></li>
+                    <li><button @click="changeDiv('cart'), isMenuOpen = false">Cistella ({{ cartItems.length
+                            }})</button></li>
                 </ul>
             </nav>
         </div>
+
 
         <!------------------ PRINCIPAL ------------>
 
@@ -121,65 +141,252 @@
 
             <!------- LIST OF PRODUCTS  ------>
             <div class="articles">
+
                 <h1>Catàleg</h1>
+
                 <div :id="'item' + product.id" class="item" v-for="(product, index) in templateData.products">
                     <img @click="showSelectedProduct(product)" :src="laravel.URL + '/img/' + product.image" alt="">
-                    <label class="title-product" :for="'item' + product.id">{{ product.title }}</label>
-                    <label class="price-product" :for="'item' + product.id"> {{ product.price }} EUR</label>
+                    <label :for="'item' + product.id">{{ product.title }}</label>
+                    <label :for="'item' + product.id"> {{ product.price}} EUR</label>
                     <button type="button" :id="index" @click="addToCart(product), showCartFloat()">+</button>
                 </div>
+
             </div>
         </div>
 
         <!------------- CART FLOAT ----------->
 
         <div :class="{'cart': true, 'cart-visible': cartVisible}" class="cart">
-            <input @click="cartVisible = false" class="close-cart-float" type="button" value="X">
+            <button @click="cartVisible = false">x</button>
             <h3>Subtotal</h3>
             <p> € {{ subTotalCart() }}</p>
-            <button @click="visible = 'cart', cartVisible = false">Anar a la cistella</button>
-            <p v-if="cartItems.length === 0" class="cart-empty">Cistella buida!</p>
+            <button @click="visible = 'cart',cartVisible = false ">Anar a la cistella</button>
+            <p v-if="cartItems.length === 0">Cistella buida</p>
             <div v-for="(itemCart,index) in cartItems" class="container-item-cart">
                 <div v-if="itemCartEmpty(itemCart)" :id="itemCart.id" class="item-cart">
                     <div class="item-content">
-                        <img :src="laravel.URL + '/img/' + itemCart.image" alt="image del product" width="50px" class="item-image">
+                        <img :src="laravel.URL + '/img/' + itemCart.image" alt="image del product" width="50px"
+                            class="item-image">
                         <div class="item-info">
-                            <p class="title-product"> {{ itemCart.title}} </p>
-                            <p class="descrip"> Size: {{ itemCart.size.size_id }}</p>
+                            <p> {{ itemCart.title}} </p>
+                            <p class="descrip"> {{ itemCart.size.size_id }}</p>
                             <p class="descrip"> {{ itemCart.description }}</p>
                             <div class="item-buttons">
-                                <input v-if="itemCart.quantity > 0" @click="discountProduct(itemCart)" type="button" value="-">
-                                {{itemCart.quantity}}
-                                <input @click="addToCart(itemCart)" type="button" value="+">
+                                <input v-if="itemCart.quantity > 0" @click="discountProduct(itemCart)" type="button"
+                                    value="-"> {{itemCart.quantity}}
+                                <input @click="incrementProduct(itemCart)" type="button" value="+">
+                                <button @click="deleteItemCart(itemCart)">Esborrar</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div v-if="cartItems.length > 0">
-                <button @click="changeDiv('buyAllProducts')" class="buyAllProducts">Comprar tot</button>
-            </div>
         </div>
 
-        <!------------------ BUY ALL PRODUCTS ------------>
+        <!------------------ ONLY SELECTED PRODUCT ------------>
 
-        <div v-if="visible === 'buyAllProducts'" class="container-buy-all-product">
-            <div class="container-title-buy">
-                <h2>Compra tots els productes</h2>
-                <input type="button" value="X" @click="visible = 'cart', cartVisible = false">
+        <div v-if="visible === 'productSelec'" class="only-product-selected">
+            <div class="itemSelectedImage">
+                <img :src="laravel.URL + '/img/' + selectedProduct.image" alt="">
             </div>
-            <div class="container-card-prodcuts">
-                <div v-for="(productsBuying, index) in cartItems">
-                    <div class="container-card">
-                        <img :src="laravel.URL + '/img/' + productsBuying.image" alt="products">
-                        <h2 class="product-title">{{ productsBuying.title }}</h2>
-                        <p class="quantity">Quantitat: {{ productsBuying.quantity }}</p>
-                        <p class="quantity">Price: {{ productsBuying.price }} €</p>
+            <div class="conten-info-options">
+                <div class="info-prod-selected">
+                    <h3 class="name-product">{{selectedProduct.title}}</h3>
+
+                    <p class="description">{{selectedProduct.description}}</p>
+                    <p class="price">Preu: {{selectedProduct.price}}€</p>
+
+                    <select name="size" id="">
+                        <option disabled value="">Size</option>
+                        <option value="">
+                        <option value="">
+                            {{ selectedProduct.size.size_id}}
+                        </option>
+                    </select>
+
+                    <!-- PARA TENER BOTONES DE TODAS LAS TALLAS DEL PRODUCTO
+                    <div class="size-buttons">
+                        <button @click="selectSize('S')">S</button>
+                        <button @click="selectSize('M')">M</button>
+                        <button @click="selectSize('L')">L</button>
+                        <button @click="selectSize('XL')">XL</button>
                     </div>
+                    -->
+
+                </div>
+                <div class="buttons-options-prodSelected">
+                    <button @click="changeDiv('onlyOneBuy'), addToCart(selectedProduct)">Comprar</button>
+                    <button @click="addToCart(selectedProduct)"> Afegir a la cistella </button>
                 </div>
             </div>
         </div>
+
+        <!------------------ CART ------------>
+        <div v-if="visible ==='cart' " id="contaires-cart" class="cart-item">
+            <h1>Checkout</h1>
+            <p> Total: € {{ subTotalCart() }}</p>
+            <p v-if="cartItems.length === 0"> No hi ha productes a la cistella </p>
+            <div v-for="(prodCart,index) in cartItems">
+                <div :id="prodCart.id" class="cart-product">
+                    <img :src="laravel.URL + '/img/' +  prodCart.image" id="index" alt="" width="200px"
+                        class="cart-image">
+                    <div class="cart-info">
+                        <h3> {{ prodCart.title}}</h3>
+                        <p>Preu: {{ prodCart.price}}</p>
+                        <label for="size">Mida </label>
+                        <select name="size" id="">
+                            <option name="size" value="">
+                                {{ prodCart.size.size_id}}
+                            </option>
+                        </select>
+
+                    </div>
+                    <div class="cart-controls">
+                        <label for="amount">Quantitat</label>
+                        <input v-if="prodCart.quantity > 0" @click="discountProduct(prodCart)" type="button" value="-">
+                        {{prodCart.quantity}}
+                        <input @click="incrementProduct(prodCart)" type="button" value="+">
+                    </div>
+                    <div class="cart-icon">
+                        <box-icon @click="deleteItemCart(prodCart)" name='trash-alt'></box-icon>
+                    </div>
+                </div>
+            </div>
+            <div v-if="cartItems.length > 0" class="btn-options-buying">
+                <button @click="cleanCart()">Delete All</button>
+                <button @click="changeDiv('buyAllProducts')">Buy</button>
+            </div>
+
+        </div>
+
+        <div v-if="visible === 'buyAllProducts'">
+            <div v-for="(productsBuying, index) in cartItems" class="container-buy-all-product">
+                <div class="container-product-buy">
+                    <div>
+                        <img class="img-prod-buying" :src="laravel.URL + '/img/' + productsBuying.image" alt=""
+                            width="200px">
+                    </div>
+                    <div class="info-buying-prod">
+                        <h3> {{ productsBuying.title }}</h3>
+                        <p> {{ productsBuying.size.size_id}}</p>
+                        <p> {{ productsBuying.price}} EUR</p>
+                    </div>
+                </div>
+            </div>
+
+            <span>Total: {{ subTotalCart() }}</span>
+
+            <div class="buttons-buy-all-products">
+                <button @click="continuePurchase()">Continue</button>
+                <button @click="changeDiv('store'), cancelPurchase()">Cancel</button>
+            </div>
+        </div>
+
+        <!------------------ FORMULARIO INVITADO -------------->
+        <div v-if="visible === 'purchase-form'" class="purchase-form">
+            <h2>CONTINUAR COMO INVITADO</h2>
+            <form @submit.prevent="submitForm">
+                <div class="form-grup">
+                    <label for="name">Nom:</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-grup">
+                    <label for="email">Email:</label>
+                    <input type="text" id="email" required>
+                </div>
+                <button type="submit">ENVIAR</button>
+                <h2 class="separator">O</h2>
+                <button type="button" @click="showLogin">INICIAR SESIÓN</button>
+                <button type="button" @click="showRegister">REGISTRARSE</button>
+            </form>
+        </div>
+
+        <!------------------ FORMULARIO LOGIN -------------->
+        <div v-if="visible === 'login-form'" class="login-form">
+            <h2>DADES PERSONALS</h2>
+            <form @submit.prevent="login">
+                <div class="form-login">
+                    <label for="login-email">Email:</label>
+                    <input type="email" id="login-email" required>
+                </div>
+                <div class="form-login">
+                    <label for="login-password">Contraseña:</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <button type="submit">INICIAR SESION</button>
+                <button type="button" @click="backToPurchaseForm">VOLVER</button>
+            </form>
+        </div>
+
+        <!------------------ FORMULARIO REGISTER -------------->
+        <div v-if="visible === 'register-form'" class="register-form">
+            <h2>REGISTRARSE</h2>
+            <form @submit.prevent="register">
+                <div class="form-register">
+                    <label for="reg-email">Email:</label>
+                    <input type="email" id="reg-email" required>
+                </div>
+                <div class="form-grup">
+                    <label for="reg-password">Contraseña:</label>
+                    <input type="password" id="reg-password" required>
+                </div>
+                <div class="form-grup">
+                    <label for="reg-name">Nombre:</label>
+                    <input type="text" id="reg-name" required>
+                </div>
+                <div class="form-grup">
+                    <label for="reg-surname">Apellido:</label>
+                    <input type="text" id="reg-surname" required>
+                </div>
+                <div class="form-grup">
+                    <label for="reg-phon">Telefono:+34</label>
+                    <input type="text" id="reg-phone" required>
+                </div>
+                <div class="check-form">
+                    <input type="checkbox" id="conditions" name="conditions" value="Conditions1">
+                    <label for="conditions">Quiero recibir novedades y comunicaciones comerciales personalizadas
+                        de <b>TAKEOUTFIT</b> a traves de email y otros medios. </label>
+                    <input type="checkbox" id="cookies" name="cookies" value="Cookies1">
+                    <label for="cookies">He leido y acepto las <b>Condiciones de uso y compra</b> y entiendo la
+                        informacion acerca del uso de mis datos personales explicada en la <b>Politica de Privacidad y
+                            Cookies</b></label>
+                </div>
+                <button type="submit">CREAR CUENTA</button>
+                <button type="button" @click="backToPurchaseForm">VOLVER</button>
+            </form>
+        </div>
+
+        <!------------------ BUY ONE PRODUCT ------------>
+
+        <div v-if="visible === 'onlyOneBuy'" class="container-buy-one-product">
+            <div>
+                <img class="img-prod-buying" :src="laravel.URL + '/img/' + selectedProduct.image" alt="" width="200px">
+            </div>
+            <div class="info-buying-prod">
+                <h3> {{ selectedProduct.title }}</h3>
+                <p> {{ selectedProduct.size.size_id}}</p>
+                <p> {{ selectedProduct.price}} EUR</p>
+                <button @click="continuePurchase()">Continue</button>
+                <button @click="changeDiv('store'), deleteItemCart(selectedProduct)">Cancel</button>
+            </div>
+        </div>
+
+        <div v-if="visible === 'purchase-completed'" class="mitssage-final">
+            <h1>Compra realitzada</h1>
+        </div>
+
     </div>
+
+    <!------------------ FOOTER ------------>
+
+    <footer>
+        <div class="footer-landing-page">
+            <p class="footer-text-bottom">&copy; 2024 TakeOutFit. Tots els drets reservats.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script type="module" src="./js/utils.js"></script>
 </body>
 
 </html>

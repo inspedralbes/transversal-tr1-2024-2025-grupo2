@@ -65,9 +65,6 @@ class OrderController extends Controller
         return redirect()->route('orders.index')->with('success', 'Pedido creado exitosamente.');
     }
 
-
-
-
     // Mostrar un comanda específic
     public function show($id)
     {

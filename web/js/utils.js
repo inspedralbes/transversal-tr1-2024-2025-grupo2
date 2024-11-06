@@ -1,15 +1,11 @@
-import { getData, getCategories, getSizes } from "./communicationManager.js";
-import {
-    createApp,
-    reactive,
-    ref,
-    onBeforeMount,
-} from "https://unpkg.com/vue@3/dist/vue.esm-browser.js";
+import { getData, getCategories, getSizes } from './communicationManager.js'
+import { createApp, reactive, ref, onBeforeMount, watch} from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js';
 
 createApp({
     setup() {
-        let laravel = reactive({ URL: "http://localhost:8000" });
+        let laravel = reactive({ URL: "http://localhost:8000" })
         let templateData = reactive({ products: [], categories: [], sizes: [] });
+
         let selectedProduct = reactive([]);
         let selectedCategory = ref(null);
         let selectedSize = ref(null);
@@ -19,6 +15,18 @@ createApp({
         let visible = ref("page-cover");
         const visibleButtons = ref("");
         let cartVisible = ref(false);
+        let showForm = ref(false);
+        const isMenuOpen = ref(false);
+
+        watch(isMenuOpen, (newValue) => {
+            if (newValue) {
+                // Cuando el menú se abre, bloqueamos el scroll
+                document.body.classList.add('menu-open');
+            } else {
+                // Cuando el menú se cierra, restauramos el scroll
+                document.body.classList.remove('menu-open');
+            }
+        });
 
         function subTotalCart() {
             let total = 0;
@@ -37,6 +45,7 @@ createApp({
             visibleFilter.value = false
         }
 
+
         function showCartFloat() {
             if (this.visible === 'store' || this.visible === 'productSelec') {
                 this.cartVisible = true;
@@ -45,7 +54,9 @@ createApp({
             }
         }
 
+
         function itemCartEmpty(itemCart) {
+
             if (itemCart.quantity > 0) {
                 return true;
             } else {
@@ -53,77 +64,79 @@ createApp({
             }
         }
 
+
         function incrementProduct(product) {
-            const exsistProductCar = cartItems.find((item) => item.id == product.id);
+
+
+            const exsistProductCar = cartItems.find(item => item.id == product.id);
 
             if (exsistProductCar) {
                 exsistProductCar.quantity++;
-                console.log(cartItems);
+                console.log(cartItems)
             }
         }
 
-        function discountProduct(product) {
-            console.log("El objeto que se quiere reducir es " + product.id);
 
-            const exsistProductCar = cartItems.find((item) => item.id == product.id);
+        function discountProduct(product) {
+
+            console.log("El objeto que se quiere reducir es " + product.id)
+
+            const exsistProductCar = cartItems.find(item => item.id == product.id);
 
             if (exsistProductCar) {
                 exsistProductCar.quantity--;
-                console.log(cartItems);
+                console.log(cartItems)
                 itemCartEmpty(exsistProductCar);
             }
         }
 
         function cancelPurchase() {
-            console.log("Carrito compra rapida: ", cartItems);
+            console.log('Carrito compra rapida: ', cartItems);
 
             this.cleanCart();
-            this.changeDiv("store");
+            this.changeDiv('store');
         }
 
         function deleteItemCart(product) {
-            console.log("Id del producto: ", product.id); // Mostrar el id del producto
-            console.log(
-                "Producto que se quiere eliminar",
-                cartItems.find((item) => item.id === product.id)
-            ); // Mostrar el producto que se quiere eliminar
-            console.log("Productos totales que hay en el objeto", cartItems); // Mostrar todos los productos en el carrito
+            console.log('Id del producto: ', product.id); // Mostrar el id del producto
+            console.log('Producto que se quiere eliminar', cartItems.find(item => item.id === product.id)); // Mostrar el producto que se quiere eliminar
+            console.log('Productos totales que hay en el objeto', cartItems); // Mostrar todos los productos en el carrito
 
-            const productIndex = cartItems.findIndex(
-                (item) => item.id === product.id
-            );
+            const productIndex = cartItems.findIndex(item => item.id === product.id);
 
             if (productIndex !== -1) {
-                console.log("Producto encontrado en el índice:", productIndex);
+                console.log('Producto encontrado en el índice:', productIndex);
                 cartItems.splice(productIndex, 1);
-                console.log("Producto eliminado correctamente.");
+                console.log('Producto eliminado correctamente.');
             } else {
-                console.log("Producto no encontrado en el carrito.");
+                console.log('Producto no encontrado en el carrito.');
             }
-            console.log("Productos restantes en el carrito:", cartItems); // Mostrar productos restantes en el carrito
+            console.log('Productos restantes en el carrito:', cartItems); // Mostrar productos restantes en el carrito
         }
+
 
         function cleanCart() {
             cartItems.splice(0, cartItems.length)
         }
 
-        function addToCart(product) {
-            console.log("Carro actual: ", cartItems);
 
-            const exsistProductCar = cartItems.find((item) => item.id == product.id);
+
+        function addToCart(product) {
+
+            console.log('Carro actual: ', cartItems);
+
+            const exsistProductCar = cartItems.find(item => item.id == product.id)
 
             if (exsistProductCar) {
-                exsistProductCar.quantity++;
+                exsistProductCar.quantity++ 
             } else {
                 cartItems.push({
                     ...product,
-                    quantity: 1,
-                });
+                    quantity: 1
+                })
             }
             this.showCartFloat();
         }
-
-        //filtrar productes segons la categoria
 
         function getFilterProducts() {
             const result = templateData.products.filter((product) => {
@@ -154,12 +167,12 @@ createApp({
 
         function changeDiv(show) {
             this.visible = show;
-            if (this.visible !== "page-cover") {
-                this.visibleButtons = "buttons-menu";
+            if (this.visible !== 'page-cover') {
+                this.visibleButtons = 'buttons-menu';
             } else {
-                this.visibleButtons = "";
+                this.visibleButtons = '';
             }
-        }
+        };
 
         onBeforeMount(async () => {
             try {
@@ -176,8 +189,48 @@ createApp({
             }
         });
 
+        function continuePurchase() {
+            visible.value = 'purchase-form'; // Muestra el formulario al continuar
+        }
+
+        function submitForm() {
+            console.log("Formulario enviado");
+            visible.value = 'purchase-completed'; ; // Vuelve a la vista de compra completada
+            cleanCart();
+        }
+
+        // FUNCIONES DE LOGIN Y REGISTER
+
+        function showLogin() {
+            visible.value = 'login-form';
+        }
+
+        function showRegister() {
+            visible.value = 'register-form';
+        }
+
+        function backToPurchaseForm() {
+            visible.value = 'purchase-form'; // Para regresar al formulario de compra
+        } 
+
+        function login() {
+            console.log('Iniciar sesión con:', {
+                email: document.getElementById('login-email').value,
+                password: document.getElementById('login-password').value
+            });
+        }
+
+        function register() {
+            console.log('Registrar con:', {
+                name: document.getElementById('reg-name').value,
+                surname: document.getElementById('reg-surname').value,
+                phone: document.getElementById('reg-phone').value,
+                email: document.getElementById('reg-email').value,
+                password: document.getElementById('reg-password').value
+            });
+        }
         return {
-            templateData, changeDiv, visible, selectedProduct, showSelectedProduct, cartItems, addToCart, objectsInCart, cleanCart, laravel, deleteItemCart, cancelPurchase, visibleButtons, discountProduct, incrementProduct, itemCartEmpty, cartVisible, showCartFloat, subTotalCart, selectedCategory, visibleFilter, toggleFilterCategory, selectedSize, resetFilters, hiddenFilter, getFilterProducts
+            templateData, changeDiv, visible, selectedProduct, showSelectedProduct, cartItems, addToCart, objectsInCart, cleanCart, laravel, deleteItemCart, cancelPurchase, visibleButtons, discountProduct, incrementProduct, itemCartEmpty, cartVisible, showCartFloat, subTotalCart, isMenuOpen, continuePurchase, showForm, submitForm, showLogin, showRegister, backToPurchaseForm, login, register, selectedCategory, visibleFilter, toggleFilterCategory, selectedSize, resetFilters, hiddenFilter, getFilterProducts
         };
     }
 }).mount('#app');

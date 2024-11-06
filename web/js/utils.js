@@ -1,5 +1,5 @@
 import { getData } from './communicationManager.js'
-import { createApp, reactive, ref, onBeforeMount } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js';
+import { createApp, reactive, ref, onBeforeMount, watch } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js';
 
 createApp({
     setup() {
@@ -13,7 +13,18 @@ createApp({
         const visibleButtons = ref('');
         let cartVisible = ref(false);
         let showForm = ref(false);
-        
+        const isMenuOpen = ref(false);
+
+        watch(isMenuOpen, (newValue) => {
+            if (newValue) {
+                // Cuando el menú se abre, bloqueamos el scroll
+                document.body.classList.add('menu-open');
+            } else {
+                // Cuando el menú se cierra, restauramos el scroll
+                document.body.classList.remove('menu-open');
+            }
+        });
+
         function subTotalCart() {
             let total = 0;
             for (let i = 0; i < this.cartItems.length; i++) {
@@ -157,16 +168,6 @@ createApp({
             cleanCart();
         }
 
-
-        onBeforeMount(async () => {
-            try {
-                const result = await getData();
-                templateData.products = result;
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        });
-
         // FUNCIONES DE LOGIN Y REGISTER
 
         function showLogin() {
@@ -198,7 +199,7 @@ createApp({
             });
         }
         return {
-            templateData, changeDiv, visible, selectedProduct, showSelectedProduct, cartItems, addToCart, objectsInCart, cleanCart, laravel, deleteItemCart, cancelPurchase, visibleButtons, discountProduct, incrementProduct, itemCartEmpty, cartVisible, showCartFloat, subTotalCart, continuePurchase, showForm, submitForm, showLogin, showRegister, backToPurchaseForm, login, register 
+            templateData, changeDiv, visible, selectedProduct, showSelectedProduct, cartItems, addToCart, objectsInCart, cleanCart, laravel, deleteItemCart, cancelPurchase, visibleButtons, discountProduct, incrementProduct, itemCartEmpty, cartVisible, showCartFloat, subTotalCart, isMenuOpen, continuePurchase, showForm, submitForm, showLogin, showRegister, backToPurchaseForm, login, register 
         };
     }
 }).mount('#app');

@@ -1,5 +1,5 @@
 import { getData } from './communicationManager.js'
-import { createApp, reactive, ref, onBeforeMount } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js';
+import { createApp, reactive, ref, onBeforeMount, watch } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js';
 
 createApp({
     setup() {
@@ -12,6 +12,19 @@ createApp({
         let visible = ref('page-cover');
         const visibleButtons = ref('');
         let cartVisible = ref(false);
+        const isMenuOpen = ref(false);
+
+
+
+        watch(isMenuOpen, (newValue) => {
+            if (newValue) {
+                // Cuando el menú se abre, bloqueamos el scroll
+                document.body.classList.add('menu-open');
+            } else {
+                // Cuando el menú se cierra, restauramos el scroll
+                document.body.classList.remove('menu-open');
+            }
+        });
 
 
         function subTotalCart() {
@@ -148,7 +161,7 @@ createApp({
         });
 
         return {
-            templateData, changeDiv, visible, selectedProduct, showSelectedProduct, cartItems, addToCart, objectsInCart, cleanCart, laravel, deleteItemCart, cancelPurchase, visibleButtons, discountProduct, incrementProduct, itemCartEmpty, cartVisible, showCartFloat,subTotalCart
+            templateData, changeDiv, visible, selectedProduct, showSelectedProduct, cartItems, addToCart, objectsInCart, cleanCart, laravel, deleteItemCart, cancelPurchase, visibleButtons, discountProduct, incrementProduct, itemCartEmpty, cartVisible, showCartFloat,subTotalCart,isMenuOpen
         };
     }
 }).mount('#app');

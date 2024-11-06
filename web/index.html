@@ -66,23 +66,22 @@
         <!------------------ NAVBAR ------------>
         <div id="container-navBar" v-if="visibleButtons === 'buttons-menu'" class="btn-backHome">
             <nav class="navBar">
-                <h1 @click="changeDiv('page-cover')">LOGO</h1>
-    
-                <label for="hamburger_menu">
-                    <box-icon class="hamburger_icon" name='menu'></box-icon>
-                </label>
-            
-                <input class="menu_hamburger" type="checkbox" id="hamburger_menu">
-    
-                <ul class="ul_links">
-                    <li><button @click="changeDiv('store')">Home</button></li>
-                    <li><button>Categories</button></li>
-                    <li><button @click="changeDiv('cart')">Cistella ({{ cartItems.length }})</button></li>
-                </ul>
-
+              <h1 @click="changeDiv('page-cover')">LOGO</h1>
+          
+              <label for="hamburger_menu">
+                <box-icon class="hamburger_icon" name='menu'></box-icon>
+              </label>
+          
+              <!-- Casilla para abrir/cerrar el menú -->
+              <input class="menu_hamburger" type="checkbox" id="hamburger_menu" v-model="isMenuOpen" />
+          
+              <ul class="ul_links">
+                <li><button @click="changeDiv('store'), isMenuOpen = false">Home</button></li>
+                <li><button>Categories</button></li>
+                <li><button @click="changeDiv('cart'), isMenuOpen = false">Cistella ({{ cartItems.length }})</button></li>
+              </ul>
             </nav>
-
-        </div>
+          </div>
 
 
         <!------------------ PRINCIPAL ------------>
@@ -118,7 +117,7 @@
                         <img :src="laravel.URL + '/img/' + itemCart.image" alt="image del product" width="50px"
                             class="item-image">
                         <div class="item-info">
-                            <p> {{ itemCart.title}} </p>
+                            <p class="title-product"> {{ itemCart.title}} </p>
                             <p class="descrip"> Size: {{ itemCart.size.size_id }}</p>
                             <p class="descrip"> {{ itemCart.description }}</p>
                             <div class="item-buttons">
@@ -166,10 +165,16 @@
             <h1>Checkout</h1>
             <p> Total: € {{ subTotalCart() }}</p>
             <p v-if="cartItems.length === 0"> No hi ha productes a la cistella </p>
+
+            <!-- ITEMS IN THE CART -->
             <div v-for="(prodCart,index) in cartItems">
+
+                <!--- CARD OF ITEM IN THE CART-->
                 <div :id="prodCart.id" class="cart-product">
                     <img :src="laravel.URL + '/img/' +  prodCart.image" id="index" alt="" width="200px"
                         class="cart-image">
+
+                        <!--- INFO PRODUCT CARD-->
                     <div class="cart-info">
                         <h3> {{ prodCart.title}}</h3>
                         <p>Preu: {{ prodCart.price}}</p>
@@ -179,11 +184,11 @@
                                 {{ prodCart.size.size_id}}
                             </option>
                         </select>
-                        <label for="amount">Quantitat</label>
                     </div>
                     <div class="cart-controls">
-                        <input v-if="prodCart.quantity > 0" @click="discountProduct(prodCart)" type="button" value="-">
-                        {{prodCart.quantity}}
+                        <label for="amount">Quantitat</label>
+                        <input v-if="prodCart.quantity > 0" @click="discountProduct(prodCart)" name="amount" type="button" value="-">
+                        <span>{{prodCart.quantity}}</span>
                         <input @click="incrementProduct(prodCart)" type="button" value="+">
                     </div>
                     <div class="cart-icon">
@@ -198,25 +203,27 @@
 
         </div>
 
-        <div v-if="visible === 'buyAllProducts'">
+        <div v-if="visible === 'buyAllProducts'" class="container-buy-all-product">
             
-            <div v-for="(productsBuying, index) in cartItems" class="container-buy-all-product">
-                <div class="container-product-buy">
+            <div v-for="(productsBuying, index) in cartItems" 32class="container-card-prodcuts">
+               
                     <div>
                         <img class="img-prod-buying" :src="laravel.URL + '/img/' + productsBuying.image" alt=""
                             width="200px">
                     </div>
                     <div class="info-buying-prod">
                         <h3> {{ productsBuying.title }}</h3>
-                        <p> {{ productsBuying.size.size_id}}</p>
+                        <p> Size: {{ productsBuying.size.size_id}}</p>
                         <p> {{ productsBuying.price}} EUR</p>
                     </div>
-                </div>
+
             </div>
 
+            <span>Total: {{ subTotalCart() }}</span>
+
             <div class="buttons-buy-all-products">
-                <button @click="changeDiv('purchase-completed'),cleanCart()">Continue</button>
                 <button @click="changeDiv('store'), cancelPurchase()">Cancel</button>
+                <button @click="changeDiv('purchase-completed'),cleanCart()">Continue</button>
             </div>
 
 

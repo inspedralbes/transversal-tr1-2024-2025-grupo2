@@ -11,8 +11,7 @@ class PaymentController extends Controller
     public function createPayment(Request $request)
     {
         
-        // Configura la clave secreta de Stripe
-        Stripe::setApiKey(env('STRIPE_SECRET')); // Asegúrate de que STRIPE_SECRET esté en tu archivo .env
+        Stripe::setApiKey(env('STRIPE_SECRET')); 
 
         try {
             // Crea una sesión de pago con los datos del carrito que se envían desde el frontend
@@ -33,7 +32,7 @@ class PaymentController extends Controller
                 'mode' => 'payment',
                 'success_url' => route('success'), // URL a la que redirigir después del pago
                 'cancel_url' => route('cancel'), // URL a la que redirigir si el usuario cancela
-            ]);
+            ]);      
 
             // Retorna la respuesta en JSON con el ID de la sesión
             return response()->json(['id' => $session->id]);

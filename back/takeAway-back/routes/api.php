@@ -22,13 +22,11 @@ Route::get('/getSizes', [SizeController::class, 'getSizes']);
 
 //Stripe
 Route::post('/create-payment',[PaymentController::class, 'createPayment']);
-Route::post('/create-checkout-session', [PaymentController::class, 'createPayment']);
-
 
 Route::get('/success', function() {
     return 'El pagament ha sigut correcte!';
 })->name('success');
 
 Route::get('/cancel', function() {
-    return 'Payment was canceled.'; 
+    return 'El pagament ha sigut cancel·lat!'; 
 })->name('cancel');

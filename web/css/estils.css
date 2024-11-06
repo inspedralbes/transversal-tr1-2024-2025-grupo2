@@ -38,6 +38,12 @@ body {
     z-index: 10;
 }
 
+/* --------  Estilos INFORMACION -----------*/
+.offcanvas-title {
+    text-align: center;      
+    width: 100%;   
+}
+
 
 /* --------  Estilos CARRUSEL -----------*/
 .carousel {

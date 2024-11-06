@@ -106,6 +106,7 @@ body.menu-open {
 
 #container-navBar {
   height: var(--header-height);
+  position: relative;
 }
 
 .navBar {
@@ -122,7 +123,6 @@ body.menu-open {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   width: 100%;
   position: sticky;
-  top: 0;
 }
 
 .ul_links {
@@ -169,7 +169,7 @@ body.menu-open {
   transition: color 0.3s; /* Transición suave para el efecto de color */
 }
 
-/* Productos Grid */
+/* PRODUCTOSSS  */
 #container-products {
   display: flex;
   flex-flow: row wrap;
@@ -200,7 +200,6 @@ body.menu-open {
   margin: 0 0 30px;
   position: relative;
   border: 0.1px solid black;
-  transition: box-shadow 0.5s ease;
 }
 
 .item:hover {
@@ -209,8 +208,9 @@ body.menu-open {
 
 .item .title-product {
   font-size: 20px;
+  font-style: normal;
   font-weight: 300;
-  margin: 10px 0;
+  margin: 10px 0 10px 0;
 }
 
 .item .price-product {
@@ -236,7 +236,7 @@ body.menu-open {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-/* Carrito */
+/* CARRITO FLOTANTEEE ESTILOS */
 .cart {
   position: fixed;
   top: 0;
@@ -277,7 +277,86 @@ body.menu-open {
   transform: translateX(0);
 }
 
-/* Elementos del carrito */
+
+
+/* ------------ ESTILOS DE LA CISTELLA (CARDS) ------------*/
+
+.cart-item {
+  padding: 40px;
+}
+
+.cart-product {
+  display: flex; /* Usar flexbox para alinear imagen y texto */
+  flex-direction: column;
+  align-items: center;
+  padding: 10px; 
+  border: 0.5px solid #bababa; 
+  background-color: #fff;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.cart-info {
+  text-align: center;
+}
+.cart-info h3 {
+  font-weight: 500;
+  font-size: 30px;
+}
+.cart-info label {
+  margin-right: 10px;
+}
+.cart-info select {
+  border: 0.5px solid black;
+  padding: 4px;
+  background-color: #ffff;
+}
+.cart-controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.cart-controls label {
+  margin-right: 10px;
+}
+.cart-controls input {
+  border: 0.5px solid black;
+  background-color: white;
+  padding: 5px;
+}
+.cart-controls span {
+  margin: 0 5px 0 5px;
+}
+
+.cart-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 0.3px solid black;
+  width: 100%;
+}
+.cart-icon box-icon {
+  margin:5px 0;
+}
+.btn-options-buying {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 20px;
+}
+.btn-options-buying button {
+  margin: 0.5px solid black;
+  background-color: white;
+  height: 50px;
+  width: 100%;
+  font-weight: 500;
+}
+
+
+
+
+/* Elementos del carrito FLOTANTEEEE */
 .item-cart {
   border: 0.3px solid black;
   margin: 10px 0;
@@ -320,7 +399,7 @@ body.menu-open {
   padding: 3px;
 }
 
-/* Producto seleccionado */
+/* ESTILOS DE PRODUCTO SELECCIONADO */
 .only-product-selected {
   display: flex;
   flex-direction: column;
@@ -347,6 +426,81 @@ body.menu-open {
   background-color: var(--color-white);
   margin: 10px;
   font-weight: 100;
+}
+
+
+/*  ---------- ESTILOS COMPRA RAPIDAAAA-------*/
+
+.container-buy-one-product {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.container-product-buy {
+  width: 600px;
+  display: flex;
+  flex-flow: row wrap;
+  margin: 20px;
+  padding: 10px;
+  border: 1px solid gray;
+}
+
+.info-buying-prod {
+  display: flex;
+  flex-flow: column wrap;
+  margin-left: 20px;
+}
+
+.info-buying-prod button {
+  background-color: white;
+  border: 0.5px solid black;
+  margin-bottom: 10px;
+}
+
+
+
+/*ESTILOS DE PANTALLA DE COMPRA ALL PRODUCTS */
+
+.container-buy-all-product{
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.container-card-product {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: 0.5px solid #b7b7b7;
+  width: 250px;
+  margin-bottom: 20px;
+  padding: 10px;
+  gap: 10px;
+}
+
+.buttons-buy-all-products {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.buttons-buy-all-products button{
+  border: 0.5px solid black;
+  background-color: #fff;
+  padding: 10px;
+  margin: 0 10px 0 10px;
+}
+
+.container-buy-all-product span {
+  margin: 10px 0 20px 0;
 }
 
 /* Formularios */
@@ -440,6 +594,34 @@ footer {
     display: none;
   }
 
+  .navBar {
+  position: relative;    
+  display: flex;
+  flex: row;
+  justify-content: space-around;
+  }
+
+  .navBar h1 {
+    position: absolute;
+    left: 20px;
+  }
+
+  .ul_links {
+    overflow: visible;
+    flex-direction: row;
+    top: auto; 
+    justify-content: flex-end;
+
+  }
+
+  .navBar button {
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    color: #4E5A6A;
+    transition: color 0.3s;
+  }
+
   .cart {
     width: 550px;
   }
@@ -478,4 +660,64 @@ footer {
     justify-content: center;
     align-items: center;
   }
+
+  .only-product-selected {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 20px; 
+}
+
+.itemSelectedImage {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+}
+
+.conten-info-options {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    text-align: center;
+    margin-left: 20px; 
+    margin-right: 20px;
+    justify-content: center; 
+
+}
+
+.info-prod-selected {
+    border: 1px solid rgba(0, 0, 0, 0.2); 
+    padding: 20px; 
+    width: 100%; 
+    max-width: 400px; 
+}
+
+.buttons-options-prodSelected {
+    display: flex; 
+    flex-direction: column; 
+    gap: 10px; 
+    width: 100%; 
+    max-width: 400px; 
+    margin-top: 20px; 
+}
+
+.button-container {
+    width: 100%; 
+}
+
+.buttons-options-prodSelected button {
+    border: none;
+    padding: 20px; 
+    width: 100%; 
+    background-color: #42474e1e;
+
+}
+
+.buttons-options-prodSelected button:hover {
+    transform: scale(1.05); 
+    background-color: #5a5e6355; 
+    cursor: pointer; 
+}
+
 } 

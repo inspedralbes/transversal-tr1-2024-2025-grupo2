@@ -5,7 +5,6 @@ createApp({
     setup() {
         let laravel = reactive({ URL: "http://localhost:8000" })
         let templateData = reactive({ products: [], categories: [], sizes: [] });
-
         let selectedProduct = reactive([]);
         let selectedCategory = ref(null);
         let selectedSize = ref(null);

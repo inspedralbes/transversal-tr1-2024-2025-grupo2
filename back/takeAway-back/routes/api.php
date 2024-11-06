@@ -18,3 +18,5 @@ Route::get('/getProducts', [ProductController::class, 'getProducts']);
 Route::get('/getCategories', [CategoryController::class, 'getCategories']);
 
 Route::get('/getSizes', [SizeController::class, 'getSizes']);
+
+Route::get('/product/search', [ProductController::class, 'search']);

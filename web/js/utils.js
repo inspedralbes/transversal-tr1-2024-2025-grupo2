@@ -15,6 +15,7 @@ createApp({
     let selectedSize = ref(null);
     let selectedProduct = reactive([]);
     let visibleFilter = ref(false);
+    let searchTerm = ref('');
     //let visible = ref('store');
     let cartItems = reactive([]);
     let objectsInCart = cartItems.length;
@@ -128,7 +129,9 @@ createApp({
             // Condición para la talla (solo si hay una talla seleccionada)
             const sizeMatch = !selectedSize.value || product.size_id === selectedSize.value;   
             // Devolver el producto solo si cumplen cada condicion por separado
-            return categoryMatch && sizeMatch;
+            const searchMatch = !searchTerm.value || product.title.toLowerCase().includes(searchTerm.value.toLowerCase());
+
+            return categoryMatch && sizeMatch && searchMatch;
         });
     });
 
@@ -188,7 +191,8 @@ createApp({
       visibleFilter,
       toggleFilterCategory,
       selectedSize,
-      filteredProducts
+      filteredProducts,
+      searchTerm
     };
   },
 }).mount("#app");

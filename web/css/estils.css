@@ -517,6 +517,136 @@ footer {
   text-align: center;
 }
 
+
+  /* ESTILO DEL FORMULARIO INVITADO */
+  .purchase-form {
+    padding: 20px; 
+    max-width: 400px; 
+    margin: 20px auto; 
+  }
+  
+  .form-grup {
+    margin-bottom: 20px; 
+  }
+  
+  .purchase-form input[type="text"],
+  .purchase-form input[type="email"] {
+    width: 100%; 
+    margin-bottom: 5px; 
+    font-size: 16px; 
+    border: none; /* Sin borde */
+    border-bottom: 1px solid #ccc; /* Línea inferior */
+  }
+  
+  .separator {
+    text-align: center;
+    position: relative;
+    margin: 20px 0; /* Espacio alrededor del separador */
+  }
+  
+  .separator::before,
+  .separator::after {
+    content: '';
+    position: absolute;
+    top: 50%; /* Centrar verticalmente */
+    width: 40%; /* Ancho de las líneas */
+    height: 2px; /* Grosor de las líneas */
+    background-color: #ccc; /* Color de las líneas */
+  }
+  
+  .separator::before {
+    left: 0; /* Posicionar a la izquierda */
+    margin-right: 10px; /* Espacio entre la línea y el texto */
+  }
+  
+  .separator::after {
+    right: 0; /* Posicionar a la derecha */
+    margin-left: 10px; /* Espacio entre la línea y el texto */
+  }
+  
+  
+  .purchase-form button {
+    width: 100%;
+    background-color: #555; 
+    color: white; 
+    padding: 10px; /* Espaciado interno */
+    margin-top: 10px; /* Margen superior para separar botones */
+    cursor: pointer; 
+    border: none; /* Sin borde */
+  }
+  
+  .purchase-form button:hover {
+    background-color: #777; /* Cambiar color al pasar el mouse */
+  }
+  
+  /* ESTILO DEL FORMULARIO REGISTER */
+  .register-form {
+    padding: 20px; 
+    max-width: 400px; 
+    margin: 20px auto; 
+  }
+  
+  .form-register {
+    margin-bottom: 20px; 
+  }
+  
+  .register-form button {
+    width: 100%;
+    background-color: #555; 
+    color: white; 
+    padding: 10px; /* Espaciado interno */
+    margin-top: 10px; /* Margen superior para separar botones */
+    cursor: pointer; 
+    border: none; /* Sin borde */
+  }
+  
+  .register-form input[type="text"],
+  .register-form input[type="password"],
+  .register-form input[type="email"] {
+    width: 100%; 
+    margin-bottom: 5px; 
+    font-size: 16px; 
+    border: none; /* Sin borde */
+    border-bottom: 1px solid #ccc; /* Línea inferior */
+  }
+  
+  /* ESTILO DEL FORMULARIO LOGIN */
+  .login-form {
+    padding: 20px; 
+    max-width: 400px; 
+    margin: 20px auto; 
+  }
+  
+  .form-login {
+    margin-bottom: 20px; 
+  }
+  
+  .login-form button {
+    width: 100%;
+    background-color: #555; 
+    color: white; 
+    padding: 10px; /* Espaciado interno */
+    margin-top: 10px; /* Margen superior para separar botones */
+    cursor: pointer; 
+    border: none; /* Sin borde */
+  }
+  
+  .login-form input[type="email"],
+  .login-form input[type="password"] {
+    width: 100%; 
+    margin-bottom: 5px; 
+    font-size: 16px; 
+    border: none; /* Sin borde */
+    border-bottom: 1px solid #ccc; /* Línea inferior */
+  }
+  
+  
+  /* ESTILO DEL MENSAJE FINAL */
+  .mitssage-final {
+    margin-top: 100px;
+    text-align: center;
+  }
+
 /* MEDIA QUERIES MOBILE*/
 
 @media (min-width: 768px) {
@@ -787,4 +917,7 @@ footer {
   .featured-products {
     color: black;
   }
+
+
+
 }

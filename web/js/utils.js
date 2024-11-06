@@ -4,6 +4,8 @@ import {
     reactive,
     ref,
     onBeforeMount,
+    computed,
+    watchEffect
 } from "https://unpkg.com/vue@3/dist/vue.esm-browser.js";
 
 createApp({
@@ -123,22 +125,65 @@ createApp({
             this.showCartFloat();
         }
 
-        //filtrar productes segons la categoria
-
+        // Filtrar productos por categoría
         function getFilterProducts() {
             const result = templateData.products.filter((product) => {
-                // Condición para la categoría (solo si hay una categoría seleccionada)
+                // Condición para la categoría
                 const categoryMatch = !selectedCategory.value || product.category_id === selectedCategory.value;
-                // Condición para la talla (solo si hay una talla seleccionada)
+                // Condición para la talla
                 const sizeMatch = !selectedSize.value || product.size_id === selectedSize.value;
                 return categoryMatch && sizeMatch;
             });
-            console.log("Filtado de productos", result);
-            return result
+            return result;
         }
+
+        // Función para obtener el número de productos por categoría
+        function categoryProduct() {
+            const counts = {};
+            templateData.products.forEach(product => {
+                counts[product.category_id] = (counts[product.category_id] || 0) + 1;
+            });
+            return counts;
+        }
+
+        // Contar las tallas disponibles en los productos de la categoría seleccionada
+        function sizeProduct() {
+            const counts = {};
+            let filteredProducts = [];
+            
+            // Si no se ha seleccionado categoría, contamos las tallas de todos los productos
+            if (selectedCategory.value === null) {
+                filteredProducts = templateData.products;
+            } else {
+                filteredProducts = filteredCategoryProducts.value;
+            }
+
+            filteredProducts.forEach(product => {
+                counts[product.size_id] = (counts[product.size_id] || 0) + 1;
+            });
+            return counts;
+        }
+
+        // Variable reactiva para mantener la copia estática de productos filtrados por categoría
+        const filteredCategoryProducts = ref([]);
+
+        // Esta función actualizará la copia de los productos filtrados por categoría
+        function updateCategoryFilter() {
+            if (selectedCategory.value !== null) {
+                filteredCategoryProducts.value = templateData.products.filter(product => product.category_id === selectedCategory.value);
+            } 
+        }
+
+        const filteredProducts = computed(() => getFilterProducts());
+        const categoryProductCount = computed(() => categoryProduct());
+        const sizeProductCount = computed(() => sizeProduct());
 
         function resetFilters() {
             selectedCategory.value = null;
+            selectedSize.value = null;
+        }
+
+        function resetFilterSize() {
             selectedSize.value = null;
         }
 
@@ -176,8 +221,13 @@ createApp({
             }
         });
 
+        // Detectar cambios en la categoría seleccionada
+        watchEffect(() => {
+            updateCategoryFilter();
+        });
+
         return {
-            templateData, changeDiv, visible, selectedProduct, showSelectedProduct, cartItems, addToCart, objectsInCart, cleanCart, laravel, deleteItemCart, cancelPurchase, visibleButtons, discountProduct, incrementProduct, itemCartEmpty, cartVisible, showCartFloat, subTotalCart, selectedCategory, visibleFilter, toggleFilterCategory, selectedSize, resetFilters, hiddenFilter, getFilterProducts
+            templateData, changeDiv, visible, selectedProduct, showSelectedProduct, cartItems, addToCart, objectsInCart, cleanCart, laravel, deleteItemCart, cancelPurchase, visibleButtons, discountProduct, incrementProduct, itemCartEmpty, cartVisible, showCartFloat, subTotalCart, selectedCategory, visibleFilter, toggleFilterCategory, selectedSize, resetFilters, hiddenFilter, filteredProducts, categoryProductCount, sizeProductCount, resetFilterSize
         };
     }
 }).mount('#app');

@@ -65,10 +65,10 @@
                         for="category" @click="toggleFilterCategory">Categories</button></li>
                 <!-- Filtro para las categorias de ropa -->
                 <li v-if="visibleFilter">
-                    <select v-model="selectedCategory" class="selectCategory">
-                        <option :value="null">Totes les categories</option>
+                    <select v-model="selectedCategory" class="selectCategory" @click="resetFilterSize()">
+                        <option :value="null" >Totes les categories</option>
                         <option v-for="category in templateData.categories" :key="category.id" :value="category.id">
-                            {{ category.category_id }} <!-- Aquí se muestra el nombre de las categorias -->
+                            {{ category.category_id }} ({{ categoryProductCount[category.id] || 0 }}) <!-- Aquí se muestra el nombre de las categorias -->
                         </option>
                     </select>
                 </li>
@@ -78,7 +78,7 @@
                     <select v-model="selectedSize" class="selectCategory">
                         <option :value="null">Totes les talles</option>
                         <option v-for="size in templateData.sizes" :key="size.id" :value="size.id">
-                            {{ size.size_id }} <!-- Aquí se muestra el nombre de las tallas -->
+                            {{ size.size_id }} ({{ sizeProductCount[size.id] || 0 }}) <!-- Aquí se muestra el nombre de las tallas -->
                         </option>
                     </select>
                 </li>
@@ -101,8 +101,8 @@
             <div class="articles">
                 <h1>Catàleg</h1>
 
-                <p v-if="getFilterProducts().length == 0">No hi ha stock</p>
-                <div :id="'item' + product.id" class="item" v-for="(product, index) in getFilterProducts()"
+                <p v-if="filteredProducts.length == 0">No hi ha stock</p>
+                <div :id="'item' + product.id" class="item" v-for="(product, index) in filteredProducts"
                     :key="product.id">
                     <img @click="showSelectedProduct(product), resetFilters(), hiddenFilter()"
                         :src="laravel.URL + '/img/' + product.image" alt="">

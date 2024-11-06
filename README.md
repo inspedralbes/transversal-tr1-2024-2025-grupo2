@@ -16,7 +16,7 @@
 * **TakeOutFit**: Una pàgina web que s'inspira en el disseny i funcionalitats de la web de Zara, però amb un enfocament en la recollida ràpida de roba. L'objectiu és oferir una experiència de compra més ràpida, optimitzant el procés des de la selecció del producte fins a la recollida.
 
 ## URL de Producció
-* Pots accedir a la pàgina web en producció des d'aquest enllaç: [URL producció](http://tr1g2.daw.inspedralbes.cat/transversal-tr1-2024-2025-grupo2_takeAway/web/)
+* Pots accedir a la pàgina web en producció des d'aquest enllaç: [URL producció](http://takeoutfit.daw.inspedralbes.cat/web/)
 
 ## Nom del Projecte
 * ### TakeOutFit

@@ -7,7 +7,7 @@
 * Actualment, estem estructurant la pàgina web i organitzant les diferents seccions per oferir una experiència d'usuari intuïtiva i ràpida.
 
 ## Integrants
-* Eduard Vilaseca
+* Eduard Vilaseca Vilà
 * Lucas Benitez
 * Aleiram Minaya
 * Brian Jaén

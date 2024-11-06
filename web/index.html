@@ -226,14 +226,12 @@
                         <p> {{ productsBuying.price}} EUR</p>
                     </div>
                 </div>
-            </div>
 
+            </div>
             <div class="buttons-buy-all-products">
-                <button @click="changeDiv('purchase-completed'),cleanCart()">Continuar</button>
+                <button @click="changeDiv('purchase-completed'), sendData(cartItems)">Continuar</button>
                 <button @click="changeDiv('store'), cancelPurchase()">Cancel·lar</button>
             </div>
-
-
 
         </div>
 
@@ -249,7 +247,7 @@
                 <p> {{ selectedProduct.size.size_id}}</p>
                 <p> {{ selectedProduct.price}} EUR</p>
                 <div class="info-buying-prod-btn">
-                    <button @click="changeDiv('purchase-completed'),deleteItemCart(selectedProduct)">Continue</button>
+                    <button @click="changeDiv('purchase-completed'), sendData(cartItems),deleteItemCart(selectedProduct)">Continue</button>
                     <button @click="changeDiv('store'), deleteItemCart(selectedProduct)">Cancel</button>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-import { getData, getCategories, getSizes } from "./communicationManager.js";
+import { getData, getCategories, getSizes, sendDataProducts } from "./communicationManager.js";
 import {
     createApp,
     reactive,
@@ -133,7 +133,6 @@ createApp({
                 const sizeMatch = !selectedSize.value || product.size_id === selectedSize.value;
                 return categoryMatch && sizeMatch;
             });
-            console.log("Filtado de productos", result);
             return result
         }
 
@@ -161,6 +160,47 @@ createApp({
             }
         }
 
+        function prepareObject(items) {
+            console.log("Objeto dentro de prepareObject", items);
+
+            if (!Array.isArray(items)) {
+                items = [items]
+                console.log("Dentro de la condicion si es un array", items);
+            }
+
+            // Usar map para crear un nuevo array con las modificaciones
+            const finalItems = items.map(item => {
+                const newItem = { ...item }
+                // delete newItem.id
+                delete newItem.price
+                delete newItem.image
+                delete newItem.description
+                delete newItem.category_id
+                delete newItem.category
+                delete newItem.size_id
+                delete newItem.size
+                delete newItem.updated_at
+                delete newItem.created_at
+                delete newItem.title
+                return newItem;
+            });
+
+            console.log("Objeto final en prepareObject", finalItems);
+            return finalItems;
+        }
+
+        function sendData(itemsBuy) {
+            console.log("Items dentro de send data", itemsBuy);
+
+            let finalItems = prepareObject(itemsBuy)
+            let products = {products: finalItems }      // Actualiza la orden con el precio total
+
+            console.log("Log de finalItems en sendData", products);
+            sendDataProducts(products)
+
+            cleanCart()
+        }
+
         onBeforeMount(async () => {
             try {
                 const [productsResult, categoriesResult, sizeResult] =
@@ -177,7 +217,7 @@ createApp({
         });
 
         return {
-            templateData, changeDiv, visible, selectedProduct, showSelectedProduct, cartItems, addToCart, objectsInCart, cleanCart, laravel, deleteItemCart, cancelPurchase, visibleButtons, discountProduct, incrementProduct, itemCartEmpty, cartVisible, showCartFloat, subTotalCart, selectedCategory, visibleFilter, toggleFilterCategory, selectedSize, resetFilters, hiddenFilter, getFilterProducts
+            templateData, changeDiv, visible, selectedProduct, showSelectedProduct, cartItems, addToCart, objectsInCart, cleanCart, laravel, deleteItemCart, cancelPurchase, visibleButtons, discountProduct, incrementProduct, itemCartEmpty, cartVisible, showCartFloat, subTotalCart, selectedCategory, visibleFilter, toggleFilterCategory, selectedSize, resetFilters, hiddenFilter, getFilterProducts, sendData
         };
     }
 }).mount('#app');

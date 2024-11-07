@@ -85,8 +85,11 @@
 
                 <!-- Reiniciar todos los filtros -->
                 <button v-if="visibleFilter" @click="resetFilters()" :value="null">Reiniciar filtres</button>
-                <li><button @click="changeDiv('cart'), resetFilters(), hiddenFilter()">Cistella ({{ cartItems.length
-                        }})</button></li>
+                <li><button @click="changeDiv('cart'), resetFilters(), hiddenFilter()">Cistella ({{ cartItems.length }})</button></li>
+
+                <!-- Barra del buscador -->
+                <input type="text" v-model="searchQuery" placeholder="Buscar productes..." @input="filterProductsBySearch" />
+               
             </ul>
 
         </div>

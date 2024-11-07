@@ -720,4 +720,148 @@ footer {
     cursor: pointer; 
 }
 
+.cart-product {
+  display: grid; 
+  grid-template-columns: 1fr 1fr 1fr; 
+  grid-template-rows: 1fr 1fr ; 
+  height: 100%;
+}
+
+.cart-image {
+  grid-column: 1 / 2; 
+  grid-row: span 2; 
+}
+
+.cart-info {
+  grid-column: 2 / 3; 
+  grid-row: 1; 
+  display: flex;
+  flex-direction: column; 
+  text-align: left; 
+}
+
+.cart-controls {
+  grid-column: 2 / 3; 
+  grid-row: 2; 
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  gap: 10px; 
+}
+
+.cart-icon {
+  grid-column: 3 / 4;
+  grid-row: span 2; 
+  display: flex;
+  justify-content: center;
+  border-top:none;
+  width: 100%;
+  cursor: pointer; 
+}
+
+.btn-options-buying {
+  display: flex;  
+  gap: 20px;  
+}
+
+.btn-options-buying button {
+  cursor: pointer; 
+  background-color: #42474e1e; 
+  border: none;
+}
+
+.btn-options-buying button:hover {
+  background-color: #ccc;
+}
+
+.container-buy-all-product { 
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  grid-gap: 10px; 
+  position: relative; 
+  height: 100%;
+}  
+
+.container-buy-all-product::after {
+  content: "";
+  position: absolute;
+  top: 20px; 
+  bottom: 20px; 
+  left: 50%;
+  border-right: 1px solid #ccc;
+  transform: translateX(-50%); 
+}
+
+.left-colum { 
+  grid-column: 1;
+  position: relative; 
+  z-index: 1; 
+  display: flex;
+  flex-direction: column;
+  height: 100%; 
+} 
+
+.left-colum-text { 
+  background-color: #bababa;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 10px;
+} 
+
+.container-card-product {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid #42474e1e;
+  width: 100%;
+}
+
+.img-prod-buying {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  max-width: 200px;
+} 
+
+.info-buying-prod {
+  display: flex;
+  justify-content: center;
+  text-align: left;
+}
+
+.right-colum { 
+  grid-column: 2;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+} 
+
+.contenido { 
+  display: flex; 
+  flex-direction: column; 
+  align-items: flex-start; 
+  gap: 10px; 
+  padding-left: 200px; 
+} 
+
+.buttons-buy-all-products { 
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+  padding-left: 190px;
+} 
+
+.buttons-buy-all-products button { 
+  flex-grow: 1;
+  background-color: #42474e1e;
+  border: none; 
+  cursor: pointer; 
+  width: 300px;
+}
+
+.buttons-buy-all-products button:hover { 
+  background-color: #ccc;
+}
+
 } 

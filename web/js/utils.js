@@ -228,8 +228,13 @@ createApp({
                 password: document.getElementById('reg-password').value
             });
         }
+
+        function redirectToCrud() {
+            window.location.href = 'http://127.0.0.1:8000/products';
+        }
+
         return {
-            templateData, changeDiv, visible, selectedProduct, showSelectedProduct, cartItems, addToCart, objectsInCart, cleanCart, laravel, deleteItemCart, cancelPurchase, visibleButtons, discountProduct, incrementProduct, itemCartEmpty, cartVisible, showCartFloat, subTotalCart, isMenuOpen, continuePurchase, showForm, submitForm, showLogin, showRegister, backToPurchaseForm, login, register, selectedCategory, visibleFilter, toggleFilterCategory, selectedSize, resetFilters, hiddenFilter, getFilterProducts
+            templateData, changeDiv, visible, selectedProduct, showSelectedProduct, cartItems, addToCart, objectsInCart, cleanCart, laravel, deleteItemCart, cancelPurchase, visibleButtons, discountProduct, incrementProduct, itemCartEmpty, cartVisible, showCartFloat, subTotalCart, isMenuOpen, continuePurchase, showForm, submitForm, showLogin, showRegister, backToPurchaseForm, login, register, selectedCategory, visibleFilter, toggleFilterCategory, selectedSize, resetFilters, hiddenFilter, getFilterProducts, redirectToCrud
         };
     }
 }).mount('#app');

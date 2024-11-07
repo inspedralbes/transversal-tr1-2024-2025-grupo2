@@ -2,7 +2,6 @@ import {
   getData,
   getCategories,
   getSizes,
-  sendDataProducts,
 } from "./communicationManager.js";
 
 import {
@@ -128,18 +127,22 @@ createApp({
 
     //Stripe
 
-    let okBuy = ref(false);
-
     async function handlePayment() {
       // Crear una sesión de pago en el servidor (necesitarás implementar esto en tu backend)
-      const itemsToSend = cartItems.map((item) => ({
-        name: item.title, // Cambiar `title` a `name`
+      const showStripeItems = cartItems.map((item) => ({
+        title: item.title, // Cambiar `title` a `name`
         price: parseFloat(item.price),
         quantity: item.quantity || 1,
       }));
 
-      console.log(itemsToSend);
-      
+      const items = cartItems.map((item) => ({
+        id: item.id,
+        quantity: item.quantity || 1,
+      }))
+
+      const itemsToSend = { products: showStripeItems, items: items }
+
+      console.log("ItemsToSend", itemsToSend);
 
       console.log("Cart items being sent:", cartItems);
 
@@ -148,13 +151,7 @@ createApp({
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          items: cartItems.map((item) => ({
-            name: item.title, // Cambiar `title` a `name`
-            price: parseFloat(item.price),
-            quantity: item.quantity || 1, // Asegurarse de tener una cantidad
-          })),
-        }),
+        body: JSON.stringify(itemsToSend),
       });
 
       console.log(response);
@@ -166,7 +163,7 @@ createApp({
 
       //const { id: sessionId } = await response.json(); // Asegúrate de que la respuesta tenga un id
       const { id: sessionId } = await response.json(); // Asegúrate de que la respuesta tenga un id
-      
+
       const stripe = Stripe(
         "pk_test_51QHYFvFLWcZi7m5YpsCaNI5INLqB7m6dnhpWfuOTYNL4VUJZi4KPu9aMJBnlCt2dJsBTlgm2TrDWam0jbGQQmxjh00QEwVpkLq"
       ); // Cambia la clave por la tuya
@@ -231,47 +228,6 @@ createApp({
       } else {
         this.visibleButtons = "";
       }
-    }
-
-    function prepareObject(items) {
-      console.log("Objeto dentro de prepareObject", items);
-
-      if (!Array.isArray(items)) {
-        items = [items];
-        console.log("Dentro de la condicion si es un array", items);
-      }
-
-      // Usar map para crear un nuevo array con las modificaciones
-      const finalItems = items.map((item) => {
-        const newItem = { ...item };
-        // delete newItem.id
-        delete newItem.price;
-        delete newItem.image;
-        delete newItem.description;
-        delete newItem.category_id;
-        delete newItem.category;
-        delete newItem.size_id;
-        delete newItem.size;
-        delete newItem.updated_at;
-        delete newItem.created_at;
-        delete newItem.title;
-        return newItem;
-      });
-
-      console.log("Objeto final en prepareObject", finalItems);
-      return finalItems;
-    }
-
-    function sendData(itemsBuy) {
-      console.log("Items dentro de send data", itemsBuy);
-
-      let finalItems = prepareObject(itemsBuy);
-      let products = { products: finalItems }; // Actualiza la orden con el precio total
-
-      console.log("Log de finalItems en sendData", products);
-      sendDataProducts(products);
-
-      cleanCart();
     }
 
     onBeforeMount(async () => {
@@ -380,9 +336,7 @@ createApp({
       resetFilters,
       hiddenFilter,
       getFilterProducts,
-      sendData,
       handlePayment,
-      okBuy,
     };
   },
 }).mount("#app");

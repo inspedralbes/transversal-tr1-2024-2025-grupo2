@@ -19,25 +19,23 @@ class PaymentController extends Controller
             // Crea una sesión de pago con los datos del carrito que se envían desde el frontend
             $session = Session::create([
                 'payment_method_types' => ['card'],
-                'line_items' => array_map(function ($item) {
+                'line_items' => array_map(function ($products) {
                     return [
                         'price_data' => [
-                            'currency' => 'eur', // Cambia la moneda según tus necesidades
+                            'currency' => 'eur', 
                             'product_data' => [
-                                'name' => $item['name'], // Nombre del producto
+                                'name' => $products['title'], // Nombre del producto
                             ],
-                            'unit_amount' => $item['price'] * 100, // Precio en céntimos
+                            'unit_amount' => $products['price'] * 100, // Precio en céntimos
                         ],
-                        'quantity' => $item['quantity'],
+                        'quantity' => $products['quantity'],
                     ];
-                }, $request->items),
+                }, $request->products),
                 'mode' => 'payment',
                 'success_url' => route('success')."?data=" . $data, // URL a la que redirigir después del pago
                 'cancel_url' => route('cancel'), // URL a la que redirigir si el usuario cancela
-            ]);      
-
-            //session(['idCarroCompra' => '15320']);
-
+            ]);    
+            
             // Retorna la respuesta en JSON con el ID de la sesión
             return response()->json(['id' => $session->id ]);
         } catch (\Exception $e) {

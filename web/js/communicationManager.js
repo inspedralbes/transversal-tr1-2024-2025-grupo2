@@ -29,24 +29,3 @@ export async function getSizes() {
   return json;
 }
 
-export async function sendDataProducts(dataProducts) {
-  console.log("Payload a enviar:", JSON.stringify(dataProducts));
-
-  const URL = `http://localhost:8000/api/ordersApi`;
-  try {
-    const response = await fetch(URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(dataProducts)
-    });
-
-    const responseData = await response.json(); 
-    console.log("Respuesta del servidor:", responseData);
-
-  } catch (error) {
-    console.error("Error al enviar los datos de los productos:", error);
-  }
-}
-

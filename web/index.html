@@ -129,7 +129,7 @@
                 <ul class="ul_links">
                     <li><button @click="changeDiv('store'), isMenuOpen = false">Home</button></li>
                     <li><button
-                            :disabled="visible == 'cart' || visible == 'productSelec' || visible == 'buyAllProducts' || visible == 'purchase-completed' || visible == 'onlyOneBuy'"
+                            :disabled="visible == 'cart' || visible == 'productSelec' || visible == 'buyAllProducts' || visible == 'purchase-completed' || visible == 'onlyOneBuy' || visible == 'purchase-form'"
                             for="category" @click="toggleFilterCategory">Categories</button></li>
                     <!-- Filtro para las categorias de ropa -->
                     <li v-if="visibleFilter">
@@ -270,11 +270,7 @@
             <div v-if="cartItems.length > 0" class="btn-options-buying">
                 <button @click="cleanCart()">Esborrar cistella</button>
                 <button @click="changeDiv('buyAllProducts')">Comprar</button>
-                <!--Stripe-->
-                <button @click="handlePayment">Pagar</button>
                 
-                
-
             </div>
 
         </div>
@@ -396,10 +392,8 @@
         </div>
 
         <div v-if="visible === 'purchase-completed'" class="mitssage-final">
-            <h1>Compra realitzada</h1>
+            <h1>Passant a la passarel·la de compra...</h1>
         </div>
-
-
 
     <!------------------ FOOTER ------------>
 

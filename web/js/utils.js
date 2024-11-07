@@ -6,6 +6,7 @@ import {
   onBeforeMount,
   computed,
   watchEffect,
+  watch
 } from "https://unpkg.com/vue@3/dist/vue.esm-browser.js";
 
 createApp({
@@ -183,11 +184,15 @@ createApp({
     const filteredProducts = computed(() => {
       let result = getFilterProducts();
       //aqui aplicamos el filtro de busqueda en base a searchQuery
+
       if (searchQuery.value) {
+        selectedCategory.value = null
+        selectedSize.value = null
         result = result.filter((product) =>
           product.title.toLowerCase().includes(searchQuery.value.toLowerCase())
         );
       }
+
       return result;
     });
 
@@ -203,6 +208,7 @@ createApp({
     function resetFilters() {
       selectedCategory.value = null;
       selectedSize.value = null;
+      searchQuery.value = null
     }
 
     function resetFilterSize() {
@@ -247,6 +253,13 @@ createApp({
     watchEffect(() => {
       updateCategoryFilter();
     });
+
+    watch([selectedCategory, selectedSize], ([newCategory, newSize]) => {
+      if (newCategory || newSize) {
+        searchQuery.value = ''
+      }
+    });
+    
 
     return {
       templateData,

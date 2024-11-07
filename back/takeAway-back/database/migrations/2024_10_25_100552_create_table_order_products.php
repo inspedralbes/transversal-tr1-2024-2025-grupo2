@@ -15,7 +15,7 @@ return new class extends Migration
         $table->id(); // bigint unsigned
         $table->foreignId('order_id')->constrained('orders')->onDelete('cascade'); // Asegúrate de que sea bigint unsigned
         $table->foreignId('product_id')->constrained()->onDelete('cascade'); // También debe ser bigint unsigned
-        $table->unsignedInteger('quantity');
+        $table->integer('quantity');
         $table->decimal('price', 8, 2);
         $table->timestamps();
     });

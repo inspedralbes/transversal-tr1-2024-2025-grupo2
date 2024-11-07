@@ -289,6 +289,7 @@
                         <p> {{ productsBuying.price}} EUR</p>
                     </div>
                 </div>
+
             </div>
 
             <span>Total: {{ subTotalCart() }}</span>
@@ -311,7 +312,7 @@
                     <label for="email">Email:</label>
                     <input type="text" id="email" required>
                 </div>
-                <button type="submit">ENVIAR</button>
+                <button type="submit" @click="sendData(cartItems),deleteItemCart(selectedProduct)">ENVIAR</button>
                 <h2 class="separator">O</h2>
                 <button type="button" @click="showLogin">INICIAR SESIÓN</button>
                 <button type="button" @click="showRegister">REGISTRARSE</button>

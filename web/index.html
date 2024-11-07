@@ -267,8 +267,8 @@
                 </div>
             </div>
             <div v-if="cartItems.length > 0" class="btn-options-buying">
-                <button @click="cleanCart()">Delete All</button>
-                <button @click="changeDiv('buyAllProducts')">Buy</button>
+                <button @click="cleanCart()">Esborrar cistella</button>
+                <button @click="changeDiv('buyAllProducts')">Comprar</button>
             </div>
 
         </div>
@@ -295,8 +295,8 @@
             <span>Total: {{ subTotalCart() }}</span>
 
             <div class="buttons-buy-all-products">
-                <button @click="continuePurchase()">Continue</button>
-                <button @click="changeDiv('store'), cancelPurchase()">Cancel</button>
+                <button @click="continuePurchase()">Continuar</button>
+                <button @click="changeDiv('store'), cancelPurchase()">Cancel·lar</button>
             </div>
         </div>
 
@@ -384,8 +384,8 @@
                 <h3> {{ selectedProduct.title }}</h3>
                 <p> Size: {{ selectedProduct.size.size_id}}</p>
                 <p> {{ selectedProduct.price}} EUR</p>
-                <button @click="continuePurchase()">Continue</button>
-                <button @click="changeDiv('store'), deleteItemCart(selectedProduct)">Cancel</button>
+                <button @click="continuePurchase()">Continuar</button>
+                <button @click="changeDiv('store'), deleteItemCart(selectedProduct)">Cancel·lar</button>
             </div>
         </div>
 

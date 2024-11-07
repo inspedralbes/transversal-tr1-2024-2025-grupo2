@@ -43,16 +43,16 @@ class ImportProducts extends Command
 
         // Inserta categorías solo si no existen
         $categories = [
-            ['category_id' => 'samarretes'],
-            ['category_id' => 'dessuadores'],
-            ['category_id' => 'pantalons'],
-            ['category_id' => 'vestits'],
-            ['category_id' => 'jaquetes'],
-            ['category_id' => 'faldilles'],
-            ['category_id' => 'polos'],
-            ['category_id' => 'camises'],
-            ['category_id' => 'bruses'],
-            ['category_id' => 'jerseis'],
+            ['category_id' => 'Samarretes'],
+            ['category_id' => 'Dessuadores'],
+            ['category_id' => 'Pantalons'],
+            ['category_id' => 'Vestits'],
+            ['category_id' => 'Jaquetes'],
+            ['category_id' => 'Faldilles'],
+            ['category_id' => 'Polos'],
+            ['category_id' => 'Camises'],
+            ['category_id' => 'Bruses'],
+            ['category_id' => 'Jerseis'],
         ];
 
         foreach ($categories as $category) {

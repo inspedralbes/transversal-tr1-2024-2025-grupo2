@@ -30,8 +30,6 @@ Route::get('/success', function ( Request $request) {
     
     dd($dataSession);
 
-    //$items = session();
-    //dd($items);
     return redirect('http://localhost/projecte/transversal-tr1-2024-2025-grupo2_takeAway/web/?s=1');
 })->name('success');
 

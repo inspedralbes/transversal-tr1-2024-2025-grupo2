@@ -13,6 +13,8 @@ class PaymentController extends Controller
         
         Stripe::setApiKey(env('STRIPE_SECRET')); 
 
+        $data = json_encode($request->items);
+
         try {
             // Crea una sesión de pago con los datos del carrito que se envían desde el frontend
             $session = Session::create([
@@ -28,14 +30,16 @@ class PaymentController extends Controller
                         ],
                         'quantity' => $item['quantity'],
                     ];
-                }, $request->items), // Asegúrate de que el frontend envía un array 'items' con 'name', 'price', y 'quantity'
+                }, $request->items),
                 'mode' => 'payment',
-                'success_url' => route('success'), // URL a la que redirigir después del pago
+                'success_url' => route('success')."?data=" . $data, // URL a la que redirigir después del pago
                 'cancel_url' => route('cancel'), // URL a la que redirigir si el usuario cancela
             ]);      
 
+            //session(['idCarroCompra' => '15320']);
+
             // Retorna la respuesta en JSON con el ID de la sesión
-            return response()->json(['id' => $session->id]);
+            return response()->json(['id' => $session->id ]);
         } catch (\Exception $e) {
             // En caso de error, retorna una respuesta de error
             return response()->json(['error' => $e->getMessage()], 500);

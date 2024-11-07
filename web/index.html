@@ -25,7 +25,7 @@
                 <div class="content">
                     <h1 class="title">TakeOutFits</h1>
                     <p>La moda que va amb tu, ¡directe a la teva porta!</p>
-                    <button class="btn" @click="changeDiv('store')">Explorar Coleccións</button>
+                    <button class="btn" @click="changeDiv('store'), resetFilters()" >Explorar Coleccións</button>
                 </div>
             </header>
 
@@ -133,10 +133,10 @@
                             for="category" @click="toggleFilterCategory">Categories</button></li>
                     <!-- Filtro para las categorias de ropa -->
                     <li v-if="visibleFilter">
-                        <select v-model="selectedCategory" class="selectCategory">
+                        <select v-model="selectedCategory" class="selectCategory" @click="resetFilterSize()">
                             <option :value="null">Totes les categories</option>
                             <option v-for="category in templateData.categories" :key="category.id" :value="category.id">
-                                {{ category.category_id }} <!-- Aquí se muestra el nombre de las categorias -->
+                                {{ category.category_id }} ({{ categoryProductCount[category.id] || 0 }}) <!-- Aquí se muestra el nombre de las categorias -->
                             </option>
                         </select>
                     </li>
@@ -146,7 +146,7 @@
                         <select v-model="selectedSize" class="selectCategory">
                             <option :value="null">Totes les talles</option>
                             <option v-for="size in templateData.sizes" :key="size.id" :value="size.id">
-                                {{ size.size_id }} <!-- Aquí se muestra el nombre de las tallas -->
+                                {{ size.size_id }} ({{ sizeProductCount[size.id] || 0 }}) <!-- Aquí se muestra el nombre de las tallas -->
                             </option>
                         </select>
                     </li>
@@ -156,6 +156,8 @@
                     <li><button @click="changeDiv('cart'), resetFilters(), hiddenFilter(), isMenuOpen = false">Cistella ({{ cartItems.length}})
                         </button>
                     </li>
+
+                    <input type="text" v-model="searchQuery" placeholder="Buscar productes..." @input="filterProductsBySearch" />
                 </ul>
             </nav>
         </div>
@@ -170,10 +172,13 @@
 
                 <h1>Catàleg</h1>
 
-                <div :id="'item' + product.id" class="item" v-for="(product, index) in templateData.products">
-                    <img @click="showSelectedProduct(product)" :src="laravel.URL + '/img/' + product.image" alt="">
-                    <label class="title-product" :for="'item' + product.id">{{ product.title }}</label>
-                    <label :for="'item' + product.id" class="price-product"> {{ product.price}} EUR</label>
+                <p v-if="filteredProducts.length == 0">No hi ha stock</p>
+                <div :id="'item' + product.id" class="item" v-for="(product, index) in filteredProducts"
+                    :key="product.id">
+                    <img @click="showSelectedProduct(product), resetFilters(), hiddenFilter()"
+                        :src="laravel.URL + '/img/' + product.image" alt="">
+                    <label :for="'item' + product.id">{{ product.title }}</label>
+                    <label :for="'item' + product.id"> {{ product.price}} EUR</label>
                     <button type="button" :id="index" @click="addToCart(product), showCartFloat()">+</button>
                 </div>
 

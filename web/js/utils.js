@@ -8,8 +8,10 @@ import {
   createApp,
   reactive,
   ref,
+  computed,
   onBeforeMount,
   watch,
+  watchEffect
 } from "https://unpkg.com/vue@3/dist/vue.esm-browser.js";
 
 createApp({
@@ -27,6 +29,7 @@ createApp({
     let cartVisible = ref(false);
     let showForm = ref(false);
     const isMenuOpen = ref(false);
+    let searchQuery = ref("");
 
     watch(isMenuOpen, (newValue) => {
       if (newValue) {
@@ -192,13 +195,14 @@ createApp({
       this.showCartFloat();
     }
 
+    // Filtrar productos por categoría
     function getFilterProducts() {
       const result = templateData.products.filter((product) => {
-        // Condición para la categoría (solo si hay una categoría seleccionada)
+        // Condición para la categoría
         const categoryMatch =
           !selectedCategory.value ||
           product.category_id === selectedCategory.value;
-        // Condición para la talla (solo si hay una talla seleccionada)
+        // Condición para la talla
         const sizeMatch =
           !selectedSize.value || product.size_id === selectedSize.value;
         return categoryMatch && sizeMatch;
@@ -206,8 +210,76 @@ createApp({
       return result;
     }
 
+    // Función para obtener el número de productos por categoría
+    function categoryProduct() {
+      const counts = {};
+      templateData.products.forEach((product) => {
+        counts[product.category_id] = (counts[product.category_id] || 0) + 1;
+      });
+      return counts;
+    }
+
+    // Contar las tallas disponibles en los productos de la categoría seleccionada
+    function sizeProduct() {
+      const counts = {};
+      let filteredProducts = [];
+
+      // Si no se ha seleccionado categoría, contamos las tallas de todos los productos
+      if (selectedCategory.value === null) {
+        filteredProducts = templateData.products;
+      } else {
+        filteredProducts = filteredCategoryProducts.value;
+      }
+
+      filteredProducts.forEach((product) => {
+        counts[product.size_id] = (counts[product.size_id] || 0) + 1;
+      });
+      return counts;
+    }
+
+    // Variable reactiva para mantener la copia estática de productos filtrados por categoría
+    const filteredCategoryProducts = ref([]);
+
+    // Esta función actualizará la copia de los productos filtrados por categoría
+    function updateCategoryFilter() {
+      if (selectedCategory.value !== null) {
+        filteredCategoryProducts.value = templateData.products.filter(
+          (product) => product.category_id === selectedCategory.value
+        );
+      }
+    }
+
+    const filteredProducts = computed(() => {
+      let result = getFilterProducts();
+      //aqui aplicamos el filtro de busqueda en base a searchQuery
+
+      if (searchQuery.value) {
+        selectedCategory.value = null
+        selectedSize.value = null
+        result = result.filter((product) =>
+          product.title.toLowerCase().includes(searchQuery.value.toLowerCase())
+        );
+      }
+
+      return result;
+    });
+
+
+    //esta funcion actualiza searchQuery que automaticamente reactiva a filteredProducts
+    function filteredProductsBySearch() {
+      searchQuery.value = searchQuery.value.trim();
+    }
+
+    const categoryProductCount = computed(() => categoryProduct());
+    const sizeProductCount = computed(() => sizeProduct());
+
     function resetFilters() {
       selectedCategory.value = null;
+      selectedSize.value = null;
+      searchQuery.value = null
+    }
+
+    function resetFilterSize() {
       selectedSize.value = null;
     }
 
@@ -244,6 +316,18 @@ createApp({
         console.error("Error fetching data:", error);
       }
     });
+
+    // Detectar cambios en la categoría seleccionada
+    watchEffect(() => {
+      updateCategoryFilter();
+    });
+
+    watch([selectedCategory, selectedSize], ([newCategory, newSize]) => {
+      if (newCategory || newSize) {
+        searchQuery.value = ''
+      }
+    });
+    
 
     function continuePurchase() {
       visible.value = "purchase-form"; // Muestra el formulario al continuar
@@ -335,8 +419,13 @@ createApp({
       selectedSize,
       resetFilters,
       hiddenFilter,
-      getFilterProducts,
+      filteredProducts,
       handlePayment,
+      searchQuery,
+      categoryProductCount,
+      sizeProductCount,
+      filteredProductsBySearch,
+      resetFilterSize
     };
   },
 }).mount("#app");

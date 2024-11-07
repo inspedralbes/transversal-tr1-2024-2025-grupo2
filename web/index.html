@@ -50,7 +50,21 @@
                         <p>Excepte dies festius</p>
                     </div>
                 </div>
+                <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasHorario"
+                    aria-labelledby="offcanvasHorarioLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasHorarioLabel">Horari d'Atencion</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <p>De dilluns a divendres obert</p>
+                        <p>de 10:00 a 21:00</p>
+                        <p>Excepte dies festius</p>
+                    </div>
+                </div>
 
+                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasUbicacion" aria-controls="offcanvasUbicacion">UBICACIÓ</button>
                 <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasUbicacion" aria-controls="offcanvasUbicacion">UBICACIÓ</button>
 
@@ -65,10 +79,33 @@
                         <p>08034 - Barcelona</p>
                     </div>
                 </div>
+                <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasUbicacion"
+                    aria-labelledby="offcanvasUbicacionLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasUbicacionLabel">Direcció</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <p>Av. d'Espligues,40,Les Corts</p>
+                        <p>08034 - Barcelona</p>
+                    </div>
+                </div>
 
                 <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasContacto" aria-controls="offcanvasContacto">CONTACTE</button>
+                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasContacto" aria-controls="offcanvasContacto">CONTACTE</button>
 
+                <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasContacto"
+                    aria-labelledby="offcanvasContactoLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasContactoLabel">Truca</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <p>+34 123 456 789</p>
+                    </div>
+                </div>
                 <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasContacto"
                     aria-labelledby="offcanvasContactoLabel">
                     <div class="offcanvas-header">
@@ -133,6 +170,7 @@
                             </option>
                         </select>
                     </li>
+
 
                     <!-- Filtro para las tallas de ropa -->
                     <li v-if="visibleFilter">
@@ -280,25 +318,35 @@
         <!-- BUY ALL PRODUCTS CART-->
 
         <div v-if="visible === 'buyAllProducts'" class="container-buy-all-product">
-            <div v-for="(productsBuying, index) in cartItems">
-                <div class="container-card-product">
-                    <div>
-                        <img class="img-prod-buying" :src="laravel.URL + '/img/' + productsBuying.image" alt=""
-                            width="200px">
-                    </div>
-                    <div class="info-buying-prod">
-                        <h3> {{ productsBuying.title }}</h3>
-                        <p> Size: {{ productsBuying.size.size_id}}</p>
-                        <p> {{ productsBuying.price}} EUR</p>
+            <div class="left-colum">
+                <div class="left-colum-text">
+                    <h2>Entrega estandar gratuita en dias laborales.</h2>
+                </div>
+                <div v-for="(productsBuying, index) in cartItems" class="container-informacio">
+                    <div class="container-card-product">
+                        <div>
+                            <img class="img-prod-buying" :src="laravel.URL + '/img/' + productsBuying.image" alt=""
+                                width="200px">
+                        </div>
+                        <div class="info-buying-prod">
+                            <h3> {{ productsBuying.title }}</h3>
+                            <p> Size: {{ productsBuying.size.size_id}}</p>
+                            <p> {{ productsBuying.price}} EUR</p>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <span>Total: {{ subTotalCart() }}</span>
-
-            <div class="buttons-buy-all-products">
-                <button @click="continuePurchase()">Continue</button>
-                <button @click="changeDiv('store'), cancelPurchase()">Cancel</button>
+            <div class="right-colum">
+                <div class="contenido">
+                    <span>RESUMEN</span>
+                    <span>Subtotal {{ subTotalCart() }}</span>
+                    <span>Entrega Estandar GRATIS</span>
+                    <span>Total del pedido {{ subTotalCart() }}</span>
+                </div>
+                <div class="buttons-buy-all-products">
+                    <button @click="continuePurchase()">Continue</button>
+                    <button @click="changeDiv('store'), cancelPurchase()">Cancel</button>
+                </div>
             </div>
         </div>
 
@@ -398,12 +446,13 @@
 
         <!------------------ FOOTER ------------>
 
-        <footer>
-            <div class="footer-landing-page">
-                <p class="footer-text-bottom">&copy; 2024 TakeOutFit. Tots els drets reservats.</p>
-            </div>
-        </footer>
-    </div>
+    <footer>
+        <div class="footer-landing-page">
+            <p class="footer-text-bottom">&copy; 2024 TakeOutFit. Tots els drets reservats.</p>
+        </div>
+    </footer>
+
+</div>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script type="module" src="./js/utils.js"></script>

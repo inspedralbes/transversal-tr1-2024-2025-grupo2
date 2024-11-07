@@ -27,6 +27,7 @@ Route::post('/create-payment', [PaymentController::class, 'createPayment']);
 Route::get('/success', function ( Request $request) {
 
     $dataSession = $request->get("data");
+    Route::post('/ordersApi', [OrderApiController::class, 'store']);
     
     dd($dataSession);
 
@@ -37,4 +38,3 @@ Route::get('/cancel', function () {
     return redirect('http://localhost/projecte/transversal-tr1-2024-2025-grupo2_takeAway/web/?s=0');
 })->name('cancel');
 
-Route::post('/ordersApi', [OrderApiController::class, 'store']);

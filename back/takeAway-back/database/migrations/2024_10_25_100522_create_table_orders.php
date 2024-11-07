@@ -14,7 +14,7 @@ return new class extends Migration
     Schema::create('orders', function (Blueprint $table) {
         $table->id(); // bigint unsigned
         $table->decimal('finalprice', 8, 2)->nullable();
-        $table->integer('quantity')->nullable()->change();
+        $table->integer('quantity');
         $table->timestamps();
     });
 }

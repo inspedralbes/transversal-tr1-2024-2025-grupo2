@@ -117,6 +117,19 @@ createApp({
       if (productIndex !== -1) {
         console.log("Producto encontrado en el índice:", productIndex);
         cartItems.splice(productIndex, 1);
+        Swal.fire({
+          title: '',
+          text: `El producte s'ha eliminat de la cistella`,
+          timer: 3000,
+          icon: 'error',
+          showConfirmButton: false,
+          position: 'bottom-end',
+          toast: true,
+          background: '#333',
+          color: '#fff',
+          timerProgressBar: true,
+          width: '400px' 
+        })
         console.log("Producto eliminado correctamente.");
       } else {
         console.log("Producto no encontrado en el carrito.");
@@ -193,6 +206,19 @@ createApp({
         });
       }
       this.showCartFloat();
+      Swal.fire({
+        title: '',
+        text: `El producte s'ha afegit a la cistella`,
+        timer: 3000,
+        icon: 'success',
+        showConfirmButton: false,
+        position: 'bottom-end',
+        toast: true,
+        background: '#333',
+        color: '#fff',
+        timerProgressBar: true,
+        width: '400px' 
+      })
     }
 
     // Filtrar productos por categoría
@@ -327,7 +353,7 @@ createApp({
         searchQuery.value = ''
       }
     });
-    
+
 
     function continuePurchase() {
       visible.value = "purchase-form"; // Muestra el formulario al continuar
@@ -340,7 +366,7 @@ createApp({
     }
 
     function redirectToCrud() {
-        window.location.href = 'http://127.0.0.1:8000/products'
+      window.location.href = 'http://127.0.0.1:8000/products'
     }
 
     // FUNCIONES DE LOGIN Y REGISTER
@@ -364,60 +390,97 @@ createApp({
       });
     }
 
-        function register() {
-            console.log('Registrar con:', {
-                name: document.getElementById('reg-name').value,
-                surname: document.getElementById('reg-surname').value,
-                phone: document.getElementById('reg-phone').value,
-                email: document.getElementById('reg-email').value,
-                password: document.getElementById('reg-password').value
-            });
-        }
-        return {
-            templateData,
-changeDiv,
-visible,
-selectedProduct,
-showSelectedProduct,
-cartItems,
-addToCart,
-objectsInCart,
-cleanCart,
-laravel,
-deleteItemCart,
-cancelPurchase,
-visibleButtons,
-discountProduct,
-incrementProduct,
-itemCartEmpty,
-cartVisible,
-showCartFloat,
-subTotalCart,
-isMenuOpen,
-continuePurchase,
-showForm,
-submitForm,
-showLogin,
-showRegister,
-backToPurchaseForm,
-login,
-register,
-selectedCategory,
-visibleFilter,
-toggleFilterCategory,
-selectedSize,
-resetFilters,
-hiddenFilter,
-getFilterProducts,    
-filteredProducts,     
-handlePayment,        
-searchQuery,          
-categoryProductCount, 
-sizeProductCount,     
-filteredProductsBySearch, 
-resetFilterSize,
-redirectToCrud     
-
-        };
+    function register() {
+      console.log('Registrar con:', {
+        name: document.getElementById('reg-name').value,
+        surname: document.getElementById('reg-surname').value,
+        phone: document.getElementById('reg-phone').value,
+        email: document.getElementById('reg-email').value,
+        password: document.getElementById('reg-password').value
+      });
     }
+
+    function alertPayment() {
+      const URL = window.location.search;
+      const paramURL = URL.split("=");
+
+      if (paramURL[1] == 0) {
+        Swal.fire({
+          title: '',
+          text: 'La compra ha sigut cancel·lada',
+          timer: 3000,
+          icon: 'error',
+          showConfirmButton: false,
+          position: 'top-end',
+          toast: true,
+          background: '#333',
+          color: '#fff',
+          timerProgressBar: true,
+          width: '300px' 
+        })
+      } else if (paramURL[1] == 1) {
+        Swal.fire({
+          title: '',
+          text: 'La compra ha sigut realitzada',
+          timer: 3000,
+          icon: 'success',
+          showConfirmButton: false,
+          position: 'top-end',
+          toast: true,
+          background: '#333',
+          color: '#fff',
+          timerProgressBar: true,
+          width: '300px' 
+        })
+      }
+    }
+
+    alertPayment()
+    return {
+      templateData,
+      changeDiv,
+      visible,
+      selectedProduct,
+      showSelectedProduct,
+      cartItems,
+      addToCart,
+      objectsInCart,
+      cleanCart,
+      laravel,
+      deleteItemCart,
+      cancelPurchase,
+      visibleButtons,
+      discountProduct,
+      incrementProduct,
+      itemCartEmpty,
+      cartVisible,
+      showCartFloat,
+      subTotalCart,
+      isMenuOpen,
+      continuePurchase,
+      showForm,
+      submitForm,
+      showLogin,
+      showRegister,
+      backToPurchaseForm,
+      login,
+      register,
+      selectedCategory,
+      visibleFilter,
+      toggleFilterCategory,
+      selectedSize,
+      resetFilters,
+      hiddenFilter,
+      getFilterProducts,
+      filteredProducts,
+      handlePayment,
+      searchQuery,
+      categoryProductCount,
+      sizeProductCount,
+      filteredProductsBySearch,
+      resetFilterSize,
+      redirectToCrud
+
+    };
+  }
 }).mount('#app');

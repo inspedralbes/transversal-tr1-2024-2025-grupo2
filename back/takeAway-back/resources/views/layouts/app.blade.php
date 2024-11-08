@@ -18,6 +18,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('orders.index') }}">Comandas</a>
                     </li>
+                    <li>
+                        <a href="{{ env('BASE_URL') }}" class="nav-link">Tornar a la botiga</a>
+                    </li>
                 </ul>
             </nav>
         </div>

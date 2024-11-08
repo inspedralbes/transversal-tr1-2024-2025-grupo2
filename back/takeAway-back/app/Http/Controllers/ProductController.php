@@ -8,20 +8,30 @@ use App\Models\Category;
 use App\Models\Size;
 
 class ProductController extends Controller
-{   
+{
 
     public function index()
     {
-        $products = Product::all(); 
+        $products = Product::all();
         return view('products.index', compact('products'));
     }
+
+    //funció per buscar productes
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+        $products = Product::where('title', 'LIKE', '%' . $query . '%')->get();
+    
+        return response()->json($products);
+    }
+    
 
 
     // Mostra el formulari para crear un nou producte
     public function create()
     {
-        $categories = Category::all(); 
-        $sizes = Size::all(); 
+        $categories = Category::all();
+        $sizes = Size::all();
 
         return view('products.create', compact('categories', 'sizes'));
     }
@@ -35,13 +45,13 @@ class ProductController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'price' => 'required|numeric',
-            'image' => 'required|string|max:255', 
+            'image' => 'required|string|max:255',
             'category_id' => 'required|exists:categories,id',
             'size_id' => 'required|exists:sizes,id',
         ]);
 
         // Crear el producte
-        Product::create($request->all()); 
+        Product::create($request->all());
 
         return redirect()->route('products.index')->with('success', 'Producto creado exitosamente.');
     }
@@ -50,7 +60,7 @@ class ProductController extends Controller
     // Mostrar un producto específic
     public function show($id)
     {
-        $product = Product::findOrFail($id); 
+        $product = Product::findOrFail($id);
         return view('products.show', ['product' => $product]); // Vista per mostrar el producte
     }
 
@@ -58,7 +68,7 @@ class ProductController extends Controller
     // Mostrar el formulari per editar un producte
     public function edit($id)
     {
-        $product = Product::findOrFail($id); 
+        $product = Product::findOrFail($id);
         $categories = Category::all();
         $sizes = Size::all();
 
@@ -90,15 +100,14 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $product = Product::findOrFail($id);
-        $product->delete(); 
+        $product->delete();
 
         return redirect()->route('products.index')->with('success', 'Producto eliminado exitosamente.');
     }
 
     public function getProducts() // funcion que devuelve los productos
     {
-        $response = Product::with('size','category')->get();
+        $response = Product::with('size', 'category')->get();
         return response()->json($response);
     }
-
 };

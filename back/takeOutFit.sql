@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 28, 2024 at 08:15 PM
+-- Generation Time: Nov 08, 2024 at 01:05 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `el_teu_nom_de_la_base_de_dades`
+-- Database: `el_teu_nom_base_dades`
 --
 
 -- --------------------------------------------------------
@@ -63,16 +63,16 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `category_id`, `created_at`, `updated_at`) VALUES
-(1, 'samarretes', NULL, NULL),
-(2, 'dessuadores', NULL, NULL),
-(3, 'pantalons', NULL, NULL),
-(4, 'vestits', NULL, NULL),
-(5, 'jaquetes', NULL, NULL),
-(6, 'faldilles', NULL, NULL),
-(7, 'polos', NULL, NULL),
-(8, 'camises', NULL, NULL),
-(9, 'bruses', NULL, NULL),
-(10, 'jerseis', NULL, NULL);
+(1, 'Samarretes', NULL, NULL),
+(2, 'Dessuadores', NULL, NULL),
+(3, 'Pantalons', NULL, NULL),
+(4, 'Vestits', NULL, NULL),
+(5, 'Jaquetes', NULL, NULL),
+(6, 'Faldilles', NULL, NULL),
+(7, 'Polos', NULL, NULL),
+(8, 'Camises', NULL, NULL),
+(9, 'Bruses', NULL, NULL),
+(10, 'Jerseis', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -126,14 +126,14 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(33, '0001_01_01_000000_create_users_table', 1),
-(34, '0001_01_01_000001_create_cache_table', 1),
-(35, '0001_01_01_000002_create_jobs_table', 1),
-(36, '2024_10_24_062434_create_table_sizes', 1),
-(37, '2024_10_24_062506_create_table_categories', 1),
-(38, '2024_10_24_062524_create_table_products', 1),
-(39, '2024_10_25_100522_create_table_orders', 1),
-(40, '2024_10_25_100552_create_table_order_products', 1);
+(105, '0001_01_01_000000_create_users_table', 1),
+(106, '0001_01_01_000001_create_cache_table', 1),
+(107, '0001_01_01_000002_create_jobs_table', 1),
+(108, '2024_10_24_062434_create_table_sizes', 1),
+(109, '2024_10_24_062506_create_table_categories', 1),
+(110, '2024_10_24_062524_create_table_products', 1),
+(111, '2024_10_25_100522_create_table_orders', 1),
+(112, '2024_10_25_100552_create_table_order_products', 1);
 
 -- --------------------------------------------------------
 
@@ -144,6 +144,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 CREATE TABLE `orders` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `finalprice` decimal(8,2) DEFAULT NULL,
+  `quantity` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -158,7 +159,7 @@ CREATE TABLE `order_products` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `order_id` bigint(20) UNSIGNED NOT NULL,
   `product_id` bigint(20) UNSIGNED NOT NULL,
-  `quantity` int(10) UNSIGNED NOT NULL,
+  `quantity` int(11) NOT NULL,
   `price` decimal(8,2) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -199,26 +200,46 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `title`, `description`, `price`, `image`, `category_id`, `size_id`, `created_at`, `updated_at`) VALUES
-(1, 'Samarreta Bàsica', 'Samarreta de cotó 100% en diversos colors.', 12.99, 'modelSamarretaBasica.jpg', 1, 2, '2024-10-28 10:23:55', '2024-10-28 10:23:55'),
-(2, 'Dessuatge amb Caputxa', 'Dessuatge unisex amb caputxa i butxaca davantera.', 29.99, 'modelDessuatgeCaputxa.jpg', 2, 3, '2024-10-28 10:23:55', '2024-10-28 10:23:55'),
-(3, 'Pantalons Jogger', 'Pantalons còmodes d\'estil jogger, ideals per al dia a dia.', 24.99, 'pantalonsJoger.jpg', 3, 4, '2024-10-28 10:23:55', '2024-10-28 10:23:55'),
-(4, 'Vestit Casual', 'Vestit de tall senzill, perfecte per a l\'estiu.', 19.99, 'vestitCasual.jpg', 4, 1, '2024-10-28 10:23:55', '2024-10-28 10:23:55'),
-(5, 'Jaqueta Texana', 'Jaqueta de mezclilla clàssica, ideal per a qualsevol look.', 39.99, 'jaquetaTexana.jpg', 5, 2, '2024-10-28 10:23:55', '2024-10-28 10:23:55'),
-(6, 'Samarreta Gràfica', 'Samarreta de cotó amb disseny gràfic estampat.', 14.99, 'samarretaGrafica.jpg', 1, 3, '2024-10-28 10:23:55', '2024-10-28 10:23:55'),
-(7, 'Faldilla Midi', 'Faldilla de llargada midi amb plecs, disponible en diversos colors.', 22.99, 'faldillaMidi.jpg', 6, 2, '2024-10-28 10:23:55', '2024-10-28 10:23:55'),
-(8, 'Polo Esportiu', 'Polo lleuger i transpirable, ideal per a activitats a l\'aire lliure.', 17.99, 'poloSportiu.jpg', 7, 4, '2024-10-28 10:23:55', '2024-10-28 10:23:55'),
-(9, 'Jaqueta Tallavent', 'Jaqueta lleugera i resistent al vent, perfecta per a mitja temporada.', 34.99, 'jaquetaTallavent.jpg', 5, 1, '2024-10-28 10:23:55', '2024-10-28 10:23:55'),
-(10, 'Pantalons Curts', 'Pantalons curts de cotó per a dies de calor.', 15.99, 'pantalonsCurts.jpg', 3, 2, '2024-10-28 10:23:55', '2024-10-28 10:23:55'),
-(11, 'Camisa de Lili', 'Camisa de lli transpirable, perfecta per a climes càlids.', 25.99, 'camisaLili.jpg', 8, 3, '2024-10-28 10:23:55', '2024-10-28 10:23:55'),
-(12, 'Samarreta de Tirants', 'Samarreta sense mànigues, ideal per al gimnàs.', 10.99, 'samarretaTirants.jpg', 1, 2, '2024-10-28 10:23:55', '2024-10-28 10:23:55'),
-(13, 'Jersei de Punt', 'Jersei de punt suau, ideal per a l\'hivern.', 32.99, 'jerseiPunt.jpg', 10, 4, '2024-10-28 10:23:55', '2024-10-28 10:23:55'),
-(14, 'Pantalons Xinesos', 'Pantalons elegants per a ocasions formals.', 35.99, 'pantalonsXinesos.jpg', 3, 2, '2024-10-28 10:23:55', '2024-10-28 10:23:55'),
-(15, 'Brusa de Seda', 'Brusa elegant de seda, disponible en diversos colors.', 29.99, 'brusaSeda.jpg', 9, 1, '2024-10-28 10:23:55', '2024-10-28 10:23:55'),
-(16, 'Jaqueta de Pell', 'Jaqueta de pell genuïna, un clàssic atemporal.', 79.99, 'jaquetaPell.jpg', 5, 3, '2024-10-28 10:23:55', '2024-10-28 10:23:55'),
-(17, 'Samarreta Bàsica', 'Samarreta bàsica d\'estil modern, perfecta per a la feina.', 27.99, 'samarretaBasica.jpg', 1, 2, '2024-10-28 10:23:55', '2024-10-28 10:23:55'),
-(18, 'Samarreta Oversize', 'Samarreta d\'estil oversize per a un look relaxat.', 15.99, 'samarretaOversize.jpg', 1, 4, '2024-10-28 10:23:55', '2024-10-28 10:23:55'),
-(19, 'Shorts Esportius', 'Shorts de material elàstic per a activitats esportives.', 13.99, 'shortsSportius.jpg', 3, 3, '2024-10-28 10:23:55', '2024-10-28 10:23:55'),
-(20, 'Armilla Encoixinada', 'Armilla encoixinada per mantenir la calor sense perdre estil.', 42.99, 'armillaEncoixionada.jpg', 5, 2, '2024-10-28 10:23:55', '2024-10-28 10:23:55');
+(1, 'Samarreta Bàsica', 'Samarreta de cotó 100% en diversos colors.', 12.99, 'modelSamarretaBasica.jpg', 1, 2, '2024-11-08 11:03:21', '2024-11-08 11:03:21'),
+(2, 'Dessuadora amb Caputxa', 'Dessuadora unisex amb caputxa i butxaca davantera.', 29.99, 'modelDessuatgeCaputxa.jpg', 2, 3, '2024-11-08 11:03:21', '2024-11-08 11:03:21'),
+(3, 'Pantalons Jogger', 'Pantalons còmodes d\'estil jogger, ideals per al dia a dia.', 24.99, 'pantalonsJoger.jpg', 3, 4, '2024-11-08 11:03:21', '2024-11-08 11:03:21'),
+(4, 'Vestit Casual', 'Vestit de tall senzill, perfecte per a l\'estiu.', 19.99, 'vestitCasual.jpg', 4, 1, '2024-11-08 11:03:21', '2024-11-08 11:03:21'),
+(5, 'Jaqueta Texana', 'Jaqueta de mezclilla clàssica, ideal per a qualsevol look.', 39.99, 'jaquetaTexana.jpg', 5, 2, '2024-11-08 11:03:21', '2024-11-08 11:03:21'),
+(6, 'Samarreta Gràfica', 'Samarreta de cotó amb disseny gràfic estampat.', 14.99, 'samarretaGrafica.jpg', 1, 3, '2024-11-08 11:03:21', '2024-11-08 11:03:21'),
+(7, 'Faldilla Midi', 'Faldilla de llargada midi amb plecs, disponible en diversos colors.', 22.99, 'faldillaMidi.jpg', 6, 2, '2024-11-08 11:03:21', '2024-11-08 11:03:21'),
+(8, 'Polo Esportiu', 'Polo lleuger i transpirable, ideal per a activitats a l\'aire lliure.', 17.99, 'poloSportiu.jpg', 7, 4, '2024-11-08 11:03:21', '2024-11-08 11:03:21'),
+(9, 'Jaqueta Tallavent', 'Jaqueta lleugera i resistent al vent, perfecta per a mitja temporada.', 34.99, 'jaquetaTallavent.jpg', 5, 1, '2024-11-08 11:03:21', '2024-11-08 11:03:21'),
+(10, 'Pantalons Curts', 'Pantalons curts de cotó per a dies de calor.', 15.99, 'pantalonsCurts.jpg', 3, 2, '2024-11-08 11:03:21', '2024-11-08 11:03:21'),
+(11, 'Camisa de Lili', 'Camisa de lli transpirable, perfecta per a climes càlids.', 25.99, 'camisaLili.jpg', 8, 3, '2024-11-08 11:03:21', '2024-11-08 11:03:21'),
+(12, 'Samarreta de Tirants', 'Samarreta sense mànigues, ideal per al gimnàs.', 10.99, 'samarretaTirants.jpg', 1, 2, '2024-11-08 11:03:21', '2024-11-08 11:03:21'),
+(13, 'Jersei de Punt', 'Jersei de punt suau, ideal per a l\'hivern.', 32.99, 'jerseiPunt.jpg', 10, 4, '2024-11-08 11:03:21', '2024-11-08 11:03:21'),
+(14, 'Pantalons Xinesos', 'Pantalons elegants per a ocasions formals.', 35.99, 'pantalonsXinesos.jpg', 3, 2, '2024-11-08 11:03:21', '2024-11-08 11:03:21'),
+(15, 'Brusa de Seda', 'Brusa elegant de seda, disponible en diversos colors.', 29.99, 'brusaSeda.jpg', 9, 1, '2024-11-08 11:03:21', '2024-11-08 11:03:21'),
+(16, 'Jaqueta de Pell', 'Jaqueta de pell genuïna, un clàssic atemporal.', 79.99, 'jaquetaPell.jpg', 5, 3, '2024-11-08 11:03:21', '2024-11-08 11:03:21'),
+(17, 'Samarreta Bàsica', 'Samarreta bàsica d\'estil modern, perfecta per a la feina.', 27.99, 'samarretaBasica.jpg', 1, 2, '2024-11-08 11:03:21', '2024-11-08 11:03:21'),
+(18, 'Samarreta Oversize', 'Samarreta d\'estil oversize per a un look relaxat.', 15.99, 'samarretaOversize.jpg', 1, 4, '2024-11-08 11:03:21', '2024-11-08 11:03:21'),
+(19, 'Shorts Esportius', 'Shorts de material elàstic per a activitats esportives.', 13.99, 'shortsSportius.jpg', 3, 3, '2024-11-08 11:03:21', '2024-11-08 11:03:21'),
+(20, 'Armilla Encoixinada', 'Armilla encoixinada per mantenir la calor sense perdre estil.', 42.99, 'armillaEncoixionada.jpg', 5, 2, '2024-11-08 11:03:21', '2024-11-08 11:03:21'),
+(21, 'Samarreta de Ratlles', 'Samarreta de cotó amb disseny de ratlles clàssiques.', 18.99, 'samarretaRatlles.jpg', 1, 2, '2024-11-08 11:03:21', '2024-11-08 11:03:21'),
+(22, 'Dessuadora Femenina', 'Dessuadora femenina de tall ajustat amb disseny modern.', 34.99, 'dessuadoraFemenina.jpg', 2, 1, '2024-11-08 11:03:21', '2024-11-08 11:03:21'),
+(23, 'Pantalons Cargo', 'Pantalons resistents i còmodes, ideals per a la feina.', 45.99, 'pantalonsCargo.jpg', 3, 3, '2024-11-08 11:03:21', '2024-11-08 11:03:21'),
+(24, 'Vestit Floral', 'Vestit de disseny floral, ideal per a esdeveniments informals.', 39.99, 'vestitFloral.jpg', 4, 2, '2024-11-08 11:03:21', '2024-11-08 11:03:21'),
+(25, 'Jaqueta d\'Esquí', 'Jaqueta d\'esquí impermeable, perfecta per a l\'hivern.', 129.99, 'jaquetaEsqui.jpg', 5, 4, '2024-11-08 11:03:21', '2024-11-08 11:03:21'),
+(26, 'Samarreta de Cotó Orgànic', 'Samarreta de cotó orgànic, respectuosa amb el medi ambient.', 22.99, 'samarretaCotoOrganica.jpg', 1, 1, '2024-11-08 11:03:21', '2024-11-08 11:03:21'),
+(27, 'Faldilla de Denim', 'Faldilla de denim clàssica, ideal per a combinar amb qualsevol look.', 24.99, 'faldillaDenim.jpg', 6, 3, '2024-11-08 11:03:22', '2024-11-08 11:03:22'),
+(28, 'Polo de Cotó', 'Polo de cotó suau, perfecte per a l\'estiu.', 20.99, 'poloCoto.jpg', 7, 2, '2024-11-08 11:03:22', '2024-11-08 11:03:22'),
+(29, 'Pantalons de Xandall', 'Pantalons de xandall còmodes per a fer esport.', 29.99, 'pantalonsXandall.jpg', 3, 3, '2024-11-08 11:03:22', '2024-11-08 11:03:22'),
+(30, 'Camisa de Cotó', 'Camisa de cotó de màniga llarga, ideal per a l\'hivern.', 29.99, 'camisaCoto.jpg', 8, 4, '2024-11-08 11:03:22', '2024-11-08 11:03:22'),
+(31, 'Brusa de Cotó', 'Brusa de cotó lleugera, ideal per a l\'estiu.', 25.99, 'brusaCoto.jpg', 9, 2, '2024-11-08 11:03:22', '2024-11-08 11:03:22'),
+(32, 'Samarreta Tècnica', 'Samarreta tècnica per a esports, molt transpirable.', 30.99, 'samarretaTecnica.jpg', 1, 3, '2024-11-08 11:03:22', '2024-11-08 11:03:22'),
+(33, 'Jaqueta de Pluja', 'Jaqueta lleugera resistent a la pluja, perfecta per a dies humits.', 49.99, 'jaquetaPluja.jpg', 5, 1, '2024-11-08 11:03:22', '2024-11-08 11:03:22'),
+(34, 'Faldilla de Cuir', 'Faldilla de cuir, ideal per a un look atrevit.', 69.99, 'faldillaCuir.jpg', 6, 3, '2024-11-08 11:03:22', '2024-11-08 11:03:22'),
+(35, 'Pantalons de Jogging', 'Pantalons de jogging còmodes, ideals per a casa.', 34.99, 'pantalonsJogging.jpg', 3, 2, '2024-11-08 11:03:22', '2024-11-08 11:03:22'),
+(36, 'Dessuadora de Coll Alt', 'Dessuadora de coll alt, perfecta per a l\'hivern.', 44.99, 'dessuadoraCollAlt.jpg', 2, 2, '2024-11-08 11:03:22', '2024-11-08 11:03:22'),
+(37, 'Pantalons de Culotte', 'Pantalons de culotte amb disseny modern, ideals per a la primavera.', 39.99, 'pantalonsCulotte.jpg', 3, 1, '2024-11-08 11:03:22', '2024-11-08 11:03:22'),
+(38, 'Camisa de Quadres', 'Camisa de quadres clàssica, perfecta per a un look casual.', 27.99, 'camisaQuadres.jpg', 8, 3, '2024-11-08 11:03:22', '2024-11-08 11:03:22'),
+(39, 'Samarreta d\'Esports', 'Samarreta d\'esports lleugera i transpirable.', 28.99, 'samarretaEsports.jpg', 1, 4, '2024-11-08 11:03:22', '2024-11-08 11:03:22'),
+(40, 'Brusa de Llanera', 'Brusa de llana càlida, perfecta per a climes freds.', 54.99, 'brusaLlanera.jpg', 9, 2, '2024-11-08 11:03:22', '2024-11-08 11:03:22');
 
 -- --------------------------------------------------------
 
@@ -240,7 +261,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('E4xRTqmFnfVXH2nbTkx9Kx6dJRkr6dNoGc2IAGKm', NULL, '127.0.0.1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiWFRtSHQzNGtUZkF1QlZTWG84SGcxODIwSGNISWlLR3VjTnJjeDVLZCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9wcm9kdWN0cyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1730116109);
+('0KGYbw9VWlAZlrStXYlKqf0GaPnEHyg4rICFD1ST', NULL, '127.0.0.1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiUFNkam1LOW04TmRtU2dsYll2NzRXMmdCSGV4ekR0cG0zb1h6UGlUeCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9wcm9kdWN0cyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1731067449);
 
 -- --------------------------------------------------------
 
@@ -392,7 +413,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -410,7 +431,7 @@ ALTER TABLE `order_products`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `sizes`

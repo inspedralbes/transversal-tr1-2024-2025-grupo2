@@ -13,7 +13,6 @@
 /* Imports y Reset */
 * {
   font-family: "Poiret One", serif;
-  font-weight: 700;
   font-style: normal;
   padding: 0;
   box-sizing: border-box;
@@ -22,6 +21,7 @@
 /* Estilos base */
 body {
   background-color: var(--color-white);
+  font-weight: 700;
   position: relative;
 }
 
@@ -83,9 +83,12 @@ body {
   margin-top: 5px;
   display: flex;
   justify-content: center;
+  font-weight: 700;
+
 }
 
 .navbar-buttons button {
+  font-weight: 700;
   background-color: transparent;
   color: white;
   border: none;
@@ -99,6 +102,7 @@ body {
 }
 
 .offcanvas-header {
+  font-weight: 500;
   position: relative;
   display: flex;
   justify-content: center;
@@ -168,6 +172,8 @@ body.menu-open {
   gap: 3rem;
   transition: all 0.3s;
   list-style-type: none;
+  font-weight: 600;
+
 }
 
 .navBar button {

@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Poiret+One&display=swap');
+
+
+
 /* Variables globales */
 :root {
   --color-primary: #8527c3fd;
@@ -9,14 +13,14 @@
 }
 
 /* Imports y Reset */
-@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
 
 * {
-  margin: 0;
+  font-family: "Poiret One", serif;
+  font-style: normal;
   padding: 0;
   box-sizing: border-box;
+  font-weight: 700;
 }
-
 /* Estilos base */
 body {
   font-family: "Rajdhani", sans-serif;
@@ -86,8 +90,9 @@ body {
 
 .navbar-buttons button {
   background-color: transparent;
-  color: white;
+  color: rgb(0, 0, 0);
   border: none;
+  font-weight: 600;
   margin-bottom: 5px;
 
 }
@@ -140,33 +145,38 @@ body.menu-open {
 .navBar {
   height: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
   position: relative;
   padding: 0 var(--padding-x);
   z-index: 100;
   margin-top: 0;
-  background-color: var(--color-white);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   width: 100%;
-  position: sticky;
+}
+
+.navBar img {
+  position: absolute;
+  height: 100%;
+  left: 0px;
 }
 
 .ul_links {
-  width: 100%;
   position: absolute;
   top: var(--header-height);
-  left: 0;
+  right: 0;
   height: 0;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   gap: 3rem;
   transition: all 0.3s;
   list-style-type: none;
+  padding-right: 10px;
+  align-items: center;
+
 }
 
 .navBar button {
@@ -186,6 +196,7 @@ body.menu-open {
 .menu_hamburger:checked + .ul_links {
   height: calc(100vh - var(--header-height));
   background-color: var(--color-white);
+
 }
 
 .selectCategory{
@@ -548,7 +559,7 @@ body.menu-open {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 100;
 }
 
 .left-colum-text h2 {
@@ -557,7 +568,6 @@ body.menu-open {
   width: 100%;
   color: white;
   padding: 10px;
-  font-weight: 600;
 }
 
 .container-card-product {
@@ -954,24 +964,23 @@ footer {
 } 
 
 .left-colum-text { 
-  background-color: #bababa;
   text-align: center;
   padding: 10px;
   margin-bottom: 10px;
+  width: 100%;
 } 
 
 .container-card-product {
   display: grid;
   grid-template-columns: 1fr 1fr;
   border: 1px solid #42474e1e;
-  width: 100%;
+  width: 700px;
 }
 
 .img-prod-buying {
   width: 100%;
   height: 200px;
   object-fit: contain;
-  max-width: 200px;
 } 
 
 .info-buying-prod {

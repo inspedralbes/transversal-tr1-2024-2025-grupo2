@@ -339,6 +339,10 @@ createApp({
       cleanCart();
     }
 
+    function redirectToCrud() {
+        window.location.href = 'http://127.0.0.1:8000/products'
+    }
+
     // FUNCIONES DE LOGIN Y REGISTER
 
     function showLogin() {
@@ -411,7 +415,8 @@ searchQuery,
 categoryProductCount, 
 sizeProductCount,     
 filteredProductsBySearch, 
-resetFilterSize       
+resetFilterSize,
+redirectToCrud     
 
         };
     }

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" />
     <link rel="stylesheet" href="./css/estils.css" />
     <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
-    <title>TakeOutFit - Landing Page</title>
+    <title>TakeOutFit</title>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -26,9 +26,8 @@
             <header class="landing-page">
                 <div class="content">
                     <h1 class="title">TakeOutFits</h1>
-                    <p>La moda que va amb tu, ¡directe a la teva porta!</p>
-                    <button class="btn-redirect-shop" @click="changeDiv('store'), resetFilters()">Explorar
-                        Coleccións</button>
+                    <p><h4><strong>La moda que va amb tu, ¡directe a la teva porta!</strong></h4></p>
+                    <button class="btn-redirect-shop" @click="changeDiv('store'), resetFilters()">Explorar Col·leccions</button>
                 </div>
             </header>
 
@@ -42,7 +41,7 @@
                 <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasHorario"
                     aria-labelledby="offcanvasHorarioLabel">
                     <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasHorarioLabel">Horari d'Atencion</h5>
+                        <h5 class="offcanvas-title" id="offcanvasHorarioLabel">Horari d'Atenció</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body">
@@ -62,21 +61,11 @@
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body">
-                        <p>Av. d'Espligues,40,Les Corts</p>
+                        <p>Av. d'Espligues, 40, Les Corts</p>
                         <p>08034 - Barcelona</p>
                     </div>
                 </div>
-                <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasUbicacion"
-                    aria-labelledby="offcanvasUbicacionLabel">
-                    <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasUbicacionLabel">Direcció</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
-                    <div class="offcanvas-body">
-                        <p>Av. d'Espligues,40,Les Corts</p>
-                        <p>08034 - Barcelona</p>
-                    </div>
-                </div>
+               
                 <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasContacto" aria-controls="offcanvasContacto">CONTACTE</button>
 
@@ -87,7 +76,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body">
-                        <p>+34 123 456 789</p>
+                        <p>+34 656 806 608</p>
                     </div>
                 </div>
                 <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCrud"
@@ -126,7 +115,7 @@
                 <input class="menu_hamburger" type="checkbox" id="hamburger_menu" v-model="isMenuOpen" />
 
                 <ul class="ul_links">
-                    <li><button @click="changeDiv('store'), isMenuOpen = false">Home</button></li>
+                    <li><button @click="changeDiv('store'), isMenuOpen = false">Inici</button></li>
                     <li><button
                             :disabled="visible == 'cart' || visible == 'productSelec' || visible == 'buyAllProducts' || visible == 'purchase-completed' || visible == 'onlyOneBuy'"
                             for="category" @click="toggleFilterCategory">Categories</button></li>
@@ -154,16 +143,13 @@
                     </li>
 
                     <!-- Reiniciar todos los filtros -->
-                    <button v-if="visibleFilter" @click="resetFilters()" :value="null">Reiniciar
-                        filtres</button>
+                    <button v-if="visibleFilter" @click="resetFilters()" :value="null">Reiniciar filtres</button>
 
-                    <li><button @click="changeDiv('cart'), resetFilters(), hiddenFilter(), isMenuOpen = false">Cistella
-                            ({{ cartItems.length}})
-                        </button>
+                    <li><button @click="changeDiv('cart'), resetFilters(), hiddenFilter(), isMenuOpen = false">Cistella ({{ cartItems.length}}) </button>
                     </li>
                     <li>
                         <!-- Barra del buscador -->
-                        <input type="text" v-model="searchQuery" placeholder="Buscar productes..."
+                        <input type="text" v-model="searchQuery" placeholder="Cercar productes..."
                             @input="filterProductsBySearch" />
                     </li>
                 </ul>
@@ -201,8 +187,7 @@
         <div :class="{'cart': true, 'cart-visible': cartVisible}" class="cart">
             <button class="btn-close-cart" @click="cartVisible = false">x</button>
             <span class="subtotal-info">Subtotal €{{ subTotalCart() }}</span>
-            <button class="btn-redirect-cart" @click="visible = 'cart',cartVisible = false ">Anar a la
-                cistella</button>
+            <button class="btn-redirect-cart" @click="visible = 'cart',cartVisible = false ">Anar a la cistella</button>
             <p v-if="cartItems.length === 0">Cistella buida</p>
             <div v-for="(itemCart,index) in cartItems" class="container-item-cart">
                 <div v-if="itemCartEmpty(itemCart)" :id="itemCart.id" class="item-cart">
@@ -211,7 +196,7 @@
                             class="item-image">
                         <div class="item-info">
                             <p> {{ itemCart.title}} </p>
-                            <p class="descrip"> Size: {{ itemCart.size.size_id }}</p>
+                            <p class="descrip"> Talla: {{ itemCart.size.size_id }}</p>
                             <p class="descrip"> {{ itemCart.description }}</p>
                             <div class="item-buttons">
                                 <input v-if="itemCart.quantity > 0" @click="discountProduct(itemCart)" type="button"
@@ -268,8 +253,8 @@
                         class="cart-image">
                     <div class="cart-info">
                         <h3> {{ prodCart.title}}</h3>
-                        <p>Preu: {{ prodCart.price}}</p>
-                        <label for="size">Mida </label>
+                        <p>Preu: {{ prodCart.price}} €</p>
+                        <label for="size">Talla </label>
                         <select name="size" id="">
                             <option name="size" value="">
                                 {{ prodCart.size.size_id}}
@@ -291,8 +276,8 @@
             </div>
             <p class="total-info"> Total: €{{ subTotalCart() }}</p>
             <div v-if="cartItems.length > 0" class="btn-options-buying">
-                <button @click="cleanCart()">Delete All</button>
-                <button @click="changeDiv('buyAllProducts')">Buy</button>
+                <button @click="cleanCart()">Buidar cistella</button>
+                <button @click="changeDiv('buyAllProducts')">Comprar</button>
             </div>
 
         </div>
@@ -303,7 +288,7 @@
         <div v-if="visible === 'buyAllProducts'" class="container-buy-all-product">
             <div class="left-colum">
                 <div class="left-colum-text">
-                    <h2>Entrega estandar gratuita en dias laborales.</h2>
+                    <h2>Lliurament estàndard gratuït en dies laborals.</h2>
                 </div>
                 <div v-for="(productsBuying, index) in cartItems" class="container-informacio">
                     <div class="container-card-product">
@@ -313,7 +298,7 @@
                         </div>
                         <div class="info-buying-prod">
                             <h3> {{ productsBuying.title }}</h3>
-                            <p> Size: {{ productsBuying.size.size_id}}</p>
+                            <p> Talla: {{ productsBuying.size.size_id}}</p>
                             <p> {{ productsBuying.price}} EUR</p>
                         </div>
                     </div>
@@ -321,14 +306,14 @@
             </div>
             <div class="right-colum">
                 <div class="contenido">
-                    <span>RESUMEN</span>
+                    <span>RESUM</span>
                     <span>Subtotal {{ subTotalCart() }}</span>
-                    <span>Entrega Estandar GRATIS</span>
-                    <span>Total del pedido €{{ subTotalCart() }}</span>
+                    <span>Lliurament Estàndar: GRATUÏT</span>
+                    <span>Total de la comanda €{{ subTotalCart() }}</span>
                 </div>
                 <div class="buttons-buy-all-products">
-                    <button @click="continuePurchase()">Continue</button>
-                    <button @click="changeDiv('store'), cancelPurchase()">Cancel</button>
+                    <button @click="continuePurchase()">Continuar</button>
+                    <button @click="changeDiv('store'), cancelPurchase()">Cancel·lar</button>
                 </div>
             </div>
         </div>
@@ -342,17 +327,20 @@
                     <input type="text" id="name" required />
                 </div>
                 <div class="form-grup">
-                    <label for="email">Email:</label>
-                    <input type="text" id="email" required />
+                  <label for="email">Email:</label>
+                  <input type="text" id="email" required />
                 </div>
                 <button type="submit" @click="handlePayment()">ENVIAR</button>
+                <!--
                 <h2 class="separator">O</h2>
                 <button type="button" @click="showLogin">INICIAR SESSIÓ</button>
                 <button type="button" @click="showRegister">REGISTRAR-SE</button>
+                -->
             </form>
         </div>
 
         <!------------------ FORMULARIO LOGIN -------------->
+        <!---
         <div v-if="visible === 'login-form'" class="login-form">
             <h2>DADES PERSONALS</h2>
             <form @submit.prevent="login">
@@ -361,15 +349,16 @@
                     <input type="email" id="login-email" required />
                 </div>
                 <div class="form-login">
-                    <label for="login-password">Contraseña:</label>
+                    <label for="login-password">Contrasenya:</label>
                     <input type="password" id="login-password" required />
                 </div>
                 <button type="submit">INICIAR SESIÓ</button>
                 <button type="button" @click="backToPurchaseForm">TORNAR</button>
             </form>
         </div>
-
-        <!------------------ FORMULARIO REGISTER -------------->
+      -->
+      <!------------------ FORMULARIO REGISTER -------------->
+      <!--
         <div v-if="visible === 'register-form'" class="register-form">
             <h2>REGISTRARSE</h2>
             <form @submit.prevent="register">
@@ -407,7 +396,7 @@
                 <button type="button" @click="backToPurchaseForm">VOLVER</button>
             </form>
         </div>
-
+       -->
         <!------------------ BUY ONE PRODUCT ------------>
 
         <div v-if="visible === 'onlyOneBuy'" class="container-buy-one-product">

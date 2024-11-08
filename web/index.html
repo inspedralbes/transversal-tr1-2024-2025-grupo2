@@ -20,184 +20,111 @@
 
   <body>
     <div id="app">
+
       <div :class="{'overlay': cartVisible}"></div>
 
-      <!------------------------ PORTADA -------------------------->
-      <div class="page-cover" v-if="visible == 'page-cover'">
-        <header class="landing-page">
-          <div class="content">
-            <h1 class="title">TakeOutFits</h1>
-            <p>La moda que va amb tu, ¡directe a la teva porta!</p>
-            <button class="btn" @click="changeDiv('store'), resetFilters()">
-              Explorar Col·leccions
-            </button>
-          </div>
-        </header>
+        <!------------------------ PORTADA -------------------------->
+        <div class="page-cover" v-if="visible == 'page-cover'">
+            <header class="landing-page">
+                <div class="content">
+                    <h1 class="title">TakeOutFits</h1>
+                    <p>La moda que va amb tu, ¡directe a la teva porta!</p>
+                    <button class="btn-redirect-shop" @click="changeDiv('store'), resetFilters()">Explorar Coleccións</button>
+                </div>
+            </header>
 
         <!------------------------ INFORMACION -------------------------->
 
-        <button
-          class="btn btn-primary"
-          type="button"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#offcanvasHorario"
-          aria-controls="offcanvasHorario"
-        >
-          HORARI
-        </button>
+            <div class="navbar-buttons">
 
-        <div
-          class="offcanvas offcanvas-top"
-          tabindex="-1"
-          id="offcanvasHorario"
-          aria-labelledby="offcanvasHorarioLabel"
-        >
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasHorarioLabel">
-              Horari d'Obertura
-            </h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="offcanvas"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="offcanvas-body">
-            <p>De dilluns a divendres obert</p>
-            <p>de 10:00 a 21:00</p>
-            <p>Excepte dies festius</p>
-          </div>
-        </div>
+                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasHorario" aria-controls="offcanvasHorario">HORARI</button>
 
-        <button
-          class="btn btn-primary"
-          type="button"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#offcanvasUbicacion"
-          aria-controls="offcanvasUbicacion"
-        >
-          UBICACIÓ
-        </button>
+                <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasHorario"
+                    aria-labelledby="offcanvasHorarioLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasHorarioLabel">Horari d'Atencion</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <p>De dilluns a divendres obert</p>
+                        <p>de 10:00 a 21:00</p>
+                        <p>Excepte dies festius</p>
+                    </div>
+                </div>
+        
+                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasUbicacion" aria-controls="offcanvasUbicacion">UBICACIÓ</button>
 
-        <div
-          class="offcanvas offcanvas-top"
-          tabindex="-1"
-          id="offcanvasUbicacion"
-          aria-labelledby="offcanvasUbicacionLabel"
-        >
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasUbicacionLabel">
-              Direcció
-            </h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="offcanvas"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="offcanvas-body">
-            <p>Av. d'Espligues, 40, Les Corts</p>
-            <p>08034 - Barcelona</p>
-          </div>
-        </div>
+                <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasUbicacion"
+                    aria-labelledby="offcanvasUbicacionLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasUbicacionLabel">Direcció</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <p>Av. d'Espligues,40,Les Corts</p>
+                        <p>08034 - Barcelona</p>
+                    </div>
+                </div>
+                <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasUbicacion"
+                    aria-labelledby="offcanvasUbicacionLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasUbicacionLabel">Direcció</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <p>Av. d'Espligues,40,Les Corts</p>
+                        <p>08034 - Barcelona</p>
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasContacto" aria-controls="offcanvasContacto">CONTACTE</button>
 
-        <button
-          class="btn btn-primary"
-          type="button"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#offcanvasContacto"
-          aria-controls="offcanvasContacto"
-        >
-          CONTACTE
-        </button>
-
-        <div
-          class="offcanvas offcanvas-top"
-          tabindex="-1"
-          id="offcanvasContacto"
-          aria-labelledby="offcanvasContactoLabel"
-        >
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasContactoLabel">Truca</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="offcanvas"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="offcanvas-body">
-            <p>+34 123 456 789</p>
-          </div>
-        </div>
-
-        <button
-          class="btn btn-primary"
-          type="button"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#offcanvasContacto"
-          aria-controls="offcanvasContacto"
-        >
-          CRUD
-        </button>
-
-        <!-------------------- CARRUSEL ----------------->
-        <div
-          id="carouselExampleSlidesOnly"
-          class="carousel slide"
-          data-bs-ride="carousel"
-        >
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img
-                src="https://phantom-telva.unidadeditorial.es/80e39ab33e1d80b1b5230bba26b428c1/crop/243x14/1881x936/resize/1280/f/webp/assets/multimedia/imagenes/2023/10/25/16982371529145.jpg"
-                class="d-block w-100 img-fluid"
-                alt="img1"
-              />
+                <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasContacto"
+                    aria-labelledby="offcanvasContactoLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasContactoLabel">Truca</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <p>+34 123 456 789</p>
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasCrud" aria-controls="offcanvasCrud" @click="redirectToCrud()">CRUD</button>
             </div>
-            <div class="carousel-item">
-              <img
-                src="https://phantom-telva.unidadeditorial.es/8066ec7bbec0a61f346ef1d0d861bdb6/crop/0x0/2046x1151/resize/2046/assets/multimedia/imagenes/2023/01/18/16740347879974.jpg"
-                class="d-block w-100"
-                alt="img2"
-              />
-            </div>
-            <div class="carousel-item">
-              <img
-                src="https://phantom-telva.unidadeditorial.es/64112f8cef05f1608b14e04a9565a1a0/crop/390x131/1974x1022/resize/1280/f/webp/assets/multimedia/imagenes/2024/10/18/17292518838915.jpg"
-                class="d-block w-100"
-                alt="img3"
-              />
-            </div>
-          </div>
-        </div>
 
-        <main>
-          <!-- Podriamos colocar una serie de productos X destacados -->
-          <section class="featured-products">
-            <h2>Nostres col·leccions</h2>
-            <p>Descobreix la nova àmplia varietat de peces de moda</p>
-            <!-- Productos irían aquí -->
-          </section>
-        </main>
-      </div>
+
+            <!-------------------- CARRUSEL ----------------->
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="https://phantom-telva.unidadeditorial.es/80e39ab33e1d80b1b5230bba26b428c1/crop/243x14/1881x936/resize/1280/f/webp/assets/multimedia/imagenes/2023/10/25/16982371529145.jpg"
+                            class="d-block w-100 img-fluid" alt="img1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://phantom-telva.unidadeditorial.es/8066ec7bbec0a61f346ef1d0d861bdb6/crop/0x0/2046x1151/resize/2046/assets/multimedia/imagenes/2023/01/18/16740347879974.jpg"
+                            class="d-block w-100" alt="img2">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://phantom-telva.unidadeditorial.es/64112f8cef05f1608b14e04a9565a1a0/crop/390x131/1974x1022/resize/1280/f/webp/assets/multimedia/imagenes/2024/10/18/17292518838915.jpg"
+                            class="d-block w-100" alt="img3">
+                    </div>
+                </div>
+            </div>
+        </div>
 
       <!------------------ STORE ------------>
 
-      <!------------------ NAVBAR ------------>
-      <div
-        id="container-navBar"
-        v-if="visibleButtons === 'buttons-menu'"
-        class="btn-backHome"
-      >
-        <nav class="navBar">
-          <h1 @click="changeDiv('page-cover')">LOGO</h1>
+        <!------------------ NAVBAR ------------>
+        <div id="container-navBar" v-if="visibleButtons === 'buttons-menu'" class="btn-backHome">
+            <nav class="navBar">
+                <h1 @click="changeDiv('page-cover')">LOGO</h1>
 
-          <label for="hamburger_menu">
-            <box-icon class="hamburger_icon" name="menu"></box-icon>
-          </label>
+                <label for="hamburger_menu">
+                    <box-icon class="hamburger_icon" name='menu'></box-icon>
+                </label>
 
           <!-- Casilla para abrir/cerrar el menú -->
           <input
@@ -207,84 +134,52 @@
             v-model="isMenuOpen"
           />
 
-          <ul class="ul_links">
-            <li>
-              <button @click="changeDiv('store'), isMenuOpen = false">
-                Inici
-              </button>
-            </li>
-            <li>
-              <button
-                :disabled="visible == 'cart' || visible == 'productSelec' || visible == 'buyAllProducts' || visible == 'purchase-completed' || visible == 'onlyOneBuy' || visible == 'purchase-form'"
-                for="category"
-                @click="toggleFilterCategory"
-              >
-                Categories
-              </button>
-            </li>
-            <!-- Filtro para las categorias de ropa -->
-            <li v-if="visibleFilter">
-              <select
-                v-model="selectedCategory"
-                class="selectCategory"
-                @click="resetFilterSize()"
-              >
-                <option :value="null">Totes les categories</option>
-                <option
-                  v-for="category in templateData.categories"
-                  :key="category.id"
-                  :value="category.id"
-                >
-                  {{ category.category_id }} ({{
-                  categoryProductCount[category.id] || 0 }})
-                  <!-- Aquí se muestra el nombre de las categorias -->
-                </option>
-              </select>
-            </li>
+                <ul class="ul_links">
+                    <li><button @click="changeDiv('store'), isMenuOpen = false">Home</button></li>
+                    <li><button
+                            :disabled="visible == 'cart' || visible == 'productSelec' || visible == 'buyAllProducts' || visible == 'purchase-completed' || visible == 'onlyOneBuy'"
+                            for="category" @click="toggleFilterCategory">Categories</button></li>
+                    <!-- Filtro para las categorias de ropa -->
+                    <li v-if="visibleFilter">
+                        <select v-model="selectedCategory" class="selectCategory">
+                            <option :value="null">Totes les categories</option>
+                            <option v-for="category in templateData.categories" :key="category.id" :value="category.id">
+                                {{ category.category_id }} <!-- Aquí se muestra el nombre de las categorias -->
+                            </option>
+                        </select>
+                    </li>
 
-            <!-- Filtro para las tallas de ropa -->
-            <li v-if="visibleFilter">
-              <select v-model="selectedSize" class="selectCategory">
-                <option :value="null">Totes les talles</option>
-                <option
-                  v-for="size in templateData.sizes"
-                  :key="size.id"
-                  :value="size.id"
-                >
-                  {{ size.size_id }} ({{ sizeProductCount[size.id] || 0 }})
-                  <!-- Aquí se muestra el nombre de las tallas -->
-                </option>
-              </select>
-            </li>
 
-            <!-- Reiniciar todos los filtros -->
-            <button v-if="visibleFilter" @click="resetFilters()" :value="null">
-              Reiniciar filtres
-            </button>
-            <li>
-              <button
-                @click="changeDiv('cart'), resetFilters(), hiddenFilter(), isMenuOpen = false"
-              >
-                Cistella ({{ cartItems.length}})
-              </button>
-            </li>
+                    <!-- Filtro para las tallas de ropa -->
+                    <li v-if="visibleFilter">
+                        <select v-model="selectedSize" class="selectCategory">
+                            <option :value="null">Totes les talles</option>
+                            <option v-for="size in templateData.sizes" :key="size.id" :value="size.id">
+                                {{ size.size_id }} <!-- Aquí se muestra el nombre de las tallas -->
+                            </option>
+                        </select>
+                    </li>
 
-            <input
-              type="text"
-              v-model="searchQuery"
-              placeholder="Buscar productes..."
-              @input="filterProductsBySearch"
-            />
-          </ul>
-        </nav>
-      </div>
+                    <!-- Reiniciar todos los filtros -->
+                    <button v-if="visibleFilter" @click="resetFilters()" :value="null">Reiniciar
+                        filtres</button>
+                    <li><button @click="changeDiv('cart'), resetFilters(), hiddenFilter(), isMenuOpen = false">Cistella
+                            ({{ cartItems.length}})
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
 
       <!------------------ PRINCIPAL ------------>
 
-      <div v-if="visible === 'store'" id="container-products">
-        <!------- LIST OF PRODUCTS  ------>
-        <div class="articles">
-          <h1>Catàleg</h1>
+        <div v-if="visible === 'store'" id="container-products">
+
+            <!------- LIST OF PRODUCTS  ------>
+            <div class="articles">
+
+                <h1>CATÀLEG</h1>
 
           <p v-if="filteredProducts.length == 0">No hi ha stock</p>
           <div
@@ -313,167 +208,140 @@
 
       <!------------- CART FLOAT ----------->
 
-      <div :class="{'cart': true, 'cart-visible': cartVisible}" class="cart">
-        <button @click="cartVisible = false">x</button>
-        <h3>Subtotal</h3>
-        <p>€ {{ subTotalCart() }}</p>
-        <button @click="visible = 'cart',cartVisible = false ">
-          Anar a la cistella
-        </button>
-        <p v-if="cartItems.length === 0">Cistella buida</p>
-        <div v-for="(itemCart,index) in cartItems" class="container-item-cart">
-          <div
-            v-if="itemCartEmpty(itemCart)"
-            :id="itemCart.id"
-            class="item-cart"
-          >
-            <div class="item-content">
-              <img
-                :src="laravel.URL + '/img/' + itemCart.image"
-                alt="image del product"
-                width="50px"
-                class="item-image"
-              />
-              <div class="item-info">
-                <p>{{ itemCart.title}}</p>
-                <p class="descrip">Size: {{ itemCart.size.size_id }}</p>
-                <p class="descrip">{{ itemCart.description }}</p>
-                <div class="item-buttons">
-                  <input
-                    v-if="itemCart.quantity > 0"
-                    @click="discountProduct(itemCart)"
-                    type="button"
-                    value="-"
-                  />
-                  {{itemCart.quantity}}
-                  <input
-                    @click="incrementProduct(itemCart)"
-                    type="button"
-                    value="+"
-                  />
-                  <button @click="deleteItemCart(itemCart)">Esborrar</button>
+        <div :class="{'cart': true, 'cart-visible': cartVisible}" class="cart">
+            <button class="btn-close-cart" @click="cartVisible = false">x</button>
+            <span class="subtotal-info">Subtotal €{{ subTotalCart() }}</span>
+            <button class="btn-redirect-cart" @click="visible = 'cart',cartVisible = false ">Anar a la
+                cistella</button>
+            <p v-if="cartItems.length === 0">Cistella buida</p>
+            <div v-for="(itemCart,index) in cartItems" class="container-item-cart">
+                <div v-if="itemCartEmpty(itemCart)" :id="itemCart.id" class="item-cart">
+                    <div class="item-content">
+                        <img :src="laravel.URL + '/img/' + itemCart.image" alt="image del product" width="50px"
+                            class="item-image">
+                        <div class="item-info">
+                            <p> {{ itemCart.title}} </p>
+                            <p class="descrip"> Size: {{ itemCart.size.size_id }}</p>
+                            <p class="descrip"> {{ itemCart.description }}</p>
+                            <div class="item-buttons">
+                                <input v-if="itemCart.quantity > 0" @click="discountProduct(itemCart)" type="button"
+                                    value="-"> {{itemCart.quantity}}
+                                <input @click="incrementProduct(itemCart)" type="button" value="+">
+                                <button @click="deleteItemCart(itemCart)">Esborrar</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
 
-      <!------------------ ONLY SELECTED PRODUCT ------------>
+        <!------------------ ONLY SELECTED PRODUCT ------------>
 
-      <div v-if="visible === 'productSelec'" class="only-product-selected">
-        <div class="itemSelectedImage">
-          <img :src="laravel.URL + '/img/' + selectedProduct.image" alt="" />
-        </div>
-        <div class="conten-info-options">
-          <div class="info-prod-selected">
-            <h3 class="name-product">{{selectedProduct.title}}</h3>
+        <transition name="slide">
 
-            <p class="description">{{selectedProduct.description}}</p>
-            <p class="price">Preu: {{selectedProduct.price}}€</p>
+            <div v-if="visible === 'productSelec'" class="only-product-selected">
+                <div class="itemSelectedImage">
+                    <img :src="laravel.URL + '/img/' + selectedProduct.image" alt="">
+                </div>
+                <div class="conten-info-options">
+                    <div class="info-prod-selected">
+                        <h3 class="name-product">{{selectedProduct.title}}</h3>
 
-            <select name="size" id="">
-              <option disabled selected value="">Size</option>
-              <option value="">{{ selectedProduct.size.size_id}}</option>
-            </select>
-          </div>
-          <div class="buttons-options-prodSelected">
-            <button
-              @click="changeDiv('onlyOneBuy'), addToCart(selectedProduct)"
-            >
-              Comprar
-            </button>
-            <button @click="addToCart(selectedProduct)">
-              Afegir a la cistella
-            </button>
-          </div>
-        </div>
-      </div>
+                        <p class="description">{{selectedProduct.description}}</p>
+                        <p class="price">Preu: {{selectedProduct.price}}€</p>
 
-      <!------------------ CART ------------>
-      <div v-if="visible ==='cart' " id="contaires-cart" class="cart-item">
-        <h1>Checkout</h1>
-        <p>Total: € {{ subTotalCart() }}</p>
-        <p v-if="cartItems.length === 0">No hi ha productes a la cistella</p>
-        <div v-for="(prodCart,index) in cartItems">
-          <div :id="prodCart.id" class="cart-product">
-            <img
-              :src="laravel.URL + '/img/' +  prodCart.image"
-              id="index"
-              alt=""
-              width="200px"
-              class="cart-image"
-            />
-            <div class="cart-info">
-              <h3>{{ prodCart.title}}</h3>
-              <p>Preu: {{ prodCart.price}}</p>
-              <label for="size">Mida </label>
-              <select name="size" id="">
-                <option name="size" value="">{{ prodCart.size.size_id}}</option>
-              </select>
+                        <select name="size" id="">
+                            <option disabled selected value="">Size</option>
+                            <option value="">
+                                {{ selectedProduct.size.size_id}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="buttons-options-prodSelected">
+                        <button @click="changeDiv('onlyOneBuy'), addToCart(selectedProduct)">Comprar</button>
+                        <button @click="addToCart(selectedProduct)"> Afegir a la cistella </button>
+                    </div>
+                </div>
             </div>
-            <div class="cart-controls">
-              <label for="amount">Quantitat</label>
-              <input
-                v-if="prodCart.quantity > 0"
-                @click="discountProduct(prodCart)"
-                type="button"
-                value="-"
-              />
-              {{prodCart.quantity}}
-              <input
-                @click="incrementProduct(prodCart)"
-                type="button"
-                value="+"
-              />
+
+        </transition>
+
+
+
+        <!------------------ CART ------------>
+        <div v-if="visible ==='cart' " id="contaires-cart" class="cart-item">
+            <h1>Checkout</h1>
+            <p v-if="cartItems.length === 0"> No hi ha productes a la cistella </p>
+            <div v-for="(prodCart,index) in cartItems">
+                <div :id="prodCart.id" class="cart-product">
+                    <img :src="laravel.URL + '/img/' +  prodCart.image" id="index" alt="" width="200px"
+                        class="cart-image">
+                    <div class="cart-info">
+                        <h3> {{ prodCart.title}}</h3>
+                        <p>Preu: {{ prodCart.price}}</p>
+                        <label for="size">Mida </label>
+                        <select name="size" id="">
+                            <option name="size" value="">
+                                {{ prodCart.size.size_id}}
+                            </option>
+                        </select>
+
+                    </div>
+                    <div class="cart-controls">
+                        <label for="amount">Quantitat</label>
+                        <input v-if="prodCart.quantity > 0" @click="discountProduct(prodCart)" type="button" value="-">
+                        <span>{{prodCart.quantity}}</span>
+
+                        <input @click="incrementProduct(prodCart)" type="button" value="+">
+                    </div>
+                    <div class="cart-icon">
+                        <box-icon @click="deleteItemCart(prodCart)" name='trash-alt'></box-icon>
+                    </div>
+                </div>
             </div>
-            <div class="cart-icon">
-              <box-icon
-                @click="deleteItemCart(prodCart)"
-                name="trash-alt"
-              ></box-icon>
+            <p class="total-info"> Total: €{{ subTotalCart() }}</p>
+            <div v-if="cartItems.length > 0" class="btn-options-buying">
+                <button @click="cleanCart()">Delete All</button>
+                <button @click="changeDiv('buyAllProducts')">Buy</button>
             </div>
-          </div>
+
         </div>
-        <div v-if="cartItems.length > 0" class="btn-options-buying">
-          <button @click="cleanCart()">Esborrar cistella</button>
-          <button @click="changeDiv('buyAllProducts')">Comprar</button>
-        </div>
-      </div>
+      
 
       <!-- BUY ALL PRODUCTS CART-->
 
-      <div
-        v-if="visible === 'buyAllProducts'"
-        class="container-buy-all-product"
-      >
-        <div v-for="(productsBuying, index) in cartItems">
-          <div class="container-card-product">
-            <div>
-              <img
-                class="img-prod-buying"
-                :src="laravel.URL + '/img/' + productsBuying.image"
-                alt=""
-                width="200px"
-              />
+        <div v-if="visible === 'buyAllProducts'" class="container-buy-all-product">
+            <div class="left-colum">
+                <div class="left-colum-text">
+                    <h2>Entrega estandar gratuita en dias laborales.</h2>
+                </div>
+                <div v-for="(productsBuying, index) in cartItems" class="container-informacio">
+                    <div class="container-card-product">
+                        <div>
+                            <img class="img-prod-buying" :src="laravel.URL + '/img/' + productsBuying.image" alt=""
+                                width="200px">
+                        </div>
+                        <div class="info-buying-prod">
+                            <h3> {{ productsBuying.title }}</h3>
+                            <p> Size: {{ productsBuying.size.size_id}}</p>
+                            <p> {{ productsBuying.price}} EUR</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="info-buying-prod">
-              <h3>{{ productsBuying.title }}</h3>
-              <p>Size: {{ productsBuying.size.size_id}}</p>
-              <p>{{ productsBuying.price}} EUR</p>
+            <div class="right-colum">
+                <div class="contenido">
+                    <span>RESUMEN</span>
+                    <span>Subtotal {{ subTotalCart() }}</span>
+                    <span>Entrega Estandar GRATIS</span>
+                    <span>Total del pedido €{{ subTotalCart() }}</span>
+                </div>
+                <div class="buttons-buy-all-products">
+                    <button @click="continuePurchase()">Continue</button>
+                    <button @click="changeDiv('store'), cancelPurchase()">Cancel</button>
+                </div>
             </div>
-          </div>
         </div>
-
-        <span>Total: {{ subTotalCart() }} €</span>
-
-        <div class="buttons-buy-all-products">
-          <button @click="continuePurchase()">Continuar</button>
-          <button @click="changeDiv('store'), cancelPurchase()">
-            Cancel·lar
-          </button>
-        </div>
-      </div>
 
       <!------------------ FORMULARIO INVITADO -------------->
       <div v-if="visible === 'purchase-form'" class="purchase-form">
@@ -511,57 +379,44 @@
         </form>
       </div>
 
-      <!------------------ FORMULARIO REGISTER -------------->
-      <div v-if="visible === 'register-form'" class="register-form">
-        <h2>REGISTRAR-SE</h2>
-        <form @submit.prevent="register">
-          <div class="form-register">
-            <label for="reg-email">Email:</label>
-            <input type="email" id="reg-email" required />
-          </div>
-          <div class="form-grup">
-            <label for="reg-password">Contraseña:</label>
-            <input type="password" id="reg-password" required />
-          </div>
-          <div class="form-grup">
-            <label for="reg-name">Nom:</label>
-            <input type="text" id="reg-name" required />
-          </div>
-          <div class="form-grup">
-            <label for="reg-surname">Cognom:</label>
-            <input type="text" id="reg-surname" required />
-          </div>
-          <div class="form-grup">
-            <label for="reg-phon">Telèfon: +34</label>
-            <input type="text" id="reg-phone" required />
-          </div>
-          <div class="check-form">
-            <input
-              type="checkbox"
-              id="conditions"
-              name="conditions"
-              value="Conditions1"
-            />
-            <label for="conditions"
-              >Vull rebre novetats i comuncats comercials personalitzats de
-              <b>TAKEOUTFIT</b> a través de email y altres metòdes.
-            </label>
-            <input
-              type="checkbox"
-              id="cookies"
-              name="cookies"
-              value="Cookies1"
-            />
-            <label for="cookies"
-              >He llegit i accepto les <b>Condicions d'ús i compra</b> i entenc
-              la informació sobre l'ús de les meves dades personals explicades
-              en la <b>Política de Privacitat i Cookies</b></label
-            >
-          </div>
-          <button type="submit">CREAR COMPTE</button>
-          <button type="button" @click="backToPurchaseForm">TORNAR</button>
-        </form>
-      </div>
+                <!------------------ FORMULARIO REGISTER -------------->
+                <div v-if="visible === 'register-form'" class="register-form">
+                    <h2>REGISTRARSE</h2>
+                    <form @submit.prevent="register">
+                        <div class="form-register">
+                            <label for="reg-email">Email:</label>
+                            <input type="email" id="reg-email" required>
+                        </div>
+                        <div class="form-grup">
+                            <label for="reg-password">Contraseña:</label>
+                            <input type="password" id="reg-password" required>
+                        </div>
+                        <div class="form-grup">
+                            <label for="reg-name">Nombre:</label>
+                            <input type="text" id="reg-name" required>
+                        </div>
+                        <div class="form-grup">
+                            <label for="reg-surname">Apellido:</label>
+                            <input type="text" id="reg-surname" required>
+                        </div>
+                        <div class="form-grup">
+                            <label for="reg-phon">Telefono:+34</label>
+                            <input type="text" id="reg-phone" required>
+                        </div>
+                        <div class="check-form">
+                            <input type="checkbox" id="conditions" name="conditions" value="Conditions1">
+                            <label for="conditions">Quiero recibir novedades y comunicaciones comerciales personalizadas
+                                de <b>TAKEOUTFIT</b> a traves de email y otros medios. </label>
+                            <input type="checkbox" id="cookies" name="cookies" value="Cookies1">
+                            <label for="cookies">He leido y acepto las <b>Condiciones de uso y compra</b> y entiendo la
+                                informacion acerca del uso de mis datos personales explicada en la <b>Politica de
+                                    Privacidad y
+                                    Cookies</b></label>
+                        </div>
+                        <button type="submit">CREAR CUENTA</button>
+                        <button type="button" @click="backToPurchaseForm">VOLVER</button>
+                    </form>
+                </div>
 
       <!------------------ BUY ONE PRODUCT ------------>
 
@@ -589,7 +444,7 @@
         <h1>Passant a la passarel·la de compra...</h1>
       </div>
 
-      <!------------------ FOOTER ------------>
+        <!------------------ FOOTER ------------>
 
       <footer>
         <div class="footer-landing-page">
@@ -598,6 +453,7 @@
           </p>
         </div>
       </footer>
+    </div>
     </div>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>

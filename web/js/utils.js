@@ -360,72 +360,59 @@ createApp({
       });
     }
 
-    function register() {
-      console.log("Registrar con:", {
-        name: document.getElementById("reg-name").value,
-        surname: document.getElementById("reg-surname").value,
-        phone: document.getElementById("reg-phone").value,
-        email: document.getElementById("reg-email").value,
-        password: document.getElementById("reg-password").value,
-      });
+        function register() {
+            console.log('Registrar con:', {
+                name: document.getElementById('reg-name').value,
+                surname: document.getElementById('reg-surname').value,
+                phone: document.getElementById('reg-phone').value,
+                email: document.getElementById('reg-email').value,
+                password: document.getElementById('reg-password').value
+            });
+        }
+        return {
+            templateData,
+changeDiv,
+visible,
+selectedProduct,
+showSelectedProduct,
+cartItems,
+addToCart,
+objectsInCart,
+cleanCart,
+laravel,
+deleteItemCart,
+cancelPurchase,
+visibleButtons,
+discountProduct,
+incrementProduct,
+itemCartEmpty,
+cartVisible,
+showCartFloat,
+subTotalCart,
+isMenuOpen,
+continuePurchase,
+showForm,
+submitForm,
+showLogin,
+showRegister,
+backToPurchaseForm,
+login,
+register,
+selectedCategory,
+visibleFilter,
+toggleFilterCategory,
+selectedSize,
+resetFilters,
+hiddenFilter,
+getFilterProducts,    
+filteredProducts,     
+handlePayment,        
+searchQuery,          
+categoryProductCount, 
+sizeProductCount,     
+filteredProductsBySearch, 
+resetFilterSize       
+
+        };
     }
-
-    function alertPayment() {
-      const URL = window.location.search;
-      const paramURL = URL.split("=");
-
-      if (paramURL[1] == 0) {
-        alert("Compra NO realizada");
-      } else if (paramURL[1] == 1) {
-        alert("Compra SI realizada");
-        // alert('Compra realitzada correctament')
-      }
-    }
-
-    alertPayment();
-
-    return {
-      templateData,
-      changeDiv,
-      visible,
-      selectedProduct,
-      showSelectedProduct,
-      cartItems,
-      addToCart,
-      objectsInCart,
-      cleanCart,
-      laravel,
-      deleteItemCart,
-      cancelPurchase,
-      visibleButtons,
-      discountProduct,
-      incrementProduct,
-      itemCartEmpty,
-      cartVisible,
-      showCartFloat,
-      subTotalCart,
-      isMenuOpen,
-      continuePurchase,
-      showForm,
-      submitForm,
-      showLogin,
-      showRegister,
-      backToPurchaseForm,
-      login,
-      register,
-      selectedCategory,
-      visibleFilter,
-      toggleFilterCategory,
-      selectedSize,
-      resetFilters,
-      hiddenFilter,
-      filteredProducts,
-      handlePayment,
-      searchQuery,
-      categoryProductCount,
-      sizeProductCount,
-      filteredProductsBySearch,
-      resetFilterSize
-    };
-  },
-}).mount("#app");
+}).mount('#app');

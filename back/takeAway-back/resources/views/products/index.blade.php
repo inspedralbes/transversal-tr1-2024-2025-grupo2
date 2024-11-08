@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">
+
     <h1 class="my-4 text-center">Lista de Productos</h1>
     <a href="{{ route('products.create') }}" class="btn btn-primary mb-3">Crear un nuevo producto</a>
 

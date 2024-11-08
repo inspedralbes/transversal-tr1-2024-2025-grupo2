@@ -1,4 +1,4 @@
-let laravel = { URL: 'http://localhost:8000'}
+let laravel = { URL: 'http://localhost:8001'}
 
 export async function getData() {
   const URL = `${laravel.URL}/api/getProducts`;

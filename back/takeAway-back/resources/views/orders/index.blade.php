@@ -2,6 +2,8 @@
 
 @section('content')
 <div class="container">
+
+
     <h1 class="my-4 text-center">Lista de Comandas</h1>
 
     @if (session('success'))

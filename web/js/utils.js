@@ -2,6 +2,7 @@ import {
   getData,
   getCategories,
   getSizes,
+  sendPayment
 } from "./communicationManager.js";
 
 import {
@@ -144,9 +145,9 @@ createApp({
     //Stripe
 
     async function handlePayment() {
-      // Crear una sesión de pago en el servidor (necesitarás implementar esto en tu backend)
+
       const showStripeItems = cartItems.map((item) => ({
-        title: item.title, // Cambiar `title` a `name`
+        title: item.title, 
         price: parseFloat(item.price),
         quantity: item.quantity || 1,
       }));
@@ -158,31 +159,13 @@ createApp({
 
       const itemsToSend = { products: showStripeItems, items: items }
 
-      console.log("ItemsToSend", itemsToSend);
+      const response = await sendPayment(itemsToSend)
 
-      console.log("Cart items being sent:", cartItems);
-
-      const response = await fetch(`${laravel.URL}/api/create-payment`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(itemsToSend),
-      });
-
-      console.log(response);
-
-      if (!response.ok) {
-        console.error("Error al crear la sesión de pago:", response.statusText);
-        return;
-      }
-
-      //const { id: sessionId } = await response.json(); // Asegúrate de que la respuesta tenga un id
-      const { id: sessionId } = await response.json(); // Asegúrate de que la respuesta tenga un id
+      const { id: sessionId } = await response.json();
 
       const stripe = Stripe(
         "pk_test_51QHYFvFLWcZi7m5YpsCaNI5INLqB7m6dnhpWfuOTYNL4VUJZi4KPu9aMJBnlCt2dJsBTlgm2TrDWam0jbGQQmxjh00QEwVpkLq"
-      ); // Cambia la clave por la tuya
+      );
       const { error } = await stripe.redirectToCheckout({ sessionId });
 
       if (error) {

@@ -102,6 +102,10 @@ body {
   transform: scale(1.1);
 }
 
+.navbar-buttons .btn:active {
+  background-color: lightgray;
+}
+
 .offcanvas-header {
   position: relative;
   display: flex;
@@ -145,7 +149,7 @@ body.menu-open {
 .navBar {
   height: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: end;
   align-items: center;
   flex-wrap: wrap;
   position: relative;
@@ -176,7 +180,13 @@ body.menu-open {
   list-style-type: none;
   padding-right: 10px;
   align-items: center;
+  width: 100%;
 
+}
+
+.ul_links li input {
+  width: 150px;
+  padding: 5px;
 }
 
 .navBar button {
@@ -746,6 +756,33 @@ footer {
 .zoom-out-enter, .zoom-out-leave-to {
   transform: scale(1.2);
   opacity: 0;
+}
+
+/* Animación personalizada para el offcanvas con transición más rápida */
+.offcanvas {
+  transition: transform 0.3s ease, opacity 0.3s ease; /* Cambio en el tiempo de la animación */
+  opacity: 0;
+}
+
+.offcanvas.show {
+  opacity: 1;
+  transform: translateY(0); /* Se desplaza desde arriba */
+}
+
+/* Evitar que el contenido de la página se mueva */
+body.offcanvas-open {
+  overflow: hidden;
+}
+
+/* Estilización extra para la transición */
+.offcanvas-body {
+  padding: 20px;
+  transition: transform 0.3s ease; /* También reducimos la duración aquí */
+}
+
+/* Cuando el offcanvas está abierto */
+.offcanvas.show .offcanvas-body {
+  transform: translateY(0); /* Aseguramos que el cuerpo también se anime de manera rápida */
 }
 
 
